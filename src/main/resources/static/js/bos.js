@@ -1029,7 +1029,7 @@ $(document).ready(function () {
 
 
     $('.page03_01 .chkTime:nth-of-type(1) > input').click(function(){
-        $(".select_wrap .page03_01").css('height','20rem');
+        $(".select_wrap .page03_01").css('height','64rem');
         $(".page03_01 .select_items .meet").removeClass('height');
         $(".page03_01 .select_items .call").removeClass('on');
         $(".page03_01 .select_items .call").addClass('on');
@@ -1037,7 +1037,7 @@ $(document).ready(function () {
     });
 
     $('.page03_01 .chkTime:nth-of-type(2) > input').click(function(){
-        $(".select_wrap .page03_01").css('height','64rem');
+        $(".select_wrap .page03_01").css('height','115rem');
         $(".page03_01 .select_items .meet").removeClass('height');
         $(" .page03_01 .select_items .meet").addClass('height');
         $(".page03_01 .select_items .call").removeClass('on');
