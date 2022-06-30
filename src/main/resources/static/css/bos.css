@@ -161,7 +161,7 @@ form {
 }
 
 .require_wrap {
-  width: calc(25% - 3rem);
+  width: calc(25% - 2rem);
   margin-top: 1rem;
   padding: 3rem 0;
   border-radius: 2.4rem;
@@ -208,7 +208,7 @@ form {
 }
 
 .require_wrap .require_items .item_txt {
-    width: calc(70% - 7rem);
+    width: calc(70% - 3rem);
 }
 
 .content.pg_layout02 .content_tit_wrap {

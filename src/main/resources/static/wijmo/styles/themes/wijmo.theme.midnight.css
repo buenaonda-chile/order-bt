@@ -10,11 +10,83 @@
     * wijmo.com/products/wijmo-5/license/
     *
     */
-
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-glyph, .wj-glyph-asterisk, .wj-glyph-calendar, .wj-glyph-check, .wj-glyph-circle, .wj-glyph-clipboard, .wj-glyph-clock, .wj-glyph-diamond, .wj-glyph-dimension, .wj-glyph-down, .wj-glyph-down-left, .wj-glyph-down-right, .wj-glyph-drag, .wj-glyph-file, .wj-glyph-left, .wj-glyph-measure, .wj-glyph-pin, .wj-glyph-plus, .wj-glyph-minus, .wj-glyph-pencil, .wj-glyph-right, .wj-glyph-square, .wj-glyph-step-backward, .wj-glyph-step-forward, .wj-glyph-up, .wj-glyph-up-left, .wj-glyph-up-right, .wj-glyph-filter {
   position: relative;
   display: inline-block;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   text-align: center;
   opacity: .75;
   white-space: normal;
@@ -127,7 +199,8 @@
 
 .wj-glyph-file:after {
   position: absolute;
-  transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
   border-top: .3em solid transparent;
   border-left: .3em solid white;
   content: ' ';
@@ -177,7 +250,8 @@
 
 .wj-glyph-plus:after {
   position: absolute;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border-left: .25em solid;
   width: .25em;
   height: .95em;
@@ -212,12 +286,14 @@
   position: absolute;
   border-left: .2em solid;
   height: .75em;
-  transform: translate(-100%, -50%);
+  -webkit-transform: translate(-100%, -50%);
+          transform: translate(-100%, -50%);
   content: ' ';
 }
 
 [dir=rtl] .wj-glyph-step-backward:after {
-  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
 }
 
 .wj-glyph-step-forward {
@@ -230,12 +306,14 @@
   position: absolute;
   border-left: .2em solid;
   height: .75em;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   content: ' ';
 }
 
 [dir=rtl] .wj-glyph-step-forward:after {
-  transform: translate(100%, -50%);
+  -webkit-transform: translate(100%, -50%);
+          transform: translate(100%, -50%);
 }
 
 .wj-glyph-up {
@@ -271,9 +349,22 @@
   content: ' ';
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-control {
   display: block;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   color: #fff;
   background: #0d2c45;
   user-select: none;
@@ -283,7 +374,8 @@
 }
 
 .wj-control * {
-  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 .wj-control [contenteditable] {
@@ -313,12 +405,14 @@
 }
 
 .wj-control input:invalid {
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   outline: none;
 }
 
 .wj-control .wj-btn, .wj-viewer .wj-control .wj-applybutton {
   background: #3b546b;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#3b546b), to(#517392));
   background-image: linear-gradient(#3b546b, #517392);
   cursor: pointer;
   color: #fff;
@@ -332,8 +426,10 @@
 
 .wj-control .wj-btn:focus, .wj-viewer .wj-control .wj-applybutton:focus, .wj-control .wj-btn:hover, .wj-viewer .wj-control .wj-applybutton:hover {
   background: #4d6e8c;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4d6e8c), to(#698dad));
   background-image: linear-gradient(#4d6e8c, #698dad);
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
 }
 
 .wj-control .wj-btn.wj-state-active, .wj-viewer .wj-control .wj-state-active.wj-applybutton {
@@ -358,6 +454,7 @@
 
 .wj-header {
   background: #000;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000), to(#1f1f1f));
   background-image: linear-gradient(#000, #1f1f1f);
   color: #fff;
   font-weight: bold;
@@ -388,7 +485,8 @@
 }
 
 .wj-tooltip {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   position: absolute;
   pointer-events: none;
   max-width: 400px;
@@ -397,7 +495,8 @@
   color: #000;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0;
-  box-shadow: 0 6px 13px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 6px 13px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 6px 13px rgba(0, 0, 0, 0.2);
   word-break: break-word;
   -ms-word-break: break-all;
 }
@@ -411,9 +510,22 @@
 
 .wj-dropdown-panel {
   pointer-events: auto;
-  box-shadow: 0 6px 13px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 6px 13px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 6px 13px rgba(0, 0, 0, 0.2);
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-content.wj-dropdown, .wj-content.wj-inputnumber, .wj-content.wj-inputmask, .wj-content.wj-calendar-outer, .wj-content.wj-pager {
   vertical-align: middle;
   display: inline-table;
@@ -421,10 +533,14 @@
 }
 
 .wj-control.wj-inputmask {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
 .wj-control.wj-inputmask .wj-input-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -518,6 +634,7 @@
   height: 100%;
   min-height: 2em;
   background: #3b546b;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#3b546b), to(#517392));
   background-image: linear-gradient(#3b546b, #517392);
 }
 
@@ -527,8 +644,10 @@
 .wj-control .wj-input-group-btn > .wj-btn:hover,
 .wj-viewer .wj-control .wj-input-group-btn > .wj-applybutton:hover {
   background: #4d6e8c;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4d6e8c), to(#698dad));
   background-image: linear-gradient(#4d6e8c, #698dad);
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
 }
 
 .wj-control .wj-btn-group > .wj-btn.wj-btn-default, .wj-viewer .wj-control .wj-btn-group > .wj-btn-default.wj-applybutton,
@@ -549,8 +668,10 @@
 .wj-control .wj-input-group-btn > .wj-btn.wj-btn-default:hover,
 .wj-viewer .wj-control .wj-input-group-btn > .wj-btn-default.wj-applybutton:hover {
   background: #4d6e8c;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4d6e8c), to(#698dad));
   background-image: linear-gradient(#4d6e8c, #698dad);
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
 }
 
 .wj-control.wj-rtl .wj-input-group-btn:last-child:not(:first-child) > .wj-btn, .wj-viewer .wj-control.wj-rtl .wj-input-group-btn:last-child:not(:first-child) > .wj-applybutton {
@@ -595,19 +716,26 @@
 
 .wj-listbox .wj-listbox-item.wj-header {
   opacity: 1;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
 
 .wj-listbox .wj-listbox-item:not(.wj-state-selected):not(.wj-state-disabled):not(.wj-separator):hover {
   background: rgba(0, 0, 0, 0.05);
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
 }
 
 .wj-listbox .wj-listbox-item > label {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-content: flex-start;
-  align-items: baseline;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   margin: 0;
   font-weight: normal;
 }
@@ -617,8 +745,13 @@
 }
 
 .wj-multiselectlistbox .wj-template {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   max-height: inherit;
   min-height: inherit;
   height: auto;
@@ -664,11 +797,20 @@
 }
 
 .wj-calendar .wj-calendar-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-grow: 0;
-  flex-shrink: 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   margin-bottom: 7px;
   min-width: 19em;
 }
@@ -727,8 +869,11 @@
 }
 
 .wj-calendar.wj-calendar-multimonth {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0;
 }
@@ -739,6 +884,8 @@
 }
 
 .wj-calendar.wj-calendar-multimonth .wj-calendar {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -779,7 +926,8 @@
 .wj-calendar.wj-rtl .wj-calendar-header .wj-btn-group .wj-btn .wj-glyph-left,
 .wj-calendar.wj-rtl .wj-calendar-header .wj-btn-group .wj-viewer .wj-control .wj-applybutton .wj-glyph-left,
 .wj-viewer .wj-control .wj-calendar.wj-rtl .wj-calendar-header .wj-btn-group .wj-applybutton .wj-glyph-left {
-  transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+          transform: scale(-1, 1);
 }
 
 .wj-dropdown-panel .wj-calendar-outer {
@@ -793,10 +941,14 @@
 .wj-yearpicker {
   max-height: 12em;
   min-width: 18em;
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
   width: 4em;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   justify-items: center;
   text-align: center;
 }
@@ -808,24 +960,36 @@
 }
 
 .wj-outer-flex, .wj-calendar.wj-calendar-multimonth .wj-calendar-outer, .wj-inputdate-dropdown .wj-calendar-outer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   min-width: 21em;
-  flex-shrink: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .wj-inputdate-dropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   background: #0d2c45;
 }
 
 .wj-inputdate-dropdown > .wj-calendar {
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   border: none;
 }
 
 .wj-inputdate-dropdown > .wj-listbox {
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   margin: 10px;
   min-width: 8em;
   max-height: 16em;
@@ -846,7 +1010,8 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .wj-inputcolor .wj-input-group input.wj-form-control {
@@ -892,6 +1057,7 @@
 
 .wj-multi-autocomplete .wj-token {
   background: #3b546b;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#3b546b), to(#517392));
   background-image: linear-gradient(#3b546b, #517392);
   color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -904,8 +1070,10 @@
 
 .wj-multi-autocomplete .wj-token:focus, .wj-multi-autocomplete .wj-token:hover, .wj-multi-autocomplete .wj-token.wj-token-active {
   background: #4d6e8c;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4d6e8c), to(#698dad));
   background-image: linear-gradient(#4d6e8c, #698dad);
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
 }
 
 .wj-multi-autocomplete .wj-token .wj-token-label {
@@ -927,7 +1095,8 @@
 
 .wj-multi-autocomplete .wj-token .wj-token-close:hover, .wj-multi-autocomplete .wj-token .wj-token-close:focus {
   opacity: .5;
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
 }
 
 .wj-multi-autocomplete .wj-token-helper {
@@ -937,12 +1106,14 @@
 
 .wj-popup {
   background: #0d2c45;
-  box-shadow: 0 6px 13px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 6px 13px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 6px 13px rgba(0, 0, 0, 0.2);
 }
 
 .wj-popup .wj-dialog-header {
   width: 100%;
   background: #000;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000), to(#1f1f1f));
   background-image: linear-gradient(#000, #1f1f1f);
   color: #fff;
   font-weight: bold;
@@ -985,7 +1156,8 @@
   content: '';
   position: absolute;
   top: 50%;
-  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
   opacity: .75;
   border-top: .4em solid transparent;
   border-bottom: .4em solid transparent;
@@ -1006,7 +1178,8 @@
 
 .wj-listbox.wj-menu-items.wj-rtl .wj-listbox-item.wj-subitems:after {
   left: .55em;
-  transform: translate(0, -50%) scale(-1, 1);
+  -webkit-transform: translate(0, -50%) scale(-1, 1);
+          transform: translate(0, -50%) scale(-1, 1);
 }
 
 .wj-pager .wj-input-group .wj-input-group-btn > .wj-btn, .wj-pager .wj-input-group .wj-viewer .wj-control .wj-input-group-btn > .wj-applybutton, .wj-viewer .wj-control .wj-pager .wj-input-group .wj-input-group-btn > .wj-applybutton {
@@ -1019,6 +1192,18 @@
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-labeled-input {
   position: relative;
   display: inline-block;
@@ -1029,7 +1214,8 @@
 }
 
 .wj-labeled-input, .wj-labeled-input *, .wj-labeled-input *:after, .wj-labeled-input *:before {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -1072,8 +1258,10 @@
   white-space: nowrap;
   text-align: left;
   color: rgba(0, 0, 0, 0.258824);
-  transition-duration: .2s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .wj-labeled-input label:after {
@@ -1083,8 +1271,10 @@
   height: 2px;
   left: 45%;
   position: absolute;
-  transition-duration: .2s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   visibility: hidden;
   width: 10px;
 }
@@ -1144,12 +1334,14 @@
   height: 1.3em;
   color: white;
   background: #ddd;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
 .wj-labeled-input input[type=checkbox] + label:hover:after,
 .wj-labeled-input input[type=radio] + label:hover:after {
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
 }
 
 .wj-labeled-input input[type=checkbox]:checked + label:after,
@@ -1160,7 +1352,8 @@
 
 .wj-labeled-input input[type=radio] + label:after {
   border-radius: 1em;
-  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .wj-labeled-input input[type=radio]:checked + label:after {
@@ -1184,6 +1377,7 @@
   height: 1em;
   border-radius: 1em;
   background: #ddd;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
@@ -1196,6 +1390,7 @@
   border-radius: 1em;
   border: 1px solid #bbb;
   background: white;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
@@ -1219,6 +1414,18 @@
   visibility: visible;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-tabpanel {
   display: block;
 }
@@ -1275,7 +1482,8 @@
 }
 
 .wj-tabpanel.wj-animated > div > .wj-tabheaders > .wj-tabheader.wj-state-active:after {
-  transition-duration: .2s;
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
 }
 
 .wj-accordion {
@@ -1330,7 +1538,8 @@
 .wj-accordion.wj-rtl.wj-show-icons > .wj-header:before {
   float: right;
   margin: .4em 0 .4em .5em;
-  transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
 }
 
 .wj-treeview {
@@ -1373,14 +1582,19 @@
 }
 
 .wj-treeview .wj-node.wj-state-collapsed:before, .wj-treeview .wj-node.wj-state-collapsing:before {
-  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
 }
 
 .wj-treeview .wj-node.wj-state-collapsed.wj-state-loading:before {
-  animation-name: wjLazyNodeLoading;
-  animation-duration: .6s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
+  -webkit-animation-name: wjLazyNodeLoading;
+          animation-name: wjLazyNodeLoading;
+  -webkit-animation-duration: .6s;
+          animation-duration: .6s;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
 }
 
 .wj-treeview .wj-node.wj-state-empty:before {
@@ -1415,10 +1629,12 @@
 }
 
 .wj-treeview.wj-animated .wj-node:before {
+  -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .wj-treeview.wj-animated .wj-node.wj-state-collapsed:before, .wj-treeview.wj-animated .wj-node.wj-state-collapsing:before {
+  -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1434,7 +1650,8 @@
 
 .wj-treeview.wj-rtl .wj-nodelist .wj-node.wj-state-collapsed:before,
 .wj-treeview.wj-rtl .wj-nodelist .wj-node.wj-state-collapsing:before {
-  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 .wj-treeview.wj-rtl .wj-node img {
@@ -1447,17 +1664,44 @@
   margin-left: 4px;
 }
 
-@keyframes wjLazyNodeLoading {
+@-webkit-keyframes wjLazyNodeLoading {
   from {
     opacity: 1;
-    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
   }
   to {
     opacity: 0.5;
-    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
   }
 }
 
+@keyframes wjLazyNodeLoading {
+  from {
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  to {
+    opacity: 0.5;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+}
+
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-flexgrid {
   width: 100%;
   cursor: default;
@@ -1478,7 +1722,8 @@
 }
 
 .wj-flexgrid .wj-colheaders .wj-header .wj-btn.wj-btn-glyph.wj-elem-pin:not(.wj-state-pinned) .wj-glyph-pin, .wj-flexgrid .wj-colheaders .wj-header .wj-viewer .wj-control .wj-btn-glyph.wj-elem-pin.wj-applybutton:not(.wj-state-pinned) .wj-glyph-pin, .wj-viewer .wj-control .wj-flexgrid .wj-colheaders .wj-header .wj-btn-glyph.wj-elem-pin.wj-applybutton:not(.wj-state-pinned) .wj-glyph-pin {
-  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
 .wj-flexgrid .wj-colheaders .wj-header.wj-state-multi-selected {
@@ -1486,16 +1731,24 @@
 }
 
 .wj-flexgrid .wj-colheaders .wj-header.wj-colgroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .wj-flexgrid .wj-colheaders .wj-header.wj-colgroup.wj-align-right {
-  justify-content: safe flex-end;
+  -webkit-box-pack: safe flex-end;
+      -ms-flex-pack: safe flex-end;
+          justify-content: safe flex-end;
 }
 
 .wj-flexgrid .wj-colheaders .wj-header.wj-colgroup.wj-align-center {
-  justify-content: safe center;
+  -webkit-box-pack: safe center;
+      -ms-flex-pack: safe center;
+          justify-content: safe center;
 }
 
 .wj-flexgrid .wj-colheaders .wj-header.wj-big-header:after {
@@ -1539,7 +1792,8 @@
 
 .wj-flexgrid .wj-marquee {
   position: absolute;
-  box-shadow: 0 0 0 1px #19a26b, inset 0 0 0 1px #19a26b;
+  -webkit-box-shadow: 0 0 0 1px #19a26b, inset 0 0 0 1px #19a26b;
+          box-shadow: 0 0 0 1px #19a26b, inset 0 0 0 1px #19a26b;
   pointer-events: none;
 }
 
@@ -1577,24 +1831,33 @@
 
 .wj-flexgrid .wj-cell .wj-btn.wj-btn-glyph:hover, .wj-flexgrid .wj-cell .wj-viewer .wj-control .wj-btn-glyph.wj-applybutton:hover, .wj-viewer .wj-control .wj-flexgrid .wj-cell .wj-btn-glyph.wj-applybutton:hover, .wj-flexgrid .wj-cell .wj-btn.wj-btn-glyph:focus, .wj-flexgrid .wj-cell .wj-viewer .wj-control .wj-btn-glyph.wj-applybutton:focus, .wj-viewer .wj-control .wj-flexgrid .wj-cell .wj-btn-glyph.wj-applybutton:focus {
   opacity: 1;
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
 }
 
 .wj-flexgrid .wj-cell .wj-btn.wj-btn-glyph.wj-right, .wj-flexgrid .wj-cell .wj-viewer .wj-control .wj-btn-glyph.wj-right.wj-applybutton, .wj-viewer .wj-control .wj-flexgrid .wj-cell .wj-btn-glyph.wj-right.wj-applybutton {
   float: right;
-  order: 2;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
 }
 
 .wj-flexgrid .wj-cell .wj-btn.wj-btn-glyph.wj-right:nth-child(1), .wj-flexgrid .wj-cell .wj-viewer .wj-control .wj-btn-glyph.wj-right.wj-applybutton:nth-child(1), .wj-viewer .wj-control .wj-flexgrid .wj-cell .wj-btn-glyph.wj-right.wj-applybutton:nth-child(1) {
-  order: 5;
+  -webkit-box-ordinal-group: 6;
+      -ms-flex-order: 5;
+          order: 5;
 }
 
 .wj-flexgrid .wj-cell .wj-btn.wj-btn-glyph.wj-right:nth-child(2), .wj-flexgrid .wj-cell .wj-viewer .wj-control .wj-btn-glyph.wj-right.wj-applybutton:nth-child(2), .wj-viewer .wj-control .wj-flexgrid .wj-cell .wj-btn-glyph.wj-right.wj-applybutton:nth-child(2) {
-  order: 4;
+  -webkit-box-ordinal-group: 5;
+      -ms-flex-order: 4;
+          order: 4;
 }
 
 .wj-flexgrid .wj-cell .wj-btn.wj-btn-glyph.wj-right:nth-child(3), .wj-flexgrid .wj-cell .wj-viewer .wj-control .wj-btn-glyph.wj-right.wj-applybutton:nth-child(3), .wj-viewer .wj-control .wj-flexgrid .wj-cell .wj-btn-glyph.wj-right.wj-applybutton:nth-child(3) {
-  order: 3;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
 }
 
 .wj-flexgrid .wj-cell .wj-btn.wj-btn-glyph.wj-elem-detail, .wj-flexgrid .wj-cell .wj-viewer .wj-control .wj-btn-glyph.wj-elem-detail.wj-applybutton, .wj-viewer .wj-control .wj-flexgrid .wj-cell .wj-btn-glyph.wj-elem-detail.wj-applybutton {
@@ -1718,6 +1981,7 @@
 
 .wj-cell.wj-header {
   background: #000;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000), to(#1f1f1f));
   background-image: linear-gradient(#000, #1f1f1f);
   color: #fff;
   font-weight: bold;
@@ -1823,6 +2087,18 @@
   color: #fff;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-flexgrid .wj-cell.wj-filter-on .wj-elem-filter {
   opacity: .9;
 }
@@ -1864,7 +2140,8 @@
 
 .wj-columnfiltereditor .wj-listbox:not(.wj-state-focused) .wj-listbox-item.wj-state-selected:hover {
   background: rgba(0, 0, 0, 0.05);
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
 }
 
 .wj-columnfiltereditor label {
@@ -1886,6 +2163,18 @@
   min-width: 95px;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-grouppanel {
   display: block;
   background: #87acca;
@@ -1948,6 +2237,18 @@
   padding: 12px 12px 12px 0;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-content.wj-flexgridsearch {
   vertical-align: middle;
   display: inline-table;
@@ -1960,6 +2261,18 @@
   font-weight: bold;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-flexgrid .wj-cell input.wj-column-selector {
   margin: 4px;
   vertical-align: bottom;
@@ -1967,10 +2280,23 @@
 }
 
 .wj-flexgrid .wj-cell input.wj-column-selector.wj-column-selector-group {
-  transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
   margin-right: 6px;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-flexgrid .wj-cell .wj-cell-maker {
   width: 100%;
   height: 100%;
@@ -2020,7 +2346,8 @@
 .wj-flexgrid .wj-cell.wj-cell-maker.wj-radio-map label {
   position: relative;
   width: 1em;
-  transform: scale(0.1);
+  -webkit-transform: scale(0.1);
+          transform: scale(0.1);
   color: orange;
   margin: 0 1em 0 0;
 }
@@ -2031,7 +2358,8 @@
 
 .wj-flexgrid .wj-cell.wj-cell-maker.wj-radio-map label:after {
   position: absolute;
-  transform: scale(20);
+  -webkit-transform: scale(20);
+          transform: scale(20);
   cursor: pointer;
   content: '\2605';
 }
@@ -2039,6 +2367,7 @@
 .wj-flexgrid .wj-cell.wj-cell-maker.wj-radio-map label:hover {
   opacity: 1;
   color: orangered;
+  -webkit-transition: color 600ms;
   transition: color 600ms;
 }
 
@@ -2055,6 +2384,18 @@
   pointer-events: none;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-flexchart {
   height: 400px;
   padding: 15px 10px;
@@ -2170,10 +2511,34 @@
   }
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-treemap .wj-data-label {
   fill: #0d2c45;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-flexchart .wj-chart-rangeslider {
   position: absolute;
   touch-action: none;
@@ -2330,7 +2695,8 @@
   position: absolute;
   margin: 0;
   top: 50%;
-  transform: translateY(-55%);
+  -webkit-transform: translateY(-55%);
+          transform: translateY(-55%);
   opacity: 0.75;
   font-size: 10px;
 }
@@ -2356,7 +2722,8 @@
   position: absolute;
   margin: 0;
   left: 50%;
-  transform: translate(-50%, 15%);
+  -webkit-transform: translate(-50%, 15%);
+          transform: translate(-50%, 15%);
   opacity: 0.75;
   font-size: 12px;
 }
@@ -2395,18 +2762,43 @@
   display: none;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-flexmap .wj-btn, .wj-flexmap .wj-viewer .wj-control .wj-applybutton, .wj-viewer .wj-control .wj-flexmap .wj-applybutton {
   opacity: 0.9;
   padding: 10px 10px 6px 10px !important;
   border: solid 0.5px gray;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-gauge {
   background: transparent;
 }
 
 .wj-gauge:not(.wj-state-readonly) {
-  touch-action: none;
+  -ms-touch-action: none;
+      touch-action: none;
 }
 
 .wj-gauge .wj-face path {
@@ -2457,6 +2849,18 @@
   fill: #fff;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-barcode {
   height: 60px;
   display: inline-block;
@@ -2533,6 +2937,18 @@
   height: 40px;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-flexsheet {
   background: #a9a9a9;
   width: 100%;
@@ -2685,7 +3101,8 @@
   position: absolute;
   width: 300px;
   z-index: 2001;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .wj-flexsheet-formula-list .wj-flexsheet-formula-name {
@@ -2739,6 +3156,18 @@
   outline: none;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-multirow .wj-cell.wj-record-end:not(.wj-header) {
   border-bottom-color: #787878;
 }
@@ -2781,6 +3210,18 @@
   opacity: 1;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-transposed-multirow .wj-cell.wj-record-end:not(.wj-header) {
   border-right-color: #787878;
 }
@@ -2789,6 +3230,18 @@
   border-bottom-color: #787878;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-pivotpanel {
   position: relative;
   padding: 3px 6px;
@@ -2943,29 +3396,43 @@
 }
 
 .wj-pivotgrid .wj-cell.wj-align-vcenter {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  align-items: safe center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: safe center;
+      -ms-flex-align: safe center;
+          align-items: safe center;
   padding-top: 0;
   padding-bottom: 0;
 }
 
 .wj-pivotgrid .wj-cell.wj-align-vcenter.wj-align-right {
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .wj-pivotgrid .wj-cell.wj-align-vcenter.wj-align-center {
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .wj-pivotgrid .wj-topleft .wj-cell.wj-col-field-hdr {
   text-align: right;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .wj-pivotgrid .wj-colheaders .wj-cell.wj-header {
   text-align: center;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .wj-pivotgrid .wj-pivot-collapse {
@@ -3057,6 +3524,18 @@
   display: none;
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-viewer {
   height: 750px;
 }
@@ -3202,7 +3681,8 @@
   margin: 0 auto 30px auto;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .wj-viewer .wj-view-page .wj-loading {
@@ -3898,6 +4378,7 @@
 
 .wj-viewer .wj-btn-group > li > a.wj-btn:focus, .wj-viewer .wj-control .wj-btn-group > li > a.wj-applybutton:focus, .wj-viewer .wj-btn-group > li > a.wj-btn:hover, .wj-viewer .wj-control .wj-btn-group > li > a.wj-applybutton:hover {
   background: #4d6e8c;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4d6e8c), to(#698dad));
   background-image: linear-gradient(#4d6e8c, #698dad);
 }
 
@@ -4132,7 +4613,8 @@
 
 .wj-viewer-menu > .wj-listbox-item a.wj-btn, .wj-viewer-menu > .wj-listbox-item .wj-viewer .wj-control a.wj-applybutton, .wj-viewer .wj-control .wj-viewer-menu > .wj-listbox-item a.wj-applybutton {
   background: transparent;
-  transform: translateY(0.4em);
+  -webkit-transform: translateY(0.4em);
+          transform: translateY(0.4em);
 }
 
 .wj-viewer-menu > .wj-listbox-item .checkIcon {
@@ -4172,7 +4654,20 @@ body.full-screen {
   }
 }
 
+/*!
+    *
+    * Wijmo Library 5.20211.781
+    * http://wijmo.com/
+    *
+    * Copyright(c) GrapeCity, Inc.  All rights reserved.
+    *
+    * Licensed under the GrapeCity Commercial License.
+    * sales@wijmo.com
+    * wijmo.com/products/wijmo-5/license/
+    *
+    */
 .wj-flexchart .fibonacci-arcs path.wj-state-selected {
   stroke-dasharray: 5 10;
   stroke-linecap: butt;
 }
+/*# sourceMappingURL=wijmo.theme.midnight.css.map */

@@ -1567,13 +1567,13 @@ input:read-only {
     display: none;
   }
   .customNotice {
-    width: 150%;
+    width: 200%;
     background: #fff;
 }
 
 .inner_page03 {
     background: #fff;
-    width: 150%;
+    width: 200%;
 }
 
 .page02_06 .select_items .chk_item.pcm.on {
@@ -1601,16 +1601,6 @@ input:read-only {
     background: #fff;
 }
 
-
-.select_wrap .page02_06 .exp_wrap .tabCont02.on{
-    width: 100%;
-    padding: 3rem;
-    float: right;
-    position: absolute;
-    top: calc(12rem + 6rem);
-    left: 0;
-    height: 26rem;
-}
 .page03_01 .select_items.on {
     width: 100%;
 }
@@ -2079,5 +2069,146 @@ input:read-only {
     height: auto;
 }
 
-  
+
+.page02_06_01 .exp_wrap .tabCont1.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top:calc( 100px + 6rem );
+    left: 0;
+    height: 28rem;
+}
+.page02_06_01 .exp_wrap .tabCont2.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top:calc( 100px + 6rem + 6rem );
+    left: 0;
+    height: 28rem;
+}
+.page02_06_01 .exp_wrap .tabCont3.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top:calc( 100px + 6rem + 6rem + 6rem);
+    left: 0;
+    height: 28rem;
+}
+
+.page02_06 .exp_wrap .tabCont01.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top: calc(100px + 6rem);
+    left: 0;
+}
+.page02_06 .exp_wrap .tabCont00.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top: 100px;
+    left: 0;
+}
+.page02_06 .exp_wrap .tabCont01.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top: calc(100px + 6rem);
+    left: 0;
+}
+
+.page02_06 .exp_wrap .tabCont02.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top: calc(100px + 6rem + 6rem);
+    left: 0;
+}
+
+.page02_06 .exp_wrap .tabCont03.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top: calc(100px + 6rem + 6rem + 6rem);
+    left: 0;
+}
+
+.page02_06 .exp_wrap .tabCont04.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top: calc(100px + 6rem + 6rem + 6rem + 6rem);
+    left: 0;
+}
+.page02_06 .exp_wrap .tabCont05.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top: calc(100px + 6rem + 6rem + 6rem + 6rem + 6rem);
+    left: 0;
+}
+
+.page02_06 .exp_wrap .tabCont06.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top: calc(100px + 6rem + 6rem + 6rem + 6rem + 6rem + 6rem);
+    left: 0;
+}
+
+.page02_06 .exp_wrap .tabCont07.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top: calc(100px + 6rem + 6rem + 6rem + 6rem + 6rem + 6rem + 6rem);
+    left: 0;
+}
+
+.page02_06 .exp_wrap .tabCont08.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top: calc(100px + 6rem + 6rem + 6rem + 6rem + 6rem + 6rem + 6rem + 6rem);
+    left: 0;
+}
+
+.page02_06 .exp_wrap .tabCont09.on
+{
+    width: 100%;
+    padding: 3rem;
+    float: right;
+    position: absolute;
+    top: calc(100px + 6rem + 6rem + 6rem + 6rem + 6rem + 6rem + 6rem + 6rem + 6rem);
+    left: 0;
+}
+
+
+
+
 }
