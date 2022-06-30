@@ -1244,6 +1244,7 @@ z-index:999;}
   /* height: 100%; */
   height: 31rem;
   margin-top: 6rem;
+  font-size: 4rem;
 }
 
   .page03 .custom p{
@@ -1281,10 +1282,10 @@ z-index:999;}
     margin-top: 3rem;
     margin-bottom: 5rem;
   }
-  .customNotice {
+.customNotice {
     height: auto;
     /* display: none; */
-    /*z-index: -999;*/
+    z-index: -999;
     border-radius: 0;
     /* left: -5%; */
     /* left: 0; */
@@ -1292,28 +1293,28 @@ z-index:999;}
     padding: 3rem;
     box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
     /* margin: 3rem auto; */
-    color: rgb(244, 74, 90);;
+    color: rgb(244, 74, 90);
     margin: 0 auto;
     font-size: 1.5rem;
     background: #fff;
-  }
+}
   .page03.page-switch {
-    /*background: none;*/
-    /*border-radius: 0;*/
-    /*transition: all .3s linear 0s;*/
-    /*-webkit-transform: translateZ(0);*/
-    /*display: none;*/
-    /*z-index: -9999;*/
+    background: none;
+    border-radius: 0;
+    transition: all .3s linear 0s;
+    -webkit-transform: translateZ(0);
+    display: none;
+    z-index: -9999;
   }
   
   .page03.page-switch.on {
-    /*display: block;*/
-    /*width: 100%;*/
-    /*z-index: 9999;*/
-    /*left: 0;*/
-    /*!* padding-left: 0; *!*/
-    /*transition: all .3s linear 0s;*/
-    /*-webkit-transform: translateZ(0);*/
+    display: block;
+    width: 100%;
+    z-index: 9999;
+    left: 0;
+    /* padding-left: 0; */
+    transition: all .3s linear 0s;
+    -webkit-transform: translateZ(0);
 }
   
   .page02_04 .select_items {
@@ -2090,8 +2091,8 @@ z-index:999;}
 
 .innerpage01 {
   position: absolute;
-  top: 53rem;
-  height: 17rem;
+  top: 54rem;
+  height: 21rem;
   left: 0;
   background: #fff;
   width: 100%;
@@ -2104,7 +2105,6 @@ z-index:999;}
   font-size: 1.8rem;
   line-height: 120%;
 }
-
 .customQ {
   margin-bottom: 3rem;
   font-weight: 500;
@@ -2153,19 +2153,19 @@ z-index:999;}
   color: #000;
 }
 
-.page-switch.page03_01 { height:;}
 
 .page02_04_01 .tbl_style01 th{
   padding: 1rem 0.3rem;
 }
 
-.customSearch{
+.customSearch {
   position: absolute;
-  left: 3rem;
-  top: 1.5rem;
+  left: 1rem;
+  top: -3rem;
   margin-bottom: 3rem;
   font-weight: 600;
   font-size: 1.6rem;
+  color: #909194;
 }
 
 .lastQ{

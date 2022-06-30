@@ -18,7 +18,8 @@
   }
   
   @media (max-width:1200px) {
-    html, body{font-size: 8px;}
+    html, body{font-size: 8px;
+    }
     .inner{width: 100%;padding:0 2rem;}
   
   
@@ -241,7 +242,7 @@
       width: 45%;
   }
   .select_wrap .exp_wrap .exp_items .item {
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
   }
   .select_wrap .exp_wrap .exp_items .item .img_wrap {
       height: 10rem;
@@ -1192,7 +1193,7 @@
       /* white-space: nowrap; */
   }
   .page-switch.page04{opacity:0;z-index:-999;overflow: visible;display: none;width:100%;}
-  .page-switch.page04.on{opacity:1;z-index:999;display: block;width:100%;}
+      .page-switch.page04.on{opacity:1;z-index:999;overflow: hidden;display: block;width:100%;}
   .page-switch.page02_07{opacity:0;z-index:-999;overflow: visible;display: none;width:100%;}
   .page-switch.page02_07.on{opacity:1;z-index:999;display: block;width:100%;height: 95rem;}
   .page-switch.page03_01{opacity:0;z-index:-999;left: 0;overflow: visible;display: none;width:100%;}
@@ -1296,7 +1297,6 @@
       /* height: 100%; */
       height: 26rem;
       margin-top: 3rem;
-      font-size: 4rem;
   }
   .page02_01_01 .exp_wrap .exp_items .item_tit{
       margin-bottom:2rem;
@@ -1771,10 +1771,10 @@
       content: "";
       display: block;
       height: 10rem;
-      position: fixed;
+      /*position: fixed;*/
       width: 100%;
       bottom: -41rem;
-      z-index: 0;
+      /*z-index: 0;*/
   }
   /* body:after{
       content: "";
@@ -2018,9 +2018,25 @@
       font-weight: 500;
       color: #999;
   }
+  .innerpage01 {
+      position: absolute;
+      top: 50rem;
+      height: 21rem;
+      left: 0;
+      background: #fff;
+      width: 100%;
+      display: block;
+      border-radius: 2.4rem;
+      text-align: center;
+      line-height: 100%;
+      padding: 3rem;
+      justify-content: center;
+      font-size: 1.8rem;
+      line-height: 120%;
+  }
     
-    .innerpage01 input {
-      width: 24rem;
+  .innerpage01 input {
+      width: 17rem;
       height: 5rem;
       padding: 0 2rem;
       border: none;
@@ -2038,6 +2054,7 @@
       font-weight: 600;
       font-size: 1.6rem;
   }
+  
   
   .select_wrap .page02_01 .select_items {
       width: 100%;
@@ -2062,30 +2079,5 @@
       height: auto;
   }
   
-  
-  .innerpage01 {
-      position: absolute;
-      top: 50rem;
-      height: 21rem;
-      left: 0;
-      background: #fff;
-      width: 100%;
-      display: block;
-      border-radius: 2.4rem;
-      text-align: center;
-      line-height: 100%;
-      padding: 3rem;
-      justify-content: center;
-      font-size: 1.8rem;
-      line-height: 120%;
-  }
-  
-  .page04 .innerpage01{
-      top: 53rem;
-  }
-  
-  .customQ {
-      margin-bottom: 3rem;
-      margin-top: 0rem;
-  }
+    
   }
