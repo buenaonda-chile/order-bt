@@ -997,6 +997,7 @@ $(document).ready(function () {
     //     $(".page03_01 .select_items").show();
     // });
     $('.chkTime:nth-of-type(2) > input').click(function () {
+        $(".innerChk").removeClass("on");
         $(".innerChk").addClass("on");
         // $(".page03_01 .select_items").addClass("on");
     });
@@ -1008,11 +1009,13 @@ $(document).ready(function () {
 
 
     $("#next.arrow_btn").mouseover(function () {
+        $("#next.arrow_btn > span").removeClass("on");
         $("#next.arrow_btn > span").addClass("on");
 
     });
 
     $("#prev.arrow_btn").mouseover(function () {
+        $("#prev.arrow_btn > span").removeClass("on");
         $("#prev.arrow_btn > span").addClass("on");
 
     });
@@ -1027,20 +1030,21 @@ $(document).ready(function () {
 
     });
 
+
     $('.page03_01 .chkTime:nth-of-type(1) > input').click(function(){
         $(".select_wrap .page03_01 .select_items").css('height','20rem');
         $(".page03_01 .select_items .meet").removeClass('height');
         $(".page03_01 .select_items .call").removeClass('on');
         $(".page03_01 .select_items .call").addClass('on');
-     
-     });
 
-     $('.page03_01 .chkTime:nth-of-type(2) > input').click(function(){
+    });
+
+    $('.page03_01 .chkTime:nth-of-type(2) > input').click(function(){
         $(".select_wrap .page03_01 .select_items").css('height','64rem');
         $(".page03_01 .select_items .meet").removeClass('height');
         $(" .page03_01 .select_items .meet").addClass('height');
         $(".page03_01 .select_items .call").removeClass('on');
-     });
+    });
 
 
     // $(".require_triger").click(function(){
@@ -1285,6 +1289,3 @@ function submitForm() {
         }
     })
 }
-
-
-

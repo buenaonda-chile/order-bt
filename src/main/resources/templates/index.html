@@ -69,7 +69,7 @@
                                    style="display: none; color:#F44A5A; font-size:1.2rem; line-height:2;">이름을 입력해주세요</p>
                             </li>
                             <li><span class="label">전화번호</span>
-                                <input type="tel" class="info_input numeric-only" name="telNum" placeholder="000-0000-0000" pattern="[0-9]*" inputmode="tel" min="0" >
+                                <input type="tel" class="info_input numeric-only" name="telNum" placeholder="숫자만 입력해주세요" pattern="[0-9]*" inputmode="tel" min="0" >
                                 <p class="invalidTelNum"
                                    style="display: none; color:#F44A5A; font-size:1.2rem; line-height:2;">전화번호를 입력해주세요</p>
                             </li>
@@ -80,6 +80,12 @@
                             </li>
                             <li class="chk"><input type="checkbox" id="agree_chk" name="agree_chk">
                                 <label for="agree_chk">개인정보처리방침 동의</label>
+                                <!-- <p class="invalidAgree"
+                                   style="display: none; color:#F44A5A; font-size:1.3rem; line-height:2; margin-top: 2rem;"></p> -->
+                                <a href="" class="agreeViewAll"><span class="agreetxt">전문보기</span></a>
+                            </li>
+                            <li class="chk">
+                                <p class="ToS">이용약관</p>
                                 <p class="invalidAgree"
                                    style="display: none; color:#F44A5A; font-size:1.3rem; line-height:2; margin-top: 2rem;">개인정보처리방침에 동의해주세요</p>
                                 <a href="" class="agreeViewAll"><span class="agreetxt">전문보기</span></a>
@@ -89,6 +95,9 @@
                             <p class="customSearch">견적조회</p>
                             <p class="customQ">기존에 받아보신 견적번호가 있으십니까?</p>
                             <ul>
+                                <li class="custumN1"><span class="label">이름</span>
+                                    <input type="text" class="info_input" name="name">
+                                </li>
                                 <li>
                                     <span class="label">견적번호</span>
                                     <input type="tel" class="info_input numeric-only" name="customNum" pattern="[0-9]*" inputmode="tel" min="0" >
@@ -395,12 +404,11 @@
                                     <input type="number" class="info_input" name="max_volt" pattern="[0-9]*" inputmode="numeric" min="0">
                                     <p class="wh">Wh</p>
                                 </li>
-                                <li class="chk"><span class="label"></span><input type="checkbox" id="unknow_volt_chk"
-                                                                                  name="unknow_volt_chk" value="unknow_volt_chk">
+                                <li class="chk"><span class="label"></span><input type="checkbox" id="unknow_volt_chk" name="unknow_volt_chk" value="unknow_volt_chk">
                                     <label for="unknow_volt_chk">모름</label></li>
                             </ul>
                             <p class="invalidVolt"
-                               style="display: none; color:#F44A5A; font-size:1.4em; line-height:2;">출력정보를 입력해주세요.</p>
+                               style="display: none; color:#F44A5A; font-size:1.4em; line-height:2;">* 출력정보를 입력해주세요.</p>
                         </div>
 
                         <div class="exp_wrap">
@@ -983,7 +991,7 @@
                                     <option value="20P">20P</option>
                                     <option value="상담필요">상담필요</option>
                                 </select>
-                            <p class="volumeNotice">* 선택하신 용량으로는 정격출력 기준<br> 약 <span class="volumeCalc"></span>시간 운전 가능합니다.</p>
+                            <p class="volumeNotice">선택하신 용량으로는 정격출력 기준<br> 약 <span class="volumeCalc"></span>시간 운전 가능합니다.</p>
                         </div>
 
                         <div class="exp_wrap">
@@ -1368,6 +1376,9 @@
                         <div class="innerpage01">
                             <p class="customQ lastQ">견적 조회</p>
                             <ul>
+                                <li class="custumN1"><span class="label">이름</span>
+                                    <input type="text" class="info_input" name="name">
+                                </li>
                                 <li>
                                     <span class="label">견적번호</span>
                                     <input type="tel" class="info_input numeric-only" name="customNum" pattern="[0-9]*" inputmode="tel" min="0" >
