@@ -1,12 +1,21 @@
 
-@media (min-width:1800px) {
-  .arrow_btn.prev{left:30rem;}
-  .arrow_btn.next {right: 30rem;}
+@media (min-width:1640px) {
+  .arrow_btn.prev{right:40rem;}
+  .arrow_btn.next {right:30rem;}
 
   .arrow_btn:hover span{
     opacity: 1;
     visibility: visible;
   }
+
+  #target_customNumber1 {
+    display: inline-block;
+    position: absolute;
+    /* bottom: 0; */
+    right: 15rem;
+}
+
+
 }
 
 @media (max-width:1640px) {
@@ -15,6 +24,7 @@
 
   /* 헤더 */
   .header{ width: 100%;}
+
 }
 
 

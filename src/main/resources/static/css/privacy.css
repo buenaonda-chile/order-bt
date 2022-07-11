@@ -1,0 +1,76 @@
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap');
+
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 15px;
+    font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    letter-spacing: -0.3px;
+    color: #252525;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+body {
+    min-width: 1200px;
+    overflow-x: hidden;
+    display: block;
+}
+header{
+  background:linear-gradient(to right, #65D4FC, #01F1BB);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+.innerheader{
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1200px;
+  margin: 0 auto;
+}
+.innerheader h1{
+  font-size: 25px;
+  font-weight: 700;
+}
+.innerheader h3{
+  color: #000;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.content_wrap_inner{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 130px auto;
+  width: 1200px;
+}
+
+.left_menu{
+  width: 240px;
+    border: 1px solid #ddd;
+
+}
