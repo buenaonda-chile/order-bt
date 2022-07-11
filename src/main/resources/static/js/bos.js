@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     let estimateNum; //견적번호
+    let name; //이름
     let volume = [];
     let pageIndex = 0;
     let page_01 = false;
@@ -430,7 +431,7 @@ $(document).ready(function () {
             case 0 :
                 page_01 = false;
                 const company = $('input[name="company"]').val();
-                const name = $('input[name="name"]').val();
+                name = $('input[name="name"]').val();
                 const telNum = $('input[name="telNum"]').val();
                 const email = $('input[name="email"]').val();
                 const emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -580,7 +581,7 @@ $(document).ready(function () {
 
                 $('input:checkbox[name=battery]').each(function (index) {
                     if($(this).is(":checked")==true){
-                        batteryCell = $(this).val();
+                        $(this).val() == "상관없음" ? batteryCell = "리튬이온" : batteryCell = $(this).val()
                     }
                 });
 
@@ -837,7 +838,8 @@ $(document).ready(function () {
 
                             axios.get("/api/estimate", {
                                 params : {
-                                    id : estimateNum
+                                    id : estimateNum,
+                                    name : name
                                 }
                             }).then(res => {
                                 if(res.status == 200){
@@ -900,6 +902,9 @@ $(document).ready(function () {
                         if (res.status == 200) {
                             const bookingInfo = document.getElementById("booking_info");
                             $('#booking_info').empty();
+                            let estiNum = document.createElement('li');
+                            estiNum.innerHTML = "<span>견적번호</span>" + estimateNum;
+                            bookingInfo.append(estiNum);
                             let date = document.createElement('li');
                             date.innerHTML = "<span>예약날짜</span>" + res.data.date;
                             bookingInfo.append(date);
@@ -1244,8 +1249,8 @@ function validation(obj){
     if (obj.name.length > 100) {
         alert("파일명이 100자 이상인 파일은 제외되었습니다.");
         return false;
-    } else if (obj.size > (100 * 1024 * 1024)) {
-        alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
+    } else if (obj.size > (10 * 1024 * 1024)) {
+        alert("최대 파일 용량인 10MB를 초과한 파일은 제외되었습니다.");
         return false;
     } else if (obj.name.lastIndexOf('.') == -1) {
         alert("확장자가 없는 파일은 제외되었습니다.");
@@ -1288,4 +1293,12 @@ function submitForm() {
             return;
         }
     })
+}
+
+function searchEstimate(frm){
+    const num = frm.customNum.value;
+    const name = frm.customer.value;
+    let estimate = window.open();
+    estimate.location = "/et/" + num + "/" + name;
+    return false;
 }

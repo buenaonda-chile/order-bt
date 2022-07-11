@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -33,11 +34,10 @@ public class EstimateServiceImpl implements EstimateService {
     @Override
     @Transactional
     public Long createEstimate(EstimateDto dto) {
-
-        System.out.println(dto.getId());
-        System.out.println(dto.toString());
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
         if (dto.getId() == null) {
+
             Estimate estimate = new Estimate();
 
             estimate.setId(Long.parseLong(genSaveFileName()));
@@ -46,6 +46,7 @@ public class EstimateServiceImpl implements EstimateService {
             estimate.setEmail(dto.getEmail());
             estimate.setName(dto.getName());
             estimate.setTel(dto.getTel());
+            estimate.setCretDt(timestamp);
 
             estimateRepository.createEstimate(estimate);
 
@@ -58,6 +59,7 @@ public class EstimateServiceImpl implements EstimateService {
             estimate.setEmail(dto.getEmail());
             estimate.setName(dto.getName());
             estimate.setTel(dto.getTel());
+            estimate.setCretDt(timestamp);
 
             return estimate.getId();
         }
@@ -143,7 +145,7 @@ public class EstimateServiceImpl implements EstimateService {
     @Override
     @Transactional(readOnly = true)
     public Estimate getEstimate(EstimateDto dto) {
-        return estimateRepository.findById(dto.getId());
+        return estimateRepository.findEstimate(dto);
     }
 
     @Override

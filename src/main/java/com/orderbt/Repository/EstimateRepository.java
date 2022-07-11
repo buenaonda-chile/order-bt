@@ -27,6 +27,14 @@ public class EstimateRepository {
         return em.find(Estimate.class, id);
     }
 
+    public Estimate findEstimate(EstimateDto dto){
+        return jpaQueryFactory
+                .selectFrom(estimate)
+                .where(estimate.id.eq(dto.getId()))
+                .where(estimate.name.eq(dto.getName()))
+                .fetchFirst();
+    }
+
     public List<Item> getCellModel(ItemDto dto){
       return jpaQueryFactory
               .selectFrom(item)

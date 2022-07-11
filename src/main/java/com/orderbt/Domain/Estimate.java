@@ -1,10 +1,13 @@
 package com.orderbt.Domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(schema = "web", name = "estimate")
@@ -26,6 +29,11 @@ public class Estimate {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "cret_dt")
+    @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
+    private Date cretDt;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id")

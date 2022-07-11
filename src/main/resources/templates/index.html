@@ -95,16 +95,18 @@
                             <p class="customSearch">견적조회</p>
                             <p class="customQ">기존에 받아보신 견적번호가 있으십니까?</p>
                             <ul>
+                                <form name="estimateForm">
                                 <li class="custumN1"><span class="label">이름</span>
-                                    <input type="text" class="info_input" name="name">
+                                    <input type="text" class="info_input" name="customer">
                                 </li>
                                 <li>
                                     <span class="label">견적번호</span>
-                                    <input type="tel" class="info_input numeric-only" name="customNum" pattern="[0-9]*" inputmode="tel" min="0" >
-                                    <div id="target_customNumber1">
-                                        <a href="#" onclick="" class="btn-customS">조회</a>
+                                    <input type="number" class="info_input numeric-only" name="customNum" pattern="[0-9]*" inputmode="tel" min="0" >
+                                    <div class="target_customNumber1">
+                                        <button onclick="searchEstimate(this.form);" class="btn-customS">조회</button>
                                     </div>
                                 </li>
+                                </form>
                             </ul>
                         </div>
                     </div>
@@ -1331,28 +1333,28 @@
                                     <li class="timeli2">
                                         <form class="items_wrap">
                                             <div class="chk_item time" data-num="tabCont03_09">
-                                                <input type="radio" name="time" value="time9"><span>09:30 ~ 10:00</span>
+                                                <input type="radio" name="time" value="09:30 ~ 10:00"><span>09:30 ~ 10:00</span>
                                             </div>
                                             <div class="chk_item time" data-num="tabCont03_10">
-                                                <input type="radio" name="time" value="time10"><span>10:30 ~ 11:00</span>
+                                                <input type="radio" name="time" value="10:30 ~ 11:00"><span>10:30 ~ 11:00</span>
                                             </div>
                                             <div class="chk_item time" data-num="tabCont03_11">
-                                                <input type="radio" name="time" value="time11"><span>11:30 ~ 12:00</span>
+                                                <input type="radio" name="time" value="11:30 ~ 12:00"><span>11:30 ~ 12:00</span>
                                             </div>
                                             <div class="chk_item time" data-num="tabCont03_12">
-                                                <input type="radio" name="time" value="time12"><span>13:30 ~ 14:00</span>
+                                                <input type="radio" name="time" value="13:30 ~ 14:00"><span>13:30 ~ 14:00</span>
                                             </div>
                                             <div class="chk_item time" data-num="tabCont03_13">
-                                                <input type="radio" name="time" value="time13"><span>14:30 ~ 15:00</span>
+                                                <input type="radio" name="time" value="14:30 ~ 15:00"><span>14:30 ~ 15:00</span>
                                             </div>
                                             <div class="chk_item time" data-num="tabCont03_13">
-                                                <input type="radio" name="time" value="time14"><span>15:30 ~ 16:00</span>
+                                                <input type="radio" name="time" value="15:30 ~ 16:00"><span>15:30 ~ 16:00</span>
                                             </div>
                                             <div class="chk_item time" data-num="tabCont03_13">
-                                                <input type="radio" name="time" value="time15"><span>16:30 ~ 17:00</span>
+                                                <input type="radio" name="time" value="16:30 ~ 17:00"><span>16:30 ~ 17:00</span>
                                             </div>
                                             <div class="chk_item time" data-num="tabCont03_14">
-                                                <input type="radio" name="time" value="time16"><span>17:30 ~ 18:00</span>
+                                                <input type="radio" name="time" value="17:30 ~ 18:00"><span>17:30 ~ 18:00</span>
                                             </div>
                                         </form>
                                     </li>
@@ -1376,16 +1378,18 @@
                         <div class="innerpage01">
                             <p class="customQ lastQ">견적 조회</p>
                             <ul>
-                                <li class="custumN1"><span class="label">이름</span>
-                                    <input type="text" class="info_input" name="name">
-                                </li>
-                                <li>
-                                    <span class="label">견적번호</span>
-                                    <input type="tel" class="info_input numeric-only" name="customNum" pattern="[0-9]*" inputmode="tel" min="0" >
-                                    <div id="target_customNumber1">
-                                        <a href="#" onclick="" class="btn-customS">조회</a>
-                                    </div>
-                                </li>
+                                <form name="estimateForm">
+                                    <li class="custumN1"><span class="label">이름</span>
+                                        <input type="text" class="info_input" name="customer">
+                                    </li>
+                                    <li>
+                                        <span class="label">견적번호</span>
+                                        <input type="number" class="info_input numeric-only" name="customNum" pattern="[0-9]*" inputmode="tel" min="0" >
+                                        <div class="target_customNumber1">
+                                            <button onclick="return searchEstimate(this.form);" class="btn-customS">조회</button>
+                                        </div>
+                                    </li>
+                                </form>
                             </ul>
                         </div>
                     </div>

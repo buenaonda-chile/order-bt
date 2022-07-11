@@ -8,7 +8,7 @@
     visibility: visible;
   }
 
-  #target_customNumber1 {
+  .target_customNumber1 {
     display: inline-block;
     position: absolute;
     /* bottom: 0; */
@@ -2096,7 +2096,7 @@ input:read-only {
     height: auto;
     /* height: 75rem; */
 }
-#target_customNumber1 {
+.target_customNumber1 {
     display: inline-block;
     position: absolute;
     bottom: -6rem;

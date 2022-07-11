@@ -75,10 +75,11 @@ public class RouterController {
         return "/bos_TermsofService";
     }
 
-    @GetMapping("/et/{id}")
-    public String estimateLink(@PathVariable("id") Long id, Model model){
+    @GetMapping("/et/{id}/{name}")
+    public String estimateLink(@PathVariable("id") Long id, @PathVariable("name") String name, Model model){
         EstimateDto dto = new EstimateDto();
         dto.setId(id);
+        dto.setName(name);
 
         model.addAttribute("estimate", estimateService.getEstimate(dto));
 
