@@ -6,7 +6,7 @@
     <meta name="HandheldFriendly" content="true"/>
     <title>배터리견적시스템 개인정보처리약관</title>
     <th:block th:replace="_fragment/config :: configFragment"></th:block>
-    <link rel="stylesheet" href="../static/css/privacy.css">
+    <link rel="stylesheet" th:href="@{/css/privacy.css}">
 
     <style>
         body {background-color: white; color: #000000;}
@@ -23,10 +23,10 @@
     <div class="content_wrap_inner">
       <ul class="left_menu">
         <li class="Privacy">
-          <a href="./bos_TermsofService.html">개인정보처리약관</a>
+          <a href="/term/privacy">개인정보처리약관</a>
         </li>
         <li class="T_o_S">
-          <a href="./bos_privacy.html">이용약관</a>
+          <a href="/term/service">이용약관</a>
         </li>
       </ul>
       <div class="contents">

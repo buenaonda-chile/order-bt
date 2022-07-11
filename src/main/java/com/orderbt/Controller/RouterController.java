@@ -65,6 +65,16 @@ public class RouterController {
         return "/p_addr";
     }
 
+    @GetMapping("/term/privacy")
+    public String disTermPrivacy(){
+        return "/bos_privacy";
+    }
+
+    @GetMapping("/term/service")
+    public String disTermService(){
+        return "/bos_TermsofService";
+    }
+
     @GetMapping("/et/{id}")
     public String estimateLink(@PathVariable("id") Long id, Model model){
         EstimateDto dto = new EstimateDto();
