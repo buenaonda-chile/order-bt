@@ -80,14 +80,14 @@
                             </li>
                             <li class="chk"><input type="checkbox" id="agree_chk" name="agree_chk">
                                 <label for="agree_chk">개인정보처리방침 동의</label>
-                                <!-- <p class="invalidAgree"
-                                   style="display: none; color:#F44A5A; font-size:1.3rem; line-height:2; margin-top: 2rem;"></p> -->
+                                <p class="invalidAgree"
+                                   style="display: none; color:#F44A5A; font-size:1.3rem; line-height:2; margin-top: 2rem;">개인정보처리방침에 동의해주세요</p>
                                 <a href="/term/privacy" target="_blank" class="agreeViewAll"><span class="agreetxt">전문보기</span></a>
                             </li>
                             <li class="chk">
                                 <p class="ToS">이용약관</p>
-                                <p class="invalidAgree"
-                                   style="display: none; color:#F44A5A; font-size:1.3rem; line-height:2; margin-top: 2rem;">개인정보처리방침에 동의해주세요</p>
+                                <!-- <p class="invalidAgree"
+                                   style="display: none; color:#F44A5A; font-size:1.3rem; line-height:2; margin-top: 2rem;">개인정보처리방침에 동의해주세요</p> -->
                                 <a href="/term/service" target="_blank" class="agreeViewAll"><span class="agreetxt">전문보기</span></a>
                             </li>
                         </ul>
@@ -1101,6 +1101,10 @@
                         </div>
                     </div>
 
+                    <div id="loading">
+                        <p>본 견적서는 가견적서입니다. <br> 상담 후 확정 견적서가 발급됩니다.</p>
+                    </div>
+
                     <div class="page-switch page03" id="pdf">
                         <div class="customNotice">
                             <p>* 본 견적은 상담진행을 위한 견적서 입니다.</p>
@@ -1113,7 +1117,8 @@
                                     <tbody>
                                     <tr>
                                         <th rowspan="5">수신자</th>
-                                        <td colspan="2" id="est_company"></td>
+                                        <td class="backG">이름 / 업체명</td>
+                                        <td id="est_company"></td>
 
                                         <th rowspan="5">공급자</th>
                                         <td class="backG">등록번호</td>
