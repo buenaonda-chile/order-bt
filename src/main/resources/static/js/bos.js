@@ -2,6 +2,8 @@ $(document).ready(function () {
 
     let estimateNum; //견적번호
     let name; //이름
+    let telNum;
+    let email;
     let volume = [];
     let pageIndex = 0;
     let page_01 = false;
@@ -432,8 +434,8 @@ $(document).ready(function () {
                 page_01 = false;
                 const company = $('input[name="company"]').val();
                 name = $('input[name="name"]').val();
-                const telNum = $('input[name="telNum"]').val();
-                const email = $('input[name="email"]').val();
+                telNum = $('input[name="telNum"]').val();
+                email = $('input[name="email"]').val();
                 const emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
                 //업체명 이름 벨리데이션
@@ -890,6 +892,18 @@ $(document).ready(function () {
                     return false;
                 }
 
+                if($('input[name="reservation"]:checked').val() == "미팅요청"){
+                    if(!$('input[name="reservation_type"]').is(':checked')){
+                        alert("미팅방법을 선택해주세요");
+                        return false;
+                    }
+
+                    if(!$('input[name="time"]').is(":checked")){
+                        alert("시간을 선택해주세요");
+                        return false;
+                    }
+                }
+
                 form.append("id", estimateNum);
                 form.append("type", $('input[name="reservation"]:checked').val());
                 form.append("typeDtl", $('input[name="reservation"]:checked').val() == "미팅요청" ? $('input[name="reservation_type"]:checked').val() : "");
@@ -1325,6 +1339,15 @@ function searchEstimate(frm){
     });
 
     return false;
+}
+
+function sendMessage(){
+    axios.post("/api/message", null, {
+        params : {
+        }
+    }).then((res) => {
+
+    })
 }
 //
 // window.onbeforeunload = function () { $('#loading').show(); }  //현재 페이지에서 다른 페이지로 넘어갈 때 표시해주는 기능

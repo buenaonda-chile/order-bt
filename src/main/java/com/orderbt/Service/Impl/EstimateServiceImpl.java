@@ -168,7 +168,9 @@ public class EstimateServiceImpl implements EstimateService {
             items.forEach(item -> Collections.sort(item.getItemInfos()));
             return items;
         }else {
-            items.forEach(item -> Collections.sort(item.getItemInfos()));
+            items.forEach(item -> Collections
+                                    .sort(item.getItemInfos()));
+
             return items;
         }
     }
