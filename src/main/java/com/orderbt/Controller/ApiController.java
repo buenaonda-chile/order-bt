@@ -39,6 +39,8 @@ public class ApiController {
 
     @GetMapping("/estimate")
     public Estimate getEstimate(EstimateDto dto){
+        System.out.println("cpcpcppcpcpcp");
+
         return estimateService.getEstimate(dto);
     }
 
