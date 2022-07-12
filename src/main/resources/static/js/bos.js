@@ -1296,14 +1296,38 @@ function submitForm() {
 }
 
 function searchEstimate(frm){
+    if(frm.customNum.value == ''){
+        alert("견적번호를 입력해주세요");
+        return false;
+    } else if(frm.customer.value == ''){
+        alert("이름을 입력해주세요")
+        return false;
+    }
+
     const num = frm.customNum.value;
     const name = frm.customer.value;
-    let estimate = window.open();
-    estimate.location = "/et/" + num + "/" + name;
+
+    axios.get("/api/estimate", {
+        params : {
+            id : num,
+            name : name
+        }
+    }).then(res => {
+        if (res.status == 200) {
+            if(res.data == ''){
+                alert("존재하지않는 견적입니다.");
+            }else {
+                let estimate = window.open();
+                estimate.location = "/et/" + num + "/" + name;
+            }
+            return false;
+        }
+    });
+
     return false;
 }
-
-window.onbeforeunload = function () { $('#loading').show(); }  //현재 페이지에서 다른 페이지로 넘어갈 때 표시해주는 기능
-$(window).load(function () {          //페이지가 로드 되면 로딩 화면을 없애주는 것
-    $('#loading').hide();
-});
+//
+// window.onbeforeunload = function () { $('#loading').show(); }  //현재 페이지에서 다른 페이지로 넘어갈 때 표시해주는 기능
+// $(window).load(function () {          //페이지가 로드 되면 로딩 화면을 없애주는 것
+//     $('#loading').hide();
+// });
