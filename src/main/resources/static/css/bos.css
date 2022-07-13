@@ -522,10 +522,11 @@ form {
   color:#999;
 }
 
-.info_wrap>li{
+.info_wrap>li {
   display: flex;
   align-items: center;
-  margin-bottom:2rem;
+  margin-bottom: 2rem;
+  z-index: 99999;
 }
 
 .info_wrap .label {
