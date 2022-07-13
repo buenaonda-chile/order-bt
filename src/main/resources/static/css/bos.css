@@ -965,6 +965,7 @@ z-index:999;}
   color:#fff;
   cursor: pointer;
   z-index: 99999;
+  width: 100%;
 }
 .page02_01 .exp_wrap .exp_items .item{
   width:28%;
@@ -2424,4 +2425,8 @@ z-index:999;}
     border: none;
     border-radius: 4px;
     overflow: hidden;
+  }
+
+  .pcm_imgComment{
+    display: none;
   }
