@@ -47,7 +47,7 @@ public class EstimateRepository {
                 .selectFrom(item)
                 .where(item.category.eq("PCM"))
                 .where(item.name.contains(dto.getCategory()))
-                .where(item.name.contains(dto.getDetail()))
+                .where(item.itemInfos.any().detail.eq(dto.getDetail()))
                 .where(item.active.eq("Y"))
                 .fetch();
     }

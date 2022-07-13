@@ -63,11 +63,22 @@ public class ApiController {
     @PostMapping("/message")
     public void sendMessage(MessageDto dto){
         DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("NCSCTSU8GDVZ2JXR", "EDYKGFFBLDFO0XR0NBLR2KUYW7SKZBUK", "https://api.solapi.com");
-
+        estimateService.sendEmail(dto);
         Message message = new Message();
-        message.setFrom("01030491928");
-        message.setTo("01030491928");
-        message.setText("안녕하세요");
+        message.setFrom("01099283137");
+        message.setTo(dto.getTo());
+        message.setText("[(주) CTNS 배터리팩 가견적 완료 안내 ]\n" +
+                "\n" +
+                "안녕하세요 "+ dto.getName() +"님!\n" +
+                "금일 요청하신 가견적 정보 안내드립니다.\n" +
+                "\n" +
+                "ㆍ견적 번호 : "+ dto.getEstiNum() +"\n" +
+                "ㆍ상담 유형 : "+ dto.getMeet() +"\n" +
+                "ㆍ상담 일자 : "+ dto.getDate() +"\n" +
+                "ㆍ담당자 연락처 : 010-9928-3137\u200B\n" +
+                "\n" +
+                "해당일에 담당자가 연락드릴 예정입니다.\n" +
+                "배터리 오더 시스템을 이용해 주셔서 감사합니다.");
 
         try {
             // send 메소드로 ArrayList<Message> 객체를 넣어도 동작합니다!

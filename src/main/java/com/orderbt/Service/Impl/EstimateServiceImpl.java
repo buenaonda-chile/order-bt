@@ -4,18 +4,21 @@ import com.orderbt.Domain.Estimate;
 import com.orderbt.Domain.Item;
 import com.orderbt.Domain.Order;
 import com.orderbt.Domain.Reservation;
-import com.orderbt.Dto.EstimateDto;
-import com.orderbt.Dto.ItemDto;
-import com.orderbt.Dto.OrderDto;
-import com.orderbt.Dto.ReservationDto;
+import com.orderbt.Dto.*;
 import com.orderbt.Repository.EstimateRepository;
 import com.orderbt.Service.EstimateService;
 import com.orderbt.Service.FileService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,6 +33,8 @@ public class EstimateServiceImpl implements EstimateService {
     private final EstimateRepository estimateRepository;
 
     private final FileService fileService;
+
+    private final Environment env;
 
     @Override
     @Transactional
@@ -179,6 +184,81 @@ public class EstimateServiceImpl implements EstimateService {
     @Transactional(readOnly = true)
     public List<Item> getCase() {
         return estimateRepository.getCase();
+    }
+
+    @Override
+    public void sendEmail(MessageDto dto) {
+        String host = "smtp.gmail.com";
+        String user = env.getProperty("gmail.id");
+        String password = env.getProperty("gmail.password");
+        Properties props = new Properties();
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", 465);
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.ssl.enable","true");
+        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+
+        try {
+            Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+                protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                    return new javax.mail.PasswordAuthentication(user, password);
+                }
+            });
+            try{
+                MimeMessage message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(user));
+                message.addRecipients(Message.RecipientType.TO, String.valueOf(new InternetAddress(dto.getEmail())));
+                message.setHeader("content-type", "text/html;charset=UTF-8");
+                String mailText = "";
+
+                message.setSubject("[(주) CTNS 배터리팩 가견적 완료 안내 ]");
+                mailText +="<!DOCTYPE html>\n" +
+                        "<html lang=\"en\" dir=\"ltr\">\n" +
+                        "  <head>\n" +
+                        "    <meta charset=\"utf-8\">\n" +
+                        "    <title>ctns_email</title>\n" +
+                        "    <link rel=\"stylesheet\" href=\"./style.css\">\n" +
+                        "  </head>\n" +
+                        "  <body>\n" +
+                        "    <div class=\"wrap\">\n" +
+                        "      <header>\n" +
+                        "        <h1><img src=\"./img/img_1.png\" alt=\"ctnslogo\"></h1>\n" +
+                        "        <h2><img src=\"./img/img_2.png\" alt=\"\"></h2>\n" +
+                        "      </header>\n" +
+                        "      <div class=\"content\">\n" +
+                        "        <h3>[(주) CTNS 배터리팩 가견적 완료 안내 ]</h3>\n" +
+                        "        <p>안녕하세요 "+ dto.getName()+"님!<br>\n" +
+                        "            금일 요청하신 가견적 정보 안내드립니다.</p>\n" +
+                        "            <ul>\n" +
+                        "              <li>견적 번호 : "+ dto.getEstiNum() +"</li>\n" +
+                        "              <li>상담 유형 : "+ dto.getMeet() +"</li>\n" +
+                        "              <li>상담 일자 : "+ dto.getDate()+"</li>\n" +
+                        "            </ul>\n" +
+                        "            <br>\n" +
+                        "            <p>해당일에 담당자가 연락드릴 예정입니다.</p>\n" +
+                        "            <br>\n" +
+                        "            <p>배터리 오더 시스템을 이용해 주셔서 감사합니다.</p>\n" +
+                        "            <br>\n" +
+                        "            <p>문의 번호 : 010-9928-3137</p>\n" +
+                        "      </div>\n" +
+                        "      <footer>\n" +
+                        "        <h4>주식회사 씨티엔에스</h4>\n" +
+                        "        <p>대표자명 : 권기정  &nbsp;&nbsp; ㅣ &nbsp;&nbsp;  사업자등록번호 : 307-81-50055</p>\n" +
+                        "        <p>본사 : 경상남도 창원시 의창구 평산로 23, 641호 (신화테크노밸리)</p>\n" +
+                        "        <p>tel : 055-294-9555  &nbsp;&nbsp; ㅣ  &nbsp;&nbsp;  fax : 055-294-9556</p>\n" +
+                        "      </footer>\n" +
+                        "    </div>\n" +
+                        "\n" +
+                        "  </body>\n" +
+                        "</html>";
+                message.setContent(mailText,"text/html;charset=UTF-8");
+                Transport.send(message);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     // 현재 시간을 기준으로 견적번호 생성

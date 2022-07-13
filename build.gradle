@@ -63,6 +63,10 @@ dependencies {
 
 	//문자보내기
 	implementation 'net.nurigo:sdk:4.2.4'
+
+	//메일보내기
+	implementation group: 'javax.mail', name: 'javax.mail-api', version: '1.6.2'
+	implementation group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
 }
 
 tasks.named('test') {

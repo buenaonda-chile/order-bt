@@ -1,9 +1,11 @@
-$(document).ready(function () {
+let estimateNum; //견적번호
+let name; //이름
+let telNum; // 전화번호
+let email; //이메일
+let date; //날짜
+let meet; //미팅방법
 
-    let estimateNum; //견적번호
-    let name; //이름
-    let telNum;
-    let email;
+$(document).ready(function () {
     let volume = [];
     let pageIndex = 0;
     let page_01 = false;
@@ -902,7 +904,13 @@ $(document).ready(function () {
                         alert("시간을 선택해주세요");
                         return false;
                     }
+                    date = wijmo.Globalize.format(theCalendar.value,'yyyy-MM-dd') + " " + $('input[name="time"]:checked').val();
+                    meet = $('input[name="reservation"]:checked').val() + " " + $('input[name="reservation_type"]:checked').val();
+                }else {
+                    date = wijmo.Globalize.format(theCalendar.value,'yyyy-MM-dd');
+                    meet = $('input[name="reservation"]:checked').val();
                 }
+
 
                 form.append("id", estimateNum);
                 form.append("type", $('input[name="reservation"]:checked').val());
@@ -1344,9 +1352,15 @@ function searchEstimate(frm){
 function sendMessage(){
     axios.post("/api/message", null, {
         params : {
+            to : telNum,
+            email : email,
+            name : name,
+            estiNum : estimateNum,
+            date : date,
+            meet : meet
         }
     }).then((res) => {
-
+        console.log("확인");
     })
 }
 
