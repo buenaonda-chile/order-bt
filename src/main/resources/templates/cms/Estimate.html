@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <title>배오시cms(견적관리)</title>
+    <!-- link -->
+    <link rel="stylesheet" href="./css/mainnav.css">
+    <link rel="stylesheet" href="./css/Estimate.css">
+    <!-- js  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../../../../../../../../../Downloads/배터리오더시스템/js/common.js"></script>
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" href="../../../../../../../../../../Downloads/배터리오더시스템/img/CTNS_LOGO_FONT-01-DESKTOP-M4JVNP4.png" type="image/x-icon">
+    <link rel="icon" href="../../../../../../../../../../Downloads/배터리오더시스템/img/CTNS_LOGO_FONT-01-DESKTOP-M4JVNP4.png" type="image/x-icon">
+    <!-- 폰트어썸 -->
+    <script src="https://kit.fontawesome.com/7b32d23811.js" crossorigin="anonymous"></script>
+    <!-- 구글폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <body>
+      <div class="mainwrap">
+        <header>
+          <img src="../../../../../../../../../../Downloads/배터리오더시스템/img/ctns_logo.png" alt="CTNS 로고 이미지">
+          <p>배터리 오더 시스템</p>
+        </header>
+        <div class="navList">
+          <ul class="navList1">
+            <li><a href="#"><i class="fa-solid fa-clipboard-question"></i>대시보드</a></li>
+            <li><a href="item.html"><i class="fa-solid fa-boxes-stacked"></i>아이템 관리</a></li>
+            <li class="on"><a href="./Estimate.html"><i class="fa-solid fa-book"></i>견적 관리</a></li>
+            <li><a href="../../../../../../../../../../Downloads/배터리오더시스템/Conditions.html"><i class="fa-solid fa-book-bookmark"></i>약관 관리</a></li>
+          </ul>
+          <ul class="navList2">
+            <li><a href="../../../../../../../../../../Downloads/배터리오더시스템/Conditions_1.html" target="_blank">이용약관</a></li>
+            <li><a href="../../../../../../../../../../Downloads/배터리오더시스템/Conditions_2.html" target="_blank">개인정보처리방침</a></li>
+          </ul>
+        </div>
+        <div class="last">
+          <p><a href="#">관리자모드 종료</a></p>
+        </div>
+      </div> <!-- .mainwrap -->
+
+      <div class="wrap">
+        <div class="top">
+          <h1><i class="fa-solid fa-book"></i>견적관리</h1>
+          <section class="topMenu1">
+            <p>전제 견적 수</p>
+            <p>50 개</p>
+          </section>
+
+          <section class="topMenu2">
+            <p>전체 견적금액</p>
+            <p>23 개</p>
+          </section>
+
+          <section class="topMenu3">
+            <p>중도이탈 견적</p>
+            <p>23 개</p>
+          </section>
+
+          <section class="topMenu3">
+            <p>완료 상담</p>
+            <p>48 개</p>
+          </section>
+
+          <section class="topMenu3">
+            <p>미완료 상담</p>
+            <p>3 개</p>
+          </section>
+
+          <section class="topMenu3">
+            <p>최다 상담유형</p>
+            <p>전화상담</p>
+          </section>
+
+        </div>
+        <div class="content">
+
+        </div>
+          <fieldset class="Msearch1">
+            <select>
+              <option>전체</option>
+              <option>견적번호</option>
+              <option>품목명</option>
+              <option>업체명 ~ 이메일</option>
+            </select>
+            <input type="text" placeholder=".로 검색">
+            <input type="submit" value="검색">
+          </fieldset>
+
+          <div class="contents">
+            <div class="Msearch2">
+              <select>
+                <option>30</option>
+                <option>50</option>
+                <option>100</option>
+              </select>
+              <ul class="actionBt1">
+                <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>
+                <li><i class="fa-solid fa-arrows-rotate"></i>칼럼위치초기화</li>
+                <li><i class="fa-solid fa-list-check"></i>칼럼위치저장</li>
+                <li><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
+              </ul>
+            </div>
+
+            <div class="grid">
+              <p>그리드 영역 입니다.</p>
+              <p>그리드 영역 입니다.</p>
+              <p>그리드 영역 입니다.</p>
+              <p>그리드 영역 입니다.</p>
+              <p>그리드 영역 입니다.</p>
+              <p>그리드 영역 입니다.</p>
+              <p>그리드 영역 입니다.</p>
+              <p>그리드 영역 입니다.</p>
+              <p>그리드 영역 입니다.</p>
+              <p>그리드 영역 입니다.</p>
+              <p>그리드 영역 입니다.</p>
+            </div>
+          </div>
+          <div class="Criteria">
+            <ul class="actionBt2">
+              <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>
+              <li><i class="fa-solid fa-arrows-rotate"></i>칼럼위치초기화</li>
+              <li><i class="fa-solid fa-list-check"></i>칼럼위치저장</li>
+              <li><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
+            </ul>
+          </div>
+
+      </div><!-- .wrap -->
+    </body>
+  </body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <title>배오시cms(아이템 관리)</title>
+    <!-- link -->
+    <link rel="stylesheet" th:href="@{/css/item.css}">
+    <th:block th:replace="cms/cms_fragment/config :: configFragment"></th:block>
+  </head>
+  <body>
+    <div class="graybg">
+
+    </div>
+    <div class="modal">
+      <h1>아이템추가<span>X</span></h1>
+      <ul>
+        <li>
+          <label for="kind">카테고리</label>
+          <select id="kind">
+            <option>배터리셀 종류</option>
+            <option>리듐이온 모델</option>
+            <option>리튬인산철 모델</option>
+            <option>PCM 보호회로</option>
+            <option>케이스</option>
+            <option class="creation">신규생성</option>
+          </select>
+          <input type="text" class="creationCK">
+        </li>
+        <li>
+          <label for="category">항목</label>
+          <input type="text" id="Category">
+        </li>
+        <li>
+          <label for="price">가격</label>
+          <input type="text" id="price">
+        </li>
+        <li>
+          <label for="Activation">활성화</label>
+          <select id="Activation">
+            <option>Y</option>
+            <option>N</option>
+          </select>
+        </li>
+        <li>
+          <label for="note">비고</label>
+          <textarea id=note rows="8" cols="80"></textarea>
+        </li>
+        <li>
+          <label for="" id="information">상세정보</label>
+          <div class="wjmo">
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+            <p>테이블 영역 입니다</p>
+          </div>
+          <ul class="bt">
+            <li><button type="button">추가</button></li>
+            <li><button type="button">삭제</button></li>
+          </ul>
+        </li>
+      </ul>
+      <section class="bottomBt">
+        <p>추가</p>
+      </section>
+    </div>
+
+    <th:block th:replace="cms/cms_fragment/mainnav :: mainnavFragment"></th:block>
+
+    <div class="wrap">
+      <div class="top">
+        <h1><i class="fa-solid fa-boxes-stacked"></i>아이템관리</h1>
+        <section class="topMenu1">
+          <p>카테고리 수</p>
+          <p>5 개</p>
+        </section>
+
+        <section class="topMenu2">
+          <p>항목수</p>
+          <p>48 개</p>
+        </section>
+
+        <section class="topMenu3">
+          <p>활성화 수(Y)</p>
+          <p>10 개</p>
+        </section>
+
+        <section class="topMenu4">
+          <p>아이템 추가<i class="fa-solid fa-circle-plus"></i></p>
+        </section>
+      </div>
+      <div class="content">
+
+      </div>
+        <fieldset class="Msearch1">
+          <select>
+            <option>전체</option>
+            <option>항목</option>
+            <option>카테고리</option>
+            <option>비고</option>
+          </select>
+          <input type="text" placeholder=".로 다중검색">
+          <input type="submit" value="검색">
+        </fieldset>
+
+        <div class="contents">
+          <div class="Msearch2">
+            <select>
+              <option>30</option>
+              <option>50</option>
+              <option>100</option>
+            </select>
+            <ul class="actionBt1">
+              <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>
+              <li><i class="fa-solid fa-eraser"></i>삭제</li>
+              <li><i class="fa-solid fa-rotate"></i>활성화</li>
+              <li><i class="fa-solid fa-group-arrows-rotate"></i></i>비활성화</li>
+              <li><i class="fa-solid fa-list-check"></i>칼럼위치저장</li>
+              <li><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
+            </ul>
+          </div>
+
+          <div class="grid">
+            <div id="itemGrid"></div>
+            <div id="itemGridPager" class="pager"></div>
+          </div>
+        </div>
+        <div class="Criteria">
+          <ul class="actionBt2">
+            <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>
+            <li><i class="fa-solid fa-eraser"></i>삭제</li>
+            <li><i class="fa-solid fa-rotate"></i>활성화</li>
+            <li><i class="fa-solid fa-group-arrows-rotate"></i></i>비활성화</a></li>
+            <li><i class="fa-solid fa-list-check"></i>칼럼위치저장</li>
+            <li><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
+          </ul>
+        </div>
+
+    </div>
+  </body>
+</html>
+<script>
+  let itemGrid;
+  let itemView;
+  let itemColumns;
+  let itemGridPager;
+  let currentSelector;
+
+  function pageOnLoad() {
+    // document.getElementById("content").classList.add("active");
+    loadGridItemList('init');
+  }
+
+  //그리드 초기 셋팅
+  function loadGridItemList(type, result) {
+    if (type == "init") {
+      itemView = new wijmo.collections.CollectionView(result, {
+        pageSize: 100,
+        groupDescriptions: ['type']
+      })
+
+      itemGridPager = new wijmo.input.CollectionViewNavigator('#itemGridPager', {
+        byPage: true,
+        headerFormat: '{currentPage:n0} / {pageCount:n0}',
+        cv: itemView
+      });
+
+      const onoffYnMap = "N,Y".split(",");	//온/오프라인 콤보박스
+
+      itemColumns = [
+        { isReadOnly: true, width: 35, align:"center"},
+        {binding: 'id', header: '아이템번호', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'type', header: '카테고리', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'title', header: '항목', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'thumbnail', header: '가격', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'thumbnail', header: '견적횟수', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'url', header: '활성화', isReadOnly: true, width: 150, align: "center", dataMap: onoffYnMap},
+        {
+          binding: 'edit', header: '상세정보', isReadOnly: true, width: 150, align: "center",
+          cellTemplate: wijmo.grid.cellmaker.CellMaker.makeButton({
+            text: '보기',
+            click: (e, ctx) => showPop('contentManagement', ctx),
+          })
+        },
+        {binding: 'cretDt', header: '생성일자', isReadOnly: true, width: 150, align: "center"},
+      ];
+
+      itemGrid = new wijmo.grid.FlexGrid('#itemGrid', {
+        autoGenerateColumns: false,
+        alternatingRowStep: 0,
+        columns: itemColumns,
+        itemsSource: itemView
+      });
+
+      itemGrid.itemFormatter = function (panel, r, c, cell) {
+        if (panel.cellType == wijmo.grid.CellType.RowHeader) {
+          cell.textContent = (r + 1).toString();
+        }
+      };
+
+
+      // 체크박스 생성
+      currentSelector = new wijmo.grid.selector.Selector(itemGrid);
+      currentSelector.column = itemGrid.columns[0];
+      new wijmo.grid.filter.FlexGridFilter(itemGrid);
+
+      _setUserGridLayout('contentLayout', itemGrid, itemColumns);
+
+
+    } else {
+      itemView = new wijmo.collections.CollectionView(result, {
+        pageSize: Number($('#viewNum').val()),
+        groupDescriptions: ['type']
+      });
+      itemGridPager.cv = itemView;
+      itemGrid.itemsSource = itemView;
+    }
+
+    refreshPaging(itemGrid.collectionView.totalItemCount, 1, itemGrid, 'itemGrid');  // 페이징 초기 셋팅
+  }
+
+  $(document).ready(function () {
+    pageOnLoad();
+  })
+
+</script>

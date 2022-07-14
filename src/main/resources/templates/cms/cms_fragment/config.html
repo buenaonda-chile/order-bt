@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <th:block th:fragment="configFragment">
+    <link rel="shortcut icon" href="icon_profile_admin_XgN_icon.ico" type="image/x-icon">
+
+    <link rel="icon" href="icon_profile_admin_XgN_icon.ico" type="image/x-icon">
+
+    <link rel="icon" type="image/x-icon" href="/img/ctnslogo3_ruk_icon.ico">
+
+    <link rel="short icon" type="image/x-icon" href="/img/ctnslogo3_ruk_icon.ico">
+
+    <meta name="description" content="10분만에 받아보는 배터리팩 견적서">
+
+    <meta property="og:title" content="배터리견적시스템">
+
+    <meta property="og:description" content="10분만에 받아보는 배터리팩 견적서">
+
+    <meta property="og:image" content="/img/ctnsog.png">
+
+    <meta property="og:type" content="website">
+
+    <meta property="og:image:width" content="1200">
+
+    <meta property="og:image:height" content="630">
+
+    <meta property="og:locale" content="en_US">
+
+    <meta property="og:site_name" content="배터리견적시스템">
+
+    <meta property="og:url" content="www.orderbt.com" />
+    <!-- 폰트어썸 -->
+    <script src="https://kit.fontawesome.com/7b32d23811.js" crossorigin="anonymous"></script>
+    <!-- 구글폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" th:href="@{/css/mainnav.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <script th:src="@{/js/common.js}"></script>
+    <script th:src="@{/ckeditor5/build/ckeditor.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/ckeditor5/sample/styles.css}">
+
+    <!-- wijmo css -->
+    <link rel="stylesheet" th:href="@{/wijmo/styles/custom.css}" />
+    <link rel="stylesheet" th:href="@{/wijmo/styles/wijmo.css}" />
+
+    <!-- wijmo js -->
+    <script type="text/javascript" th:src="@{/wijmo/controls/wijmo.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/wijmo.grid.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/wijmo.input.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/wijmo.xlsx.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/wijmo.chart.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/wijmo.grid.xlsx.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/wijmo.grid.filter.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/cultures/wijmo.culture.ko.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/jszip.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/wijmo.grid.cellmaker.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/wijmo.nav.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/wijmo.grid.selector.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/wijmo.gauge.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/wijmo.chart.interaction.min.js}"></script>
+    <script type="text/javascript" th:src="@{/wijmo/controls/wijmo.chart.animation.min.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js" integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      wijmo.setLicenseKey('orderbt.com,635866286281551#B0cI9buFkI1pjIEJCLi4TPBRnShtiMCdkNTh7UzYGdjJWezlldENnQWpEdnd6Rh9mN63EMGhTSFNUWzgkU6EWdOtiUulVQZlnNj56YQREbC5UUXV7cRxESwUHSMRFa9EUMqF6aXtmchxUOQRmV9FEdQV7NilEUUl7bpNDN9BlNnFTb6t6S956c5EUTGVlMNBnMlVTR4RUaxdzdZR4U0RkTHd7Mz2kWyp5Zjd7clhXSYZ5TMtkWSF6QSNmY89EeZxWazc6TmhHSWVHSIZ5SoNVbjN5QNJHRzVDVYtSW0ljbrpXMoF6TLFjS0FWYUhTe7RkREdGewN5VJ3yNBx4UZVEZzFUODdTQXpWWLZWV4FWbvh5LyN7dsZleQ9mTvpFRtRlcxVUWGBjb9hXbvdlMqp5d4VFWrQjWLhUTiVjZCF5VkBFN6pUTixkU9BFMF3EcrpGOwFzciVWS4wEVmNUW8lzUqZ6K53iZiojITJCLiYkQ4UURERkI0ICSiwiM7EDO8QjMwMTM0IicfJye#4Xfd5nIJBjMSJiOiMkIsIibvl6cuVGd8VEIgQXZlh6U8VGbGBybtpWaXJiOi8kI1xSfiUTSOFlI0IyQiwiIu3Waz9WZ4hXRgAicldXZpZFdy3GclJFIv5mapdlI0IiTisHL3JyS7gDSiojIDJCLi86bpNnblRHeFBCI73mUpRHb55EIv5mapdlI0IiTisHL3JCNGZDRiojIDJCLi86bpNnblRHeFBCIQFETPBCIv5mapdlI0IiTisHL3JyMDBjQiojIDJCLiUmcvNEIv5mapdlI0IiTisHL3JSV8cTQiojIDJCLi86bpNnblRHeFBCI4JXYoNEbhl6YuFmbpZEIv5mapdlI0IiTis7W0ICZyBlIsISMzkjM8ADI8IjNwIjMwIjI0ICdyNkIsISbvNmL4JmclRmcvJiOiMXbEJCLiU8lsjYmtLiOiEmTDJCLiETN5EDOyYDOyYjN8UzM6IiOiQWSiwSfdtlOicGbmJCLiEjdxIDMyIiOiIXZ6JCLlNHbhZmOiI7cYJKe');
+    </script>
+
+  </th:block>
+</head>
+<body>
+
+</body>
+</html>
