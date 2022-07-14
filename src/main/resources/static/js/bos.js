@@ -769,7 +769,7 @@ $(document).ready(function () {
                 }
 
                 form.append("id", estimateNum);
-                form.append("pcm", $('#pcm').text());
+                form.append("pcm", $('#pcm').text() == '상관없음' ? '리튬이온' : $('#pcm').text());
                 form.append("pcmRemark", $('#pcmRemark').val());
 
                 //데이터 저장
