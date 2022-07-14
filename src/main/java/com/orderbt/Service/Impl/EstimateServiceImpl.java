@@ -217,16 +217,19 @@ public class EstimateServiceImpl implements EstimateService {
                         "  <head>\n" +
                         "    <meta charset=\"utf-8\">\n" +
                         "    <title>ctns_email</title>\n" +
-                        "    <link rel=\"stylesheet\" href=\"./style.css\">\n" +
                         "  </head>\n" +
                         "  <body>\n" +
-                        "    <div class=\"wrap\">\n" +
-                        "      <header>\n" +
-                        "        <h1><img src=\"./img/img_1.png\" alt=\"ctnslogo\"></h1>\n" +
-                        "        <h2><img src=\"./img/img_2.png\" alt=\"\"></h2>\n" +
+                        "    <div style=\" width :60%; margin:0 auto;margin-top:10%;max-width: 1500px;min-width: 1000px;\" >\n" +
+                        "      <header style=\" margin-bottom: 0rem;height: 6.5rem;align-items: end;justify-content: center;display: flex;\">\n" +
+                        "        <h1 style=\"width: 30%;line-height: 100%;font-weight: 700;\">\n" +
+                        "          <img src=\"https://orderbt.com/img/img_1.png\" alt=\"ctnslogo\" style=\"width:13rem;object-fit: cover;\">\n" +
+                        "        </h1>\n" +
+                        "        <h2 style=\"width: 70%;line-height: 100%;\">\n" +
+                        "          <img src=\"https://orderbt.com/img/img_2.png\" alt=\"\"  style=\"object-fit: cover;width: 100%;\">\n" +
+                        "        </h2>\n" +
                         "      </header>\n" +
-                        "      <div class=\"content\">\n" +
-                        "        <h3>[(주) CTNS 배터리팩 가견적 완료 안내 ]</h3>\n" +
+                        "      <div class=\"content\" style=\"border:1px solid #222;padding: 3rem;height: 29rem;\">\n" +
+                        "         <h3 style=\"font-size: 1.7rem;padding: 1rem 0rem;font-weight: 600;\">[(주) CTNS 배터리팩 가견적 완료 안내 ]</h3>\n" +
                         "        <p>안녕하세요 "+ dto.getName()+"님!<br>\n" +
                         "            금일 요청하신 가견적 정보 안내드립니다.</p>\n" +
                         "            <ul>\n" +
@@ -241,14 +244,13 @@ public class EstimateServiceImpl implements EstimateService {
                         "            <br>\n" +
                         "            <p>문의 번호 : 010-9928-3137</p>\n" +
                         "      </div>\n" +
-                        "      <footer>\n" +
-                        "        <h4>주식회사 씨티엔에스</h4>\n" +
-                        "        <p>대표자명 : 권기정  &nbsp;&nbsp; ㅣ &nbsp;&nbsp;  사업자등록번호 : 307-81-50055</p>\n" +
-                        "        <p>본사 : 경상남도 창원시 의창구 평산로 23, 641호 (신화테크노밸리)</p>\n" +
-                        "        <p>tel : 055-294-9555  &nbsp;&nbsp; ㅣ  &nbsp;&nbsp;  fax : 055-294-9556</p>\n" +
+                        "      <footer style=\"margin-top: 2rem;\">\n" +
+                        "        <h4 style=\"font-size: 1.3rem;font-weight: 600;margin-bottom: 1rem;\">주식회사 씨티엔에스</h4>\n" +
+                        "        <p style=\"padding: .2rem;font-weight: 600;\">대표자명 : 권기정  &nbsp;&nbsp; ㅣ &nbsp;&nbsp;  사업자등록번호 : 307-81-50055</p>\n" +
+                        "        <p style=\"padding: .2rem;font-weight: 600;\">본사 : 경상남도 창원시 의창구 평산로 23, 641호 (신화테크노밸리)</p>\n" +
+                        "        <p style=\"padding: .2rem;font-weight: 600;\">tel : 055-294-9555  &nbsp;&nbsp; ㅣ  &nbsp;&nbsp;  fax : 055-294-9556</p>\n" +
                         "      </footer>\n" +
                         "    </div>\n" +
-                        "\n" +
                         "  </body>\n" +
                         "</html>";
                 message.setContent(mailText,"text/html;charset=UTF-8");
