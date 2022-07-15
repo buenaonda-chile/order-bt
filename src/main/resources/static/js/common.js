@@ -12,10 +12,6 @@ $(".modal > h1 > span").click(function(){
     $(".modal").css("display","none");
 });
 
-// 모달창 신규생성 선택하면 input태그 나오기
-$(".creation").click(function(){
-    $(".creationCK").css("display","block");
-});
 
 // 팝업
 $(function(){
@@ -186,6 +182,14 @@ function _setUserGridLayout(layoutId, grid, initColumns) {
         });
     }
 }
+
+// 팝업
+$(function(){
+    $('.popup_close').on('click',function(e){
+        $('.popup').removeClass("is_on")
+        e.preventDefault();
+    });
+});
 
 // 탭 메뉴
 $(document).ready(function() {

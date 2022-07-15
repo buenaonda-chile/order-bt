@@ -106,7 +106,9 @@ textarea{width:100%;max-width:98%;font-size:1.1rem;padding:1% 1%;height:100px;mi
 .creationCK{}
 
 
-
+.is_on {
+    display: block;
+}
 
 
 /* ls */

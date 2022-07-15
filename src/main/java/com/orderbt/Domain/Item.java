@@ -18,7 +18,7 @@ public class Item {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private long id;
+    private Integer id;
 
     @Column(name = "category")
     private String category;
@@ -27,7 +27,7 @@ public class Item {
     private String name;
 
     @Column(name = "price")
-    private Long price;
+    private Integer price;
 
     @Column(name = "active")
     private String active;

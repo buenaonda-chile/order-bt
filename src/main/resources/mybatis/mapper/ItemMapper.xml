@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.orderbt.Mapper.ItemMapper">
+    <select id="getItem" parameterType="ItemDto" resultType="ItemDto">
+        select a.id,
+               a.category,
+               a.name,
+               a.price,
+               a.active,
+               a.remark,
+               a.cret_dt
+        from web.item a
+        where 1=1
+        <if test="keywordList != null">
+            AND
+            <choose>
+                <when test="category == 'name'">
+                    <foreach collection="inq" item="item"
+                             index="index" open="(" close=")" separator="or">
+                        a.name LIKE '%' || #{item} || '%'
+                    </foreach>
+                </when>
+                <when test="category == 'category'">
+                    <foreach collection="inq" item="item"
+                             index="index" open="(" close=")" separator="or">
+                        a.category LIKE '%' || #{item} || '%'
+                    </foreach>
+                </when>
+                <when test="category == 'remark'">
+                    <foreach collection="inq" item="item"
+                             index="index" open="(" close=")" separator="or">
+                        a.remark LIKE '%' || #{item} || '%'
+                    </foreach>
+                </when>
+                <otherwise>
+                    <foreach collection="keywordList" item="item"
+                             index="index" open="(" close=")" separator="or">
+                        a.name LIKE '%' || #{item} || '%'
+                        or a.category LIKE '%' || #{item} || '%'
+                        or a.remark LIKE '%' || #{item} || '%'
+                    </foreach>
+                </otherwise>
+            </choose>
+        </if>
+        order by cret_dt
+    </select>
+
+    <select id="getItemInfo" resultType="ItemDto" parameterType="Integer">
+        select * from web.item_info where item_id = #{itemId}
+    </select>
+
+    <select id="getItemBoard" resultType="hashMap">
+        select
+            (select count(a.category) from (select category from web.item group by category) as a) as categoryCnt,
+            (select count(name) from web.item) as totalCnt,
+            (select count(name) from web.item where active = 'Y') as activeCnt
+    </select>
+
+    <insert id="saveItemInfo" parameterType="ItemDto">
+        INSERT INTO web.item_info
+            (id, item_id, type , detail, active)
+        VALUES (#{id}, #{itemId}, #{type}, #{detail}, #{active})
+            ON CONFLICT(id) DO
+        UPDATE
+            SET type = #{type},
+            detail		= #{detail},
+            active		= #{active}
+    </insert>
+
+    <delete id="deleteItemInfo" parameterType="ItemDto">
+        DELETE
+        FROM WEB.item_info
+        WHERE 1=1
+          AND id = #{id}
+    </delete>
+</mapper>
