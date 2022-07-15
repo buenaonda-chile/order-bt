@@ -1647,7 +1647,7 @@ z-index:999;}
 }
 
 .page02_02 .select_items{
-  height: 70rem;
+  height: 77rem;
 }
 
 .page02_04 .exp_wrap .tbl_style01 th{
@@ -2429,4 +2429,8 @@ z-index:999;}
 
   .pcm_imgComment{
     display: none;
+  }
+
+  .wj-calendar .wj-calendar-outer{
+    border: none;
   }

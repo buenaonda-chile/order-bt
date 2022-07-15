@@ -1186,7 +1186,7 @@
 .page-switch.page02_03{opacity:0;z-index:-999;overflow: hidden;display: none;width:100%;}
 .page-switch.page02_03.on{opacity:1;z-index:999;transition:all .3s linear 0s;overflow: visible;display: block;width:100%;height: 64rem;}
 .page-switch.page02_03_01{opacity:0;z-index:-999;transition:all .3s linear 0s;overflow: hidden;display: none;width:100%;}
-.page-switch.page02_03_01.on{opacity:1;z-index:999;transition:all .3s linear 0s;overflow:scroll;display: block;height: 116rem;width:100%;}
+.page-switch.page02_03_01.on{opacity:1;z-index:999;transition:all .3s linear 0s;overflow:hidden;display: block;height: 116rem;width:100%;}
 .page-switch.page02_04{opacity:0;z-index:-999;transition:all .3s linear 0s;overflow: hidden;display: none;width:100%;}
 .page-switch.page02_04.on{opacity:1;z-index:999;transition:all .3s linear 0s;overflow: visible;display: block;width:100%;height:130rem;}
 .page-switch.page02_04_01{opacity:0;z-index:-999;transition:all .3s linear 0s;overflow: hidden;display: none;width:100%;}
@@ -1725,8 +1725,9 @@ input:read-only {
     position: absolute;
     /* left: 0; */
     padding: 0rem;
-    /* width: calc(100% - 4rem); */
-    width: 100%;
+    width: calc(100% - 4rem);
+    /* width: 100%; */
+    /* word-break: break-all; */
 }
 
 .page02_06 .items_wrap {
@@ -2130,6 +2131,7 @@ input:read-only {
     border-bottom: 1px solid rgba(0,0,0,.1);
     font-size: 1.5rem;
     text-align: center;
+    word-break: break-all;
 }
 
 
@@ -2370,7 +2372,18 @@ input:read-only {
     font-size: 1.8rem;
 }
 
-
+input[type="radio"] + label:after, input[type="checkbox"] + label:after {
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    opacity: 0;
+    border-radius: 50%;
+    width: 7px;
+    height: 7px;
+    background: var(--main-color);
+    content: "";
+}
 
 
 
