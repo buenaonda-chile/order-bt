@@ -1674,18 +1674,8 @@ z-index:999;}
   color: #7e7e7e;
 }
 
-.page02_04_01 .select_items .chk_item {
-  background: var(--gradient);
-  font-weight: 600;
-  color: #fff;
-  border: none;
-  padding: 0 3rem;
-  /* display: inline-block; */
-  outline: none;
-  width: 100%;
-}
 
-.page02_04 .select_items .chk_item {
+.page02_04 .select_items .chk_item.checked {
   background: var(--gradient);
   font-weight: 600;
   color: #fff;
@@ -2434,3 +2424,56 @@ z-index:999;}
   .wj-calendar .wj-calendar-outer{
     border: none;
   }
+
+  select {
+
+    -webkit-appearance:none; /* for chrome */
+ 
+    -moz-appearance:none; /*for firefox*/
+ 
+    appearance:none;
+ 
+ }
+
+ select::-ms-expand{
+
+  display:none;/*for IE10,11*/
+
+}
+
+
+.select_wrap .select_items .items_tit.selectp{
+  margin-bottom: 5rem;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #000;
+  position: relative;
+}
+
+
+.page02_04 .select_items .chk_item {
+  font-weight: 600;
+  color: #999;
+  border: none;
+  padding: 0 3rem;
+  /* display: inline-block; */
+  outline: none;
+  width: calc(100% - 8rem);
+  position: absolute;
+   background: url(../img/Icon-down.png) no-repeat right 24px center;
+   background-color: #f7f7f7;
+}
+
+
+.page02_04_01 .select_items .chk_item {
+  font-weight: 600;
+  color: #999;
+  border: none;
+  padding: 0 3rem;
+  /* display: inline-block; */
+  outline: none;
+  width: calc(100% - 0rem);
+  /* position: absolute; */
+   background: url(../img/Icon-down.png) no-repeat right 24px center;
+   background-color: #f7f7f7;
+}

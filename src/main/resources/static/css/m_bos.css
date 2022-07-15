@@ -2385,7 +2385,18 @@ input[type="radio"] + label:after, input[type="checkbox"] + label:after {
     content: "";
 }
 
+.page02_04 .select_items .chk_item {
 
+     background: url(../img/Icon-down.png) no-repeat right 24px center;
+     background-color: #f7f7f7;
+  }
+  
+  
+  .page02_04_01 .select_items .chk_item {
+ 
+     background: url(../img/Icon-down.png) no-repeat right 24px center;
+     background-color: #f7f7f7;
+  }
 
 
 
