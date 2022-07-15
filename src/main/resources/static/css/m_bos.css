@@ -420,6 +420,15 @@
     -moz-border-radius: 0;
 }
 
+.page04 input{
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+}
+
 
 .info_wrap input.info_input {
     width: 100%;
