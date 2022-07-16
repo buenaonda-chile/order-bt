@@ -121,7 +121,7 @@
                 <option value="100">100</option>
             </select>
             <ul class="actionBt1">
-                <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>
+<!--                <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>-->
                 <li onclick="deleteRows('item')"><i class="fa-solid fa-eraser"></i>삭제</li>
                 <li onclick="changeActive('Y')"><i class="fa-solid fa-rotate"></i>활성화</li>
                 <li onclick="changeActive('N')"><i class="fa-solid fa-group-arrows-rotate"></i></i>비활성화</li>
@@ -137,12 +137,11 @@
     </div>
     <div class="Criteria">
         <ul class="actionBt2">
-            <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>
-            <li><i class="fa-solid fa-eraser"></i>삭제</li>
-            <li><i class="fa-solid fa-rotate"></i>활성화</li>
-            <li><i class="fa-solid fa-group-arrows-rotate"></i></i>비활성화</a></li>
+            <li onclick="deleteRows('item')"><i class="fa-solid fa-eraser"></i>삭제</li>
+            <li onclick="changeActive('Y')"><i class="fa-solid fa-rotate"></i>활성화</li>
+            <li onclick="changeActive('N')"><i class="fa-solid fa-group-arrows-rotate"></i></i>비활성화</li>
             <li><i class="fa-solid fa-list-check"></i>칼럼위치저장</li>
-            <li><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
+            <li onclick="exportExcel()"><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
         </ul>
     </div>
 
