@@ -1,471 +1,643 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>배오시cms(아이템 관리)</title>
     <!-- link -->
     <link rel="stylesheet" th:href="@{/css/item.css}">
     <th:block th:replace="cms/cms_fragment/config :: configFragment"></th:block>
-  </head>
-  <body>
-    <div class="graybg">
+</head>
+<body>
+<div class="graybg">
 
-    </div>
-    <div class="modal" id="itemManagement">
-      <h1><p class="popup_title">아이템추가</p><span onclick="closePop('itemManagement')">X</span></h1>
-      <ul>
+</div>
+<div class="modal" id="itemManagement">
+    <h1><p class="popup_title">아이템추가</p><span onclick="closePop('itemManagement')">X</span></h1>
+    <ul>
+        <form id="itemForm" name="itemForm" onsubmit="return false;">
+            <li>
+                <input type="hidden" id="itemId">
+                <label for="kind">카테고리</label>
+                <select id="kind" name="category">
+                    <option value="배터리셀모델">배터리셀 종류</option>
+                    <option value="리튬이온">리듐이온 모델</option>
+                    <option value="리튬인산철">리튬인산철 모델</option>
+                    <option value="PCM">PCM 보호회로</option>
+                    <option value="케이스">케이스</option>
+                    <option class="creation">신규생성</option>
+                </select>
+                <input type="text" class="creationCK">
+            </li>
+            <li>
+                <label for="category">항목</label>
+                <input type="text" id="Category" name="name">
+            </li>
+            <li>
+                <label for="price">가격</label>
+                <input type="number" id="price" name="price">
+            </li>
+            <li>
+                <label for="Activation">활성화</label>
+                <select id="Activation" name="active">
+                    <option value="Y">Y</option>
+                    <option value="N">N</option>
+                </select>
+            </li>
+            <li>
+                <label for="note">비고</label>
+                <textarea id=note rows="8" cols="80" name="remark"></textarea>
+            </li>
+        </form>
         <li>
-          <input type="hidden" id="itemId">
-          <label for="kind">카테고리</label>
-          <select id="kind" name="category">
-            <option value="배터리셀모델">배터리셀 종류</option>
-            <option value="리튬이온">리듐이온 모델</option>
-            <option value="리튬인산철">리튬인산철 모델</option>
-            <option value="PCM">PCM 보호회로</option>
-            <option value="케이스">케이스</option>
-            <option class="creation">신규생성</option>
-          </select>
-          <input type="text" class="creationCK">
+            <label for="wijmo" id="information">상세정보</label>
+            <div class="wjmo" id="wijmo">
+                <div id="itemInfoGrid"></div>
+            </div>
+            <ul class="bt">
+                <li>
+                    <button type="button" onclick="addRow()">추가</button>
+                </li>
+                <li>
+                    <button type="button" id="saveRowBtn" onclick="saveItemInfo()">저장</button>
+                </li>
+                <li>
+                    <button type="button" id="deleteRowBtn" onclick="deleteRows()">삭제</button>
+                </li>
+            </ul>
         </li>
-        <li>
-          <label for="category">항목</label>
-          <input type="text" id="Category" name="name">
-        </li>
-        <li>
-          <label for="price">가격</label>
-          <input type="text" id="price" name="price">
-        </li>
-        <li>
-          <label for="Activation">활성화</label>
-          <select id="Activation" name="active">
-            <option value="Y">Y</option>
-            <option value="N">N</option>
-          </select>
-        </li>
-        <li>
-          <label for="note">비고</label>
-          <textarea id=note rows="8" cols="80" name="remark"></textarea>
-        </li>
-        <li>
-          <label for="wijmo" id="information">상세정보</label>
-          <div class="wjmo" id="wijmo">
-            <div id="itemInfoGrid"></div>
-          </div>
-          <ul class="bt">
-            <li><button type="button" onclick="addRow()">추가</button></li>
-            <li><button type="button" onclick="saveItemInfo()">저장</button></li>
-            <li><button type="button" onclick="deleteRows()">삭제</button></li>
-          </ul>
-        </li>
-      </ul>
-      <section class="bottomBt">
-        <p>추가</p>
-      </section>
-    </div>
+    </ul>
+    <section class="bottomBt">
+        <p id="addBtn" onclick="addItem('add')">추가</p>
+        <p id="updateBtn" onclick="addItem('modify')">수정</p>
+        <p id="deleteBtn" onclick="addItem('delete')">삭제</p>
+    </section>
+</div>
 
-    <th:block th:replace="cms/cms_fragment/mainnav :: mainnavFragment"></th:block>
+<th:block th:replace="cms/cms_fragment/mainnav :: mainnavFragment"></th:block>
 
-    <div class="wrap">
-      <div class="top">
+<div class="wrap">
+    <div class="top">
         <h1><i class="fa-solid fa-boxes-stacked"></i>아이템관리</h1>
         <section class="topMenu1">
-          <p>카테고리 수</p>
-          <p th:text="${categoryCnt} +'개'">5 개</p>
+            <p>카테고리 수</p>
+            <p th:text="${categoryCnt} +'개'">5 개</p>
         </section>
 
         <section class="topMenu2">
-          <p>항목수</p>
-          <p th:text="${totalCnt} +'개'">48 개</p>
+            <p>항목수</p>
+            <p th:text="${totalCnt} +'개'">48 개</p>
         </section>
 
         <section class="topMenu3">
-          <p>활성화 수(Y)</p>
-          <p th:text="${activeCnt} +'개'">10 개</p>
+            <p>활성화 수(Y)</p>
+            <p th:text="${activeCnt} +'개'">10 개</p>
         </section>
 
         <section class="topMenu4">
-          <p onclick="showPop('itemManagement')">아이템 추가<i class="fa-solid fa-circle-plus"></i></p>
+            <p onclick="showPop('itemManagement')">아이템 추가<i class="fa-solid fa-circle-plus"></i></p>
         </section>
-      </div>
-      <div class="content">
+    </div>
+    <div class="content">
 
-      </div>
-      <form name="searchForm" onsubmit="return showGrid(this)">
+    </div>
+    <form name="searchForm" onsubmit="return showGrid(this)">
         <fieldset class="Msearch1">
             <select name="category">
-              <option value="all">전체</option>
-              <option value="name">항목</option>
-              <option value="category">카테고리</option>
-              <option value="remark">비고</option>
+                <option value="all">전체</option>
+                <option value="name">항목</option>
+                <option value="category">카테고리</option>
+                <option value="remark">비고</option>
             </select>
             <input type="text" name="keyword" placeholder=".로 다중검색">
             <input type="submit" value="검색">
         </fieldset>
-      </form>
+    </form>
 
-        <div class="contents">
-          <div class="Msearch2">
+    <div class="contents">
+        <div class="Msearch2">
             <select id="viewNum" onchange="showGrid(searchForm)">
-              <option value="30">30</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
             </select>
             <ul class="actionBt1">
-              <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>
-              <li><i class="fa-solid fa-eraser"></i>삭제</li>
-              <li><i class="fa-solid fa-rotate"></i>활성화</li>
-              <li><i class="fa-solid fa-group-arrows-rotate"></i></i>비활성화</li>
-              <li><i class="fa-solid fa-list-check"></i>칼럼위치저장</li>
-              <li onclick="exportExcel()"><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
+                <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>
+                <li onclick="deleteRows('item')"><i class="fa-solid fa-eraser"></i>삭제</li>
+                <li onclick="changeActive('Y')"><i class="fa-solid fa-rotate"></i>활성화</li>
+                <li onclick="changeActive('N')"><i class="fa-solid fa-group-arrows-rotate"></i></i>비활성화</li>
+                <li><i class="fa-solid fa-list-check"></i>칼럼위치저장</li>
+                <li onclick="exportExcel()"><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
             </ul>
-          </div>
+        </div>
 
-          <div class="grid">
+        <div class="grid">
             <div id="itemGrid"></div>
             <div id="itemGridPager" class="pager"></div>
-          </div>
         </div>
-        <div class="Criteria">
-          <ul class="actionBt2">
+    </div>
+    <div class="Criteria">
+        <ul class="actionBt2">
             <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>
             <li><i class="fa-solid fa-eraser"></i>삭제</li>
             <li><i class="fa-solid fa-rotate"></i>활성화</li>
             <li><i class="fa-solid fa-group-arrows-rotate"></i></i>비활성화</a></li>
             <li><i class="fa-solid fa-list-check"></i>칼럼위치저장</li>
             <li><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
-          </ul>
-        </div>
-
+        </ul>
     </div>
-  </body>
+
+</div>
+</body>
 </html>
 <script>
-  let itemInfoGrid;
-  let itemInfoView;
-  let itemInfoColumns;
-  let itemInfoGridPager;
-  let itemInfoSelector;
-  let itemGrid;
-  let itemView;
-  let itemColumns;
-  let itemGridPager;
-  let currentSelector;
+    let itemInfoGrid;
+    let itemInfoView;
+    let itemInfoColumns;
+    let itemInfoGridPager;
+    let itemInfoSelector;
+    let itemGrid;
+    let itemView;
+    let itemColumns;
+    let itemGridPager;
+    let currentSelector;
 
 
-  function pageOnLoad() {
-    // document.getElementById("content").classList.add("active");
-    // 모달창 신규생성 선택하면 input태그 나오기
-    $(".creation").click(function(){
-      $(".creationCK").css("display","block");
-    });
-    loadGridItemList('init');
-  }
-
-  //그리드 초기 셋팅
-  function loadGridItemList(type, result) {
-    if (type == "init") {
-      itemView = new wijmo.collections.CollectionView(result, {
-        pageSize: 100,
-        groupDescriptions: ['category']
-      })
-
-      itemGridPager = new wijmo.input.CollectionViewNavigator('#itemGridPager', {
-        byPage: true,
-        headerFormat: '{currentPage:n0} / {pageCount:n0}',
-        cv: itemView
-      });
-
-      const onoffYnMap = "N,Y".split(",");	//온/오프라인 콤보박스
-
-      itemColumns = [
-        { isReadOnly: true, width: 35, align:"center"},
-        {binding: 'id', header: '아이템번호', isReadOnly: true, width: 150, align: "center"},
-        {binding: 'category', header: '카테고리', isReadOnly: true, width: 150, align: "center"},
-        {binding: 'name', header: '항목', isReadOnly: true, width: 200, align: "center"},
-        {binding: 'price', header: '가격', isReadOnly: true, width: 150, align: "center"},
-        {binding: 'estiCnt', header: '견적횟수', isReadOnly: true, width: 150, align: "center"},
-        {binding: 'active', header: '활성화', isReadOnly: true, width: 150, align: "center", dataMap: onoffYnMap},
-        {
-          binding: 'edit', header: '상세정보', isReadOnly: true, width: 150, align: "center",
-          cellTemplate: wijmo.grid.cellmaker.CellMaker.makeButton({
-            text: '보기',
-            click: (e, ctx) => showPop('itemManagement', ctx),
-          })
-        },
-        {binding: 'cretDt', header: '생성일자', isReadOnly: true, width: 150, align: "center"},
-      ];
-
-      itemGrid = new wijmo.grid.FlexGrid('#itemGrid', {
-        autoGenerateColumns: false,
-        alternatingRowStep: 0,
-        columns: itemColumns,
-        itemsSource: itemView
-      });
-
-      itemGrid.itemFormatter = function (panel, r, c, cell) {
-        if (panel.cellType == wijmo.grid.CellType.RowHeader) {
-          cell.textContent = (r + 1).toString();
-        }
-      };
-
-      // 체크박스 생성
-      currentSelector = new wijmo.grid.selector.Selector(itemGrid);
-      currentSelector.column = itemGrid.columns[0];
-      new wijmo.grid.filter.FlexGridFilter(itemGrid);
-
-      _setUserGridLayout('itemLayout', itemGrid, itemColumns);
-
-      itemInfoView = new wijmo.collections.CollectionView(result, {
-        pageSize: 100
-      });
-
-      itemInfoColumns =  [
-        { isReadOnly: true, width: 35, align:"center"},
-        { binding: 'id', header: '아이디', isReadOnly: true, width: 150, align:"center"},
-        { binding: 'itemId', header: '아이템아이디', isReadOnly: true, width: 150, align:"center"},
-        { binding: 'type', header: '항목', width: 150, align:"center"},
-        { binding: 'detail', header: '내용', width: 200, align:"center"},
-        { binding: 'active', header: '활성화', width: 80, align:"center", dataMap : onoffYnMap},
-      ]
-
-      // hostElement에 Wijmo의 FlexGird 생성
-      // itemsSource: data - CollectionView로 데이터를 그리드에 바인딩
-      // autoGenerateColumns: false >> 컬럼 사용자 정의
-      itemInfoGrid = new wijmo.grid.FlexGrid('#itemInfoGrid', {
-        autoGenerateColumns: false,
-        alternatingRowStep: 0,
-        columns : itemInfoColumns,
-        itemsSource: itemInfoView
-      });
-
-      itemInfoGrid.itemFormatter = function (panel, r, c, cell) {
-        if (panel.cellType == wijmo.grid.CellType.RowHeader) {
-          cell.textContent = (r + 1).toString();
-        }
-      };
-
-      // 체크박스 생성
-      itemInfoSelector = new wijmo.grid.selector.Selector(itemInfoGrid, {
-        itemChecked: () => {
-        }
-      });
-
-      itemInfoSelector.column = itemInfoGrid.columns[0];
-
-
-    } else if(type == 'itemInfo'){
-      itemInfoView = new wijmo.collections.CollectionView(result, {
-        trackChanges: true,
-      });
-      itemInfoGrid.itemsSource = itemInfoView;
-      itemInfoGrid.allowAddNew = false;
-    } else {
-      itemView = new wijmo.collections.CollectionView(result, {
-        pageSize: Number($('#viewNum').val()),
-        groupDescriptions: ['category'],
-        trackChanges: true
-      });
-      itemGridPager.cv = itemView;
-      itemGrid.itemsSource = itemView;
+    function pageOnLoad() {
+        // document.getElementById("content").classList.add("active");
+        // 모달창 신규생성 선택하면 input태그 나오기
+        $(".creation").click(function () {
+            $(".creationCK").css("display", "block");
+        });
+        loadGridItemList('init');
     }
 
-    refreshPaging(itemGrid.collectionView.totalItemCount, 1, itemGrid, 'itemGrid');  // 페이징 초기 셋팅
-  }
+    //그리드 초기 셋팅
+    function loadGridItemList(type, result) {
+        if (type == "init") {
+            itemView = new wijmo.collections.CollectionView(result, {
+                pageSize: 100,
+                groupDescriptions: ['category']
+            })
 
-  const getData = async (form) => {
+            itemGridPager = new wijmo.input.CollectionViewNavigator('#itemGridPager', {
+                byPage: true,
+                headerFormat: '{currentPage:n0} / {pageCount:n0}',
+                cv: itemView
+            });
 
-    try {
-      return await axios.get("/cms/api/item", {
-        params: {
-          keyword : form.keyword.value,
-          category : form.category.value
+            const onoffYnMap = "N,Y".split(",");	//온/오프라인 콤보박스
+
+            itemColumns = [
+                {isReadOnly: true, width: 35, align: "center"},
+                {binding: 'id', header: '아이템번호', isReadOnly: true, width: 150, align: "center", visible : false},
+                {binding: 'category', header: '카테고리', isReadOnly: true, width: 150, align: "center"},
+                {binding: 'name', header: '항목', isReadOnly: true, width: 200, align: "center"},
+                {binding: 'price', header: '가격', isReadOnly: true, width: 150, align: "center"},
+                {binding: 'estiCnt', header: '견적횟수', isReadOnly: true, width: 150, align: "center"},
+                {binding: 'active', header: '활성화', isReadOnly: false, width: 150, align: "center", dataMap: onoffYnMap},
+                {
+                    binding: 'edit', header: '상세정보', isReadOnly: true, width: 150, align: "center",
+                    cellTemplate: wijmo.grid.cellmaker.CellMaker.makeButton({
+                        text: '보기',
+                        click: (e, ctx) => showPop('itemManagement', ctx),
+                    })
+                },
+                {binding: 'cretDt', header: '생성일자', isReadOnly: true, width: 150, align: "center"},
+            ];
+
+            itemGrid = new wijmo.grid.FlexGrid('#itemGrid', {
+                autoGenerateColumns: false,
+                alternatingRowStep: 0,
+                columns: itemColumns,
+                itemsSource: itemView
+            });
+
+            itemGrid.itemFormatter = function (panel, r, c, cell) {
+                if (panel.cellType == wijmo.grid.CellType.RowHeader) {
+                    cell.textContent = (r + 1).toString();
+                }
+            };
+
+            // 체크박스 생성
+            currentSelector = new wijmo.grid.selector.Selector(itemGrid);
+            currentSelector.column = itemGrid.columns[0];
+            new wijmo.grid.filter.FlexGridFilter(itemGrid);
+
+            _setUserGridLayout('itemLayout', itemGrid, itemColumns);
+
+            itemInfoView = new wijmo.collections.CollectionView(result, {
+                pageSize: 100
+            });
+
+            itemInfoColumns = [
+                {isReadOnly: true, width: 35, align: "center"},
+                {binding: 'id', header: '아이디', isReadOnly: true, width: 150, align: "center"},
+                {binding: 'itemId', header: '아이템아이디', isReadOnly: true, width: 150, align: "center"},
+                {binding: 'type', header: '항목', width: 150, align: "center"},
+                {binding: 'detail', header: '내용', width: 200, align: "center"},
+                {binding: 'active', header: '활성화', width: 80, align: "center", dataMap: onoffYnMap},
+            ]
+
+            // hostElement에 Wijmo의 FlexGird 생성
+            // itemsSource: data - CollectionView로 데이터를 그리드에 바인딩
+            // autoGenerateColumns: false >> 컬럼 사용자 정의
+            itemInfoGrid = new wijmo.grid.FlexGrid('#itemInfoGrid', {
+                autoGenerateColumns: false,
+                alternatingRowStep: 0,
+                columns: itemInfoColumns,
+                itemsSource: itemInfoView
+            });
+
+            itemInfoGrid.itemFormatter = function (panel, r, c, cell) {
+                if (panel.cellType == wijmo.grid.CellType.RowHeader) {
+                    cell.textContent = (r + 1).toString();
+                }
+            };
+
+            // 체크박스 생성
+            itemInfoSelector = new wijmo.grid.selector.Selector(itemInfoGrid, {
+                itemChecked: () => {
+                }
+            });
+
+            itemInfoSelector.column = itemInfoGrid.columns[0];
+
+
+        } else if (type == 'itemInfo') {
+            itemInfoView = new wijmo.collections.CollectionView(result, {
+                trackChanges: true,
+            });
+            itemInfoGrid.itemsSource = itemInfoView;
+            itemInfoGrid.allowAddNew = false;
+        } else {
+            itemView = new wijmo.collections.CollectionView(result, {
+                pageSize: Number($('#viewNum').val()),
+                groupDescriptions: ['category'],
+                trackChanges: true
+            });
+            itemGridPager.cv = itemView;
+            itemGrid.itemsSource = itemView;
         }
-      })
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
-  const showGrid = (form) => {
-    const gridData = getData(form)
+        refreshPaging(itemGrid.collectionView.totalItemCount, 1, itemGrid, 'itemGrid');  // 페이징 초기 셋팅
+    }
+
+    const getData = async (form) => {
+
+        try {
+            return await axios.get("/cms/api/item", {
+                params: {
+                    keyword: form.keyword.value,
+                    category: form.category.value
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const showGrid = (form) => {
+        const gridData = getData(form)
             .then(res => {
-              console.log(res.data);
-              loadGridItemList('search', res.data)
+                console.log(res.data);
+                loadGridItemList('search', res.data)
             })
             .catch(error => {
-              console.log(error);
+                console.log(error);
             })
-    return false;
-  }
+        return false;
+    }
 
-  const getItemInfo = (id) => {
-    try {
-      axios.get("/cms/api/itemInfo", {
-        params: {
-          itemId : id
+    const getItemInfo = (id) => {
+        try {
+            axios.get("/cms/api/itemInfo", {
+                params: {
+                    itemId: id
+                }
+            }).then(res => {
+                console.log(res.data);
+                loadGridItemList('itemInfo', res.data)
+            })
+        } catch (error) {
+            console.log(error);
         }
-      }).then(res => {
-        console.log(res.data);
-        loadGridItemList('itemInfo', res.data)
-      })
-    } catch (error) {
-      console.log(error);
     }
-  }
 
-  //팝업 오픈
-  function showPop(pop, ctx = null) {
-    const _target = document.getElementById(pop);
+    //팝업 오픈
+    function showPop(pop, ctx = null) {
+        const _target = document.getElementById(pop);
 
-    /* 모달안에 인풋초기화 */
-    _target.querySelectorAll("input, select, textarea").forEach((el, i) => {
-      el.value = "";
-    })
+        /* 모달안에 인풋초기화 */
+        _target.querySelectorAll("input, select, textarea").forEach((el, i) => {
+            el.value = "";
+        })
 
-    _target.classList.add('is_on');
+        _target.classList.add('is_on');
 
-    /* 모달안에 값 있을 경우 */
-    if (ctx != null) {
-      switch (pop) {
-        case "itemManagement":
-          document.getElementById("itemId").value = ctx.item.id;
-          _target.querySelector(".popup_title").textContent = "아이템수정"
-          _target.querySelector("input[name='name']").value = ctx.item.name;
-          _target.querySelector("input[name='price']").value = ctx.item.price;
-          _target.querySelector("select[name='active']").value = ctx.item.active;
-          _target.querySelector("select[name='category']").value = ctx.item.category;
-          _target.querySelector("textarea[name='remark']").value = ctx.item.remark;
-          getItemInfo(ctx.item.id);
-          break;
-        default:
-          break;
-      }
-    }else {
-      switch (pop) {
-        case "itemManagement":
-          _target.querySelector(".popup_title").textContent = "아이템추가"
-          _target.querySelector("select[name='active']").value = 'Y';
-          _target.querySelector("select[name='category']").value = '배터리셀모델';
-          loadGridItemList('itemInfo', '');
-          break;
-        default:
-          break;
-      }
+        /* 모달안에 값 있을 경우 */
+        if (ctx != null) {
+            switch (pop) {
+                case "itemManagement":
+                    $('#addBtn').hide();
+                    $('#updateBtn').show();
+                    $('#deleteBtn').show();
+                    $('#saveRowBtn').show();
+                    $('#deleteRowBtn').removeAttr("onclick");
+                    $('#deleteRowBtn').attr("onclick", "deleteRows('modify')")
+                    document.getElementById("itemId").value = ctx.item.id;
+                    _target.querySelector(".popup_title").textContent = "아이템수정"
+                    _target.querySelector("input[name='name']").value = ctx.item.name;
+                    _target.querySelector("input[name='price']").value = ctx.item.price;
+                    _target.querySelector("select[name='active']").value = ctx.item.active;
+                    _target.querySelector("select[name='category']").value = ctx.item.category;
+                    _target.querySelector("textarea[name='remark']").value = ctx.item.remark;
+                    getItemInfo(ctx.item.id);
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            switch (pop) {
+                case "itemManagement":
+                    $('#addBtn').show();
+                    $('#updateBtn').hide();
+                    $('#deleteBtn').hide();
+                    $('#saveRowBtn').hide();
+                    $('#deleteRowBtn').removeAttr("onclick");
+                    $('#deleteRowBtn').attr("onclick", "deleteRows('new')")
+                    _target.querySelector(".popup_title").textContent = "아이템추가"
+                    _target.querySelector("select[name='active']").value = 'Y';
+                    _target.querySelector("select[name='category']").value = '배터리셀모델';
+                    loadGridItemList('itemInfo', '');
+                    break;
+                default:
+                    break;
+            }
+        }
     }
-  }
 
-  function closePop(pop){
-    const _target = document.getElementById(pop);
+    function closePop(pop) {
+        const _target = document.getElementById(pop);
 
-    _target.classList.remove("is_on");
-  }
+        _target.classList.remove("is_on");
+    }
 
-  //엑셀다운로드
-  function exportExcel() {
+    async function addItem(type) {
+        const f = document.getElementById("itemForm");
+        const id = document.getElementById("itemId").value;
+        const addItem  = itemInfoView.itemsAdded;
 
-    var gridView = itemGrid.collectionView;
-    var oldPgSize = gridView.pageSize;
-    var oldPgIndex = gridView.pageIndex;
+        if (f.name.value == "") {
+            alert("항목을 입력해주세요");
+            return false;
+        }
 
-    //전체 데이터를 엑셀다운받기 위해서는 페이징 제거 > 엑셀 다운 > 페이징 재적용 하여야 함.
-    itemGrid.beginUpdate();
-    itemView.pageSize = 0;
+        const formData = new FormData();
 
-    wijmo.grid.xlsx.FlexGridXlsxConverter.saveAsync(itemGrid, {
-              includeCellStyles: true,
-              includeColumnHeaders: true
+        formData.append("id", id);
+        formData.append("category", f.category.value);
+        formData.append("name", f.name.value);
+        formData.append("price", f.price.value);
+        formData.append("remark", f.remark.value);
+        formData.append("active", f.active.value);
+        formData.append("remark", f.remark.value);
+
+        switch (type) {
+            case "add" :
+                if (!confirm("아이템을 추가하시겠습니까?")) return false;
+                let rows = [];
+
+                await axios.post("/cms/api/item", formData, {headers: {'Content-Type': 'multipart/form-data'}})
+                    .then((res) => {
+                        if (res.status == 200) {
+
+                            for(let i=0; i< addItem.length; i++){
+                                addItem[i].itemId = res.data;
+                                rows.push(addItem[i]);
+                            }
+
+                            $.ajax({
+                                url: "/cms/api/itemInfo",
+                                async: false, // 비동기모드 : true, 동기식모드 : false
+                                type: 'PUT',
+                                contentType: 'application/json',
+                                data: JSON.stringify(rows),
+                                success: function (res) {
+                                        alert("아이템추가을 완료했습니다.");
+                                        $('.modal').removeClass('is_on');
+                                        showGrid(document.searchForm);
+                                },
+                                error: function (request, status, error) {
+                                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                                }
+                            });
+                        } else {
+                            alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                        }
+                    })
+                break;
+            case "modify" :
+                if (!confirm("아이템을 수정하시겠습니까?")) return false;
+                await axios.put("/cms/api/item", formData, {headers: {'Content-Type': 'multipart/form-data'}})
+                    .then((res) => {
+                        console.log(res);
+                        if (res.status == 200) {
+                            alert("아이템수정을 완료했습니다.");
+                            $('.modal').removeClass('is_on');
+                            showGrid(document.searchForm);
+                        } else {
+                            alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                        }
+                    })
+                break;
+            case "delete" :
+                if (!confirm("아이템을 삭제하시겠습니까?")) return false;
+                await axios.delete("/cms/api/item", {data: formData}, {headers: {'Content-Type': 'multipart/form-data'}})
+                    .then((res) => {
+                        console.log(res);
+                        if (res.status == 200) {
+                            alert("아이템삭제를 완료했습니다.");
+                            $('.modal').removeClass('is_on');
+                            showGrid(document.searchForm);
+                        } else {
+                            alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                        }
+                    })
+                break;
+        }
+    }
+
+    //엑셀다운로드
+    function exportExcel() {
+
+        var gridView = itemGrid.collectionView;
+        var oldPgSize = gridView.pageSize;
+        var oldPgIndex = gridView.pageIndex;
+
+        //전체 데이터를 엑셀다운받기 위해서는 페이징 제거 > 엑셀 다운 > 페이징 재적용 하여야 함.
+        itemGrid.beginUpdate();
+        itemView.pageSize = 0;
+
+        wijmo.grid.xlsx.FlexGridXlsxConverter.saveAsync(itemGrid, {
+                includeCellStyles: true,
+                includeColumnHeaders: true
             }, '아이템리스트.xlsx',
             saved => {
-              gridView.pageSize = oldPgSize;
-              gridView.moveToPage(oldPgIndex);
-              itemGrid.endUpdate();
+                gridView.pageSize = oldPgSize;
+                gridView.moveToPage(oldPgIndex);
+                itemGrid.endUpdate();
             }, null
-    );
-  }
+        );
+    }
 
-  // 행추가
-  function addRow(){
-    itemInfoGrid.allowAddNew = true;
-  }
+    // 행추가
+    function addRow() {
+        itemInfoGrid.allowAddNew = true;
+    }
 
-  //행 삭제
-  function deleteRows(){
-      const item = itemInfoGrid.rows.filter(r => r.isSelected);
-      let rows = [];
-      if(item.length == 0){
-        alert("선택된 행이 없습니다.");
-        return false;
-      }else{
-        for(var i =0; i< item.length ; i++){
-          rows.push(item[i].dataItem);
-        }
-        if(confirm("선택한 행들을 삭제 하시겠습니까??")){
-          $.ajax({
-            url : "/cms/api/itemInfo",
-            async : false, // 비동기모드 : true, 동기식모드 : false
-            type : 'DELETE',
-            contentType: 'application/json',
-            data: JSON.stringify(rows),
-            success : function(result) {
-              alert("삭제되었습니다.");
-              loadGridItemList('itemInfo', result);
-            },
-            error : function(request,status,error) {
-              alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    //행 삭제
+    function deleteRows(type) {
+        if (type == 'new') {
+            if (itemInfoView.items.length == 0) {
+                itemInfoGrid.allowAddNew = false;
+            } else {
+                itemInfoView.removeAt(itemInfoView._idx);
             }
-          });
+        } else if(type == 'modify') {
+            const item = itemInfoGrid.rows.filter(r => r.isSelected);
+            let rows = [];
+            if (item.length == 0) {
+                alert("선택된 행이 없습니다.");
+                return false;
+            } else {
+                for (var i = 0; i < item.length; i++) {
+                    rows.push(item[i].dataItem);
+                }
+                if (confirm("선택한 행들을 삭제 하시겠습니까??")) {
+                    $.ajax({
+                        url: "/cms/api/itemInfo",
+                        async: false, // 비동기모드 : true, 동기식모드 : false
+                        type: 'DELETE',
+                        contentType: 'application/json',
+                        data: JSON.stringify(rows),
+                        success: function (result) {
+                            alert("삭제되었습니다.");
+                            loadGridItemList('itemInfo', result);
+                        },
+                        error: function (request, status, error) {
+                            alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                        }
+                    });
+                }
+            }
+        } else {
+            const item = itemGrid.rows.filter(r => r.isSelected);
+            let rows = [];
+            if (item.length == 0) {
+                alert("선택된 행이 없습니다.");
+                return false;
+            } else {
+                for (var i = 0; i < item.length; i++) {
+                    rows.push(item[i].dataItem);
+                }
+                if (confirm("선택한 행들을 삭제 하시겠습니까??")) {
+                    $.ajax({
+                        url: "/cms/api/items",
+                        async: false, // 비동기모드 : true, 동기식모드 : false
+                        type: 'DELETE',
+                        contentType: 'application/json',
+                        data: JSON.stringify(rows),
+                        success: function (result) {
+                            alert("삭제되었습니다.");
+                            showGrid(document.searchForm);
+                        },
+                        error: function (request, status, error) {
+                            alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                        }
+                    });
+                }
+            }
         }
-      }
-  }
-
-  function saveItemInfo(){
-    const id = document.getElementById("itemId");
-    const addItem  = itemInfoView.itemsAdded;
-    const editItem = itemInfoView.itemsEdited;
-    let rows = [];
-    for(var i =0; i< editItem.length ; i++){
-      if(editItem[i].type == '' || editItem[i].type == undefined ){
-        alert("항목을 입력하시기 바랍니다.");
-        return false;
-      }else if(editItem[i].detail == '' || editItem[i].detail == undefined){
-        alert("내용을 입력하시기 바랍니다.");
-        return false;
-      }
-      rows.push(editItem[i]);
-    }
-    for(var i=0; i< addItem.length; i++){
-      addItem[i].itemId = id;
-      if(addItem[i].type == '' || addItem[i].type == undefined ){
-        alert("항목을 입력하시기 바랍니다.");
-        return false;
-      }else if(addItem[i].detail == '' || addItem[i].detail == undefined){
-        alert("내용을 입력하시기 바랍니다.");
-        return false;
-      }
-      rows.push(addItem[i]);
     }
 
-    if(confirm("변경한 내용을 저장 하시겠습니까??")){
-      $.ajax({
-        url : "/cms/api/itemInfo",
-        async : false, // 비동기모드 : true, 동기식모드 : false
-        type : 'PUT',
-        contentType: 'application/json',
-        data: JSON.stringify(rows),
-        success : function(result) {
-          alert("저장되었습니다.");
-          loadGridItemList('itemInfo', result);
-        },
-        error : function(request,status,error) {
-          alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    function changeActive(type){
+        const item = itemGrid.rows.filter(r => r.isSelected);
+        let rows = [];
+        if (item.length == 0) {
+            alert("선택된 행이 없습니다.");
+            return false;
+        } else {
+            for (var i = 0; i < item.length; i++) {
+                type == 'Y' ? item[i].dataItem.active = 'Y' : item[i].dataItem.active = 'N';
+                rows.push(item[i].dataItem);
+            }
+            if (confirm("선택한 행들을 변경 하시겠습니까??")) {
+                $.ajax({
+                    url: "/cms/api/items",
+                    async: false, // 비동기모드 : true, 동기식모드 : false
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify(rows),
+                    success: function (result) {
+                        alert("변경되었습니다.");
+                        showGrid(document.searchForm);
+                    },
+                    error: function (request, status, error) {
+                        alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                    }
+                });
+            }
         }
-      });
     }
-  }
+
+    function saveItemInfo() {
+        const id = document.getElementById("itemId");
+        const addItem = itemInfoView.itemsAdded;
+        const editItem = itemInfoView.itemsEdited;
+        let rows = [];
+        for (var i = 0; i < editItem.length; i++) {
+            if (editItem[i].type == '' || editItem[i].type == undefined) {
+                alert("항목을 입력하시기 바랍니다.");
+                return false;
+            } else if (editItem[i].detail == '' || editItem[i].detail == undefined) {
+                alert("내용을 입력하시기 바랍니다.");
+                return false;
+            }
+            rows.push(editItem[i]);
+        }
+        for (var i = 0; i < addItem.length; i++) {
+            addItem[i].itemId = id;
+            if (addItem[i].type == '' || addItem[i].type == undefined) {
+                alert("항목을 입력하시기 바랍니다.");
+                return false;
+            } else if (addItem[i].detail == '' || addItem[i].detail == undefined) {
+                alert("내용을 입력하시기 바랍니다.");
+                return false;
+            }
+            rows.push(addItem[i]);
+        }
+
+        if (confirm("변경한 내용을 저장 하시겠습니까??")) {
+            $.ajax({
+                url: "/cms/api/itemInfo",
+                async: false, // 비동기모드 : true, 동기식모드 : false
+                type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify(rows),
+                success: function (result) {
+                    alert("저장되었습니다.");
+                    loadGridItemList('itemInfo', result);
+                },
+                error: function (request, status, error) {
+                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                }
+            });
+        }
+    }
 
 
-  $(document).ready(function () {
-    pageOnLoad();
-  })
+    $(document).ready(function () {
+        pageOnLoad();
+    })
 
 </script>

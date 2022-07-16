@@ -21,6 +21,31 @@ public class CmsApiController {
         return itemService.getItem(dto);
     }
 
+    @PostMapping("/item")
+    public Integer saveItem(ItemDto dto){
+        return itemService.saveItem(dto);
+    }
+
+    @PutMapping("/item")
+    public void updateItem(ItemDto dto){
+        itemService.updateItem(dto);
+    }
+
+    @DeleteMapping("/item")
+    public void deleteItem(ItemDto dto){
+        itemService.deleteItem(dto);
+    }
+
+    @DeleteMapping("/items")
+    public void deleteItems(@RequestBody List<ItemDto> dtos){
+        itemService.deleteItems(dtos);
+    }
+
+    @PutMapping("/items")
+    public void updateItems(@RequestBody List<ItemDto> dtos){
+        itemService.updateItems(dtos);
+    }
+
     @GetMapping("/itemInfo")
     public List<ItemDto> getItemInfo(@RequestParam Integer itemId){
         return itemService.getItemInfo(itemId);

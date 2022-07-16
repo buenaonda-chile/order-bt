@@ -46,6 +46,46 @@
         order by cret_dt
     </select>
 
+    <insert id="saveItem" parameterType="ItemDto" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into web.item
+            (
+                name,
+                price,
+                active,
+                category,
+                remark,
+                cret_dt
+            )values(
+                #{name},
+                #{price},
+                #{active},
+                #{category},
+                #{remark},
+                NOW()
+            )
+    </insert>
+
+    <update id="updateItem" parameterType="ItemDto">
+        update web.item
+        set name = #{name},
+            price = #{price},
+            active = #{active},
+            category = #{category},
+            remark = #{remark},
+            updt_dt = NOW()
+        where id = #{id}
+    </update>
+
+    <delete id="deleteItem" parameterType="ItemDto">
+        delete from web.item
+        where id = #{id}
+    </delete>
+
+    <delete id="deleteItemByItemInfo" parameterType="ItemDto">
+        delete from web.item_info
+        where item_id = #{id}
+    </delete>
+
     <select id="getItemInfo" resultType="ItemDto" parameterType="Integer">
         select * from web.item_info where item_id = #{itemId}
     </select>
@@ -60,10 +100,11 @@
     <insert id="saveItemInfo" parameterType="ItemDto">
         INSERT INTO web.item_info
             (id, item_id, type , detail, active)
-        VALUES (#{id}, #{itemId}, #{type}, #{detail}, #{active})
+        VALUES (NEXTVAL('web.item_info_id_seq'), #{itemId}, #{type}, #{detail}, #{active})
             ON CONFLICT(id) DO
         UPDATE
             SET type = #{type},
+            item_id = #{itemId},
             detail		= #{detail},
             active		= #{active}
     </insert>

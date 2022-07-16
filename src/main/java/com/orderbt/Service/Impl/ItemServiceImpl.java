@@ -8,6 +8,7 @@ import com.orderbt.Service.ItemService;
 import com.orderbt.Util.Util;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +25,38 @@ public class ItemServiceImpl implements ItemService {
             dto.setKeywordList(Util.makeForeach(dto.getKeyword(), ","));
 
         return itemMapper.getItem(dto);
+    }
+
+    @Override
+    public Integer saveItem(ItemDto dto) {
+         itemMapper.saveItem(dto);
+         return dto.getId();
+    }
+
+    @Override
+    public void deleteItem(ItemDto dto) {
+        itemMapper.deleteItem(dto);
+    }
+
+    @Override
+    @Transactional
+    public void deleteItems(List<ItemDto> dtos) {
+        for(ItemDto dto : dtos){
+            itemMapper.deleteItemByItemInfo(dto);
+            itemMapper.deleteItem(dto);
+        }
+    }
+
+    @Override
+    public void updateItem(ItemDto dto) {
+        itemMapper.updateItem(dto);
+    }
+
+    @Override
+    public void updateItems(List<ItemDto> dtos) {
+        for(ItemDto dto : dtos){
+            itemMapper.updateItem(dto);
+        }
     }
 
     @Override

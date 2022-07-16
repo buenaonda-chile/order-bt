@@ -9,6 +9,16 @@ import java.util.List;
 public interface ItemService {
     List<ItemDto> getItem(SearchDto dto);
 
+    Integer saveItem(ItemDto dto);
+
+    void deleteItem(ItemDto dto);
+
+    void deleteItems(List<ItemDto> dtos);
+
+    void updateItem(ItemDto dto);
+
+    void updateItems(List<ItemDto> dtos);
+
     List<ItemDto> getItemInfo(Integer itemId);
 
     HashMap<String, Integer> getItemBoard();
