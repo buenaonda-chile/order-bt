@@ -31,14 +31,21 @@ public class Reservation {
     @Column(name ="time")
     private String time;
 
+    @Column(name = "consult_yn")
+    private String consultYn;
+
+    @Column(name = "consult_dt")
+    private String consultDt;
+
     @OneToOne(mappedBy = "reservation")
     @JsonBackReference
     private Estimate estimate;
 
-    public Reservation(String type, String typeDtl, LocalDate date, String time) {
+    public Reservation(String type, String typeDtl, LocalDate date, String time, String consultYn) {
         this.type = type;
         this.typeDtl = typeDtl;
         this.date = date;
         this.time = time;
+        this.consultYn = consultYn;
     }
 }

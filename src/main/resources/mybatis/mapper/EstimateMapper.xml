@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.orderbt.Mapper.EstimateMapper">
+    <select id="getEstimateGrid" parameterType="SearchDto" resultType="EstimateDto">
+        select *
+        from web.estimate a
+        left join web.order b on a.order_id = b.id
+        left join web.reservation c on a.reservation_id = c.id
+        where 1=1
+        <if test="keywordList != null">
+            AND
+            <choose>
+                <when test="category == 'name'">
+                    <foreach collection="inq" item="item"
+                             index="index" open="(" close=")" separator="or">
+                        b.battery_cell LIKE '%' || #{item} || '%'
+                        or b.cell_model LIKE '%' || #{item} || '%'
+                        or b.voltage LIKE '%' || #{item} || '%'
+                        or b.ampere LIKE '%' || #{item} || '%'
+                        or b.pcm LIKE '%' || #{item} || '%'
+                    </foreach>
+                </when>
+                <when test="category == 'id'">
+                    <foreach collection="inq" item="item"
+                             index="index" open="(" close=")" separator="or">
+                        a.id LIKE '%' || #{item} || '%'
+                    </foreach>
+                </when>
+                <when test="category == 'company'">
+                    <foreach collection="inq" item="item"
+                             index="index" open="(" close=")" separator="or">
+                        a.company LIKE '%' || #{item} || '%'
+                        or a.name LIKE '%' || #{item} || '%'
+                        or a.email LIKE '%' || #{item} || '%'
+                        or a.tel LIKE '%' || #{item} || '%'
+                    </foreach>
+                </when>
+                <otherwise>
+                    <foreach collection="keywordList" item="item"
+                             index="index" open="(" close=")" separator="or">
+                        a.company LIKE '%' || #{item} || '%'
+                        or a.name LIKE '%' || #{item} || '%'
+                        or a.email LIKE '%' || #{item} || '%'
+                        or a.tel LIKE '%' || #{item} || '%'
+                        or a.id LIKE '%' || #{item} || '%'
+                        or b.battery_cell LIKE '%' || #{item} || '%'
+                        or b.cell_model LIKE '%' || #{item} || '%'
+                        or b.voltage LIKE '%' || #{item} || '%'
+                        or b.ampere LIKE '%' || #{item} || '%'
+                        or b.pcm LIKE '%' || #{item} || '%'
+                    </foreach>
+                </otherwise>
+            </choose>
+        </if>
+        order by a.cret_dt
+    </select>
+
+    <insert id="saveItem" parameterType="ItemDto" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into web.item
+            (
+                name,
+                price,
+                active,
+                category,
+                remark,
+                cret_dt
+            )values(
+                #{name},
+                #{price},
+                #{active},
+                #{category},
+                #{remark},
+                NOW()
+            )
+    </insert>
+
+    <update id="updateItem" parameterType="ItemDto">
+        update web.item
+        set name = #{name},
+            price = #{price},
+            active = #{active},
+            category = #{category},
+            remark = #{remark},
+            updt_dt = NOW()
+        where id = #{id}
+    </update>
+
+    <delete id="deleteItem" parameterType="ItemDto">
+        delete from web.item
+        where id = #{id}
+    </delete>
+
+    <delete id="deleteItemByItemInfo" parameterType="ItemDto">
+        delete from web.item_info
+        where item_id = #{id}
+    </delete>
+
+    <select id="getItemInfo" resultType="ItemDto" parameterType="Integer">
+        select * from web.item_info where item_id = #{itemId}
+    </select>
+
+    <select id="getItemBoard" resultType="hashMap">
+        select
+            (select count(a.category) from (select category from web.item group by category) as a) as categoryCnt,
+            (select count(name) from web.item) as totalCnt,
+            (select count(name) from web.item where active = 'Y') as activeCnt
+    </select>
+
+    <insert id="saveItemInfo" parameterType="ItemDto">
+        INSERT INTO web.item_info
+            (id, item_id, type , detail, active)
+        VALUES (NEXTVAL('web.item_info_id_seq'), #{itemId}, #{type}, #{detail}, #{active})
+            ON CONFLICT(id) DO
+        UPDATE
+            SET type = #{type},
+            item_id = #{itemId},
+            detail		= #{detail},
+            active		= #{active}
+    </insert>
+
+    <delete id="deleteItemInfo" parameterType="ItemDto">
+        DELETE
+        FROM WEB.item_info
+        WHERE 1=1
+          AND id = #{id}
+    </delete>
+</mapper>

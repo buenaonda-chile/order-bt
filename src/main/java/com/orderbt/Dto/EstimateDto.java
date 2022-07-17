@@ -9,4 +9,10 @@ public class EstimateDto {
     private String name;
     private String tel;
     private String email;
+    private String itemName;
+    private String cretDt;
+    private String type;
+    private String date;
+    private String consultYn;
+    private String consultDt;
 }

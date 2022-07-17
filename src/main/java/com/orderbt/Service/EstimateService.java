@@ -24,4 +24,6 @@ public interface EstimateService {
     List<Item> getCase();
 
     void sendEmail(MessageDto dto);
+
+    List<EstimateDto> getEstimateGrid(SearchDto dto);
 }

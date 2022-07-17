@@ -29,4 +29,10 @@ public class CmsRouterController {
 
         return "cms/item";
     }
+
+    @GetMapping("/estimate")
+    public String disEstimate(Model model){
+
+        return "cms/Estimate";
+    }
 }

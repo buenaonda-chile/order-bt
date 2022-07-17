@@ -5,43 +5,12 @@
     <title>배오시cms(견적관리)</title>
     <!-- link -->
     <link rel="stylesheet" href="./css/mainnav.css">
-    <link rel="stylesheet" href="./css/Estimate.css">
-    <!-- js  -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../../../../../../../../../Downloads/배터리오더시스템/js/common.js"></script>
-    <!-- 파비콘 -->
-    <link rel="shortcut icon" href="../../../../../../../../../../Downloads/배터리오더시스템/img/CTNS_LOGO_FONT-01-DESKTOP-M4JVNP4.png" type="image/x-icon">
-    <link rel="icon" href="../../../../../../../../../../Downloads/배터리오더시스템/img/CTNS_LOGO_FONT-01-DESKTOP-M4JVNP4.png" type="image/x-icon">
-    <!-- 폰트어썸 -->
-    <script src="https://kit.fontawesome.com/7b32d23811.js" crossorigin="anonymous"></script>
-    <!-- 구글폰트 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/Estimate.css}">
+    <th:block th:replace="cms/cms_fragment/config :: configFragment"></th:block>
   </head>
   <body>
     <body>
-      <div class="mainwrap">
-        <header>
-          <img src="../../../../../../../../../../Downloads/배터리오더시스템/img/ctns_logo.png" alt="CTNS 로고 이미지">
-          <p>배터리 오더 시스템</p>
-        </header>
-        <div class="navList">
-          <ul class="navList1">
-            <li><a href="#"><i class="fa-solid fa-clipboard-question"></i>대시보드</a></li>
-            <li><a href="item.html"><i class="fa-solid fa-boxes-stacked"></i>아이템 관리</a></li>
-            <li class="on"><a href="./Estimate.html"><i class="fa-solid fa-book"></i>견적 관리</a></li>
-            <li><a href="../../../../../../../../../../Downloads/배터리오더시스템/Conditions.html"><i class="fa-solid fa-book-bookmark"></i>약관 관리</a></li>
-          </ul>
-          <ul class="navList2">
-            <li><a href="../../../../../../../../../../Downloads/배터리오더시스템/Conditions_1.html" target="_blank">이용약관</a></li>
-            <li><a href="../../../../../../../../../../Downloads/배터리오더시스템/Conditions_2.html" target="_blank">개인정보처리방침</a></li>
-          </ul>
-        </div>
-        <div class="last">
-          <p><a href="#">관리자모드 종료</a></p>
-        </div>
-      </div> <!-- .mainwrap -->
+    <th:block th:replace="cms/cms_fragment/mainnav :: mainnavFragment"></th:block>
 
       <div class="wrap">
         <div class="top">
@@ -80,44 +49,37 @@
         <div class="content">
 
         </div>
+        <form name="searchForm" onsubmit="return showGrid(this)">
           <fieldset class="Msearch1">
-            <select>
-              <option>전체</option>
-              <option>견적번호</option>
-              <option>품목명</option>
-              <option>업체명 ~ 이메일</option>
+            <select name="category">
+              <option value="all">전체</option>
+              <option value="id">견적번호</option>
+              <option value="name">품목명</option>
+              <option value="company">업체명 ~ 이메일</option>
             </select>
-            <input type="text" placeholder=".로 검색">
+            <input type="text" name="keyword" placeholder=".로 검색">
             <input type="submit" value="검색">
           </fieldset>
+        </form>
 
           <div class="contents">
             <div class="Msearch2">
-              <select>
-                <option>30</option>
-                <option>50</option>
-                <option>100</option>
+              <select id="viewNum" onchange="showGrid(searchForm)">
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
               </select>
               <ul class="actionBt1">
                 <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>
                 <li><i class="fa-solid fa-arrows-rotate"></i>칼럼위치초기화</li>
                 <li><i class="fa-solid fa-list-check"></i>칼럼위치저장</li>
-                <li><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
+                <li onclick="exportExcel()"><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
               </ul>
             </div>
 
             <div class="grid">
-              <p>그리드 영역 입니다.</p>
-              <p>그리드 영역 입니다.</p>
-              <p>그리드 영역 입니다.</p>
-              <p>그리드 영역 입니다.</p>
-              <p>그리드 영역 입니다.</p>
-              <p>그리드 영역 입니다.</p>
-              <p>그리드 영역 입니다.</p>
-              <p>그리드 영역 입니다.</p>
-              <p>그리드 영역 입니다.</p>
-              <p>그리드 영역 입니다.</p>
-              <p>그리드 영역 입니다.</p>
+              <div id="estimateGrid"></div>
+              <div id="estimateGridPager" class="pager"></div>
             </div>
           </div>
           <div class="Criteria">
@@ -133,3 +95,130 @@
     </body>
   </body>
 </html>
+<script>
+  let estimateGrid;
+  let estimateView;
+  let estimateColumns;
+  let estimateGridPager;
+
+  function pageOnLoad() {
+    loadGridEstimateList('init');
+  }
+
+  //그리드 초기 셋팅
+  function loadGridEstimateList(type, result) {
+    if (type == "init") {
+      estimateView = new wijmo.collections.CollectionView(result, {
+        pageSize: 100,
+      })
+
+      estimateGridPager = new wijmo.input.CollectionViewNavigator('#estimateGridPager', {
+        byPage: true,
+        headerFormat: '{currentPage:n0} / {pageCount:n0}',
+        cv: estimateView
+      });
+
+      const onoffYnMap = "N,Y".split(",");	//온/오프라인 콤보박스
+
+      estimateColumns = [
+        {binding: 'id', header: '아이템번호', isReadOnly: true, width: 150, align: "center", dataType:Number},
+        {binding: 'category', header: '품목명', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'name', header: '견적금액', isReadOnly: true, width: 200, align: "center"},
+        {
+          binding: 'estimate', header: '견적서', isReadOnly: true, width: 150, align: "center",
+          cellTemplate: wijmo.grid.cellmaker.CellMaker.makeButton({
+            text: '보기',
+            click: (e, ctx) => showPop('itemManagement', ctx),
+          })
+        },
+        {binding: 'date', header: '상담예약일', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'type', header: '상담유형', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'consultYn', header: '상담여부', isReadOnly: false, width: 150, align: "center", dataMap: onoffYnMap},
+        {binding: 'consultDt', header: '상담완료일', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'company', header: '업체명', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'name', header: '이름', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'tel', header: '전화번호', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'email', header: '이메일', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'cretDt', header: '생성일자', isReadOnly: true, width: 150, align: "center"},
+      ];
+
+      estimateGrid = new wijmo.grid.FlexGrid('#estimateGrid', {
+        autoGenerateColumns: false,
+        alternatingRowStep: 0,
+        columns: estimateColumns,
+        itemsSource: estimateView
+      });
+
+      estimateGrid.itemFormatter = function (panel, r, c, cell) {
+        if (panel.cellType == wijmo.grid.CellType.RowHeader) {
+          cell.textContent = (r + 1).toString();
+        }
+      };
+
+      _setUserGridLayout('estimateLayout', estimateGrid, estimateColumns);
+
+    }else {
+      estimateView = new wijmo.collections.CollectionView(result, {
+        pageSize: Number($('#viewNum').val()),
+        trackChanges: true
+      });
+      estimateGridPager.cv = estimateView;
+      estimateGrid.itemsSource = estimateView;
+    }
+
+    refreshPaging(estimateGrid.collectionView.totalItemCount, 1, estimateGrid, 'estimateGrid');  // 페이징 초기 셋팅
+  }
+
+  //엑셀다운로드
+  function exportExcel() {
+
+    var gridView = estimateGrid.collectionView;
+    var oldPgSize = gridView.pageSize;
+    var oldPgIndex = gridView.pageIndex;
+
+    //전체 데이터를 엑셀다운받기 위해서는 페이징 제거 > 엑셀 다운 > 페이징 재적용 하여야 함.
+    estimateGrid.beginUpdate();
+    estimateView.pageSize = 0;
+
+    wijmo.grid.xlsx.FlexGridXlsxConverter.saveAsync(estimateGrid, {
+              includeCellStyles: true,
+              includeColumnHeaders: true
+            }, '견적리스트.xlsx',
+            saved => {
+              gridView.pageSize = oldPgSize;
+              gridView.moveToPage(oldPgIndex);
+              estimateGrid.endUpdate();
+            }, null
+    );
+  }
+
+  const getData = async (form) => {
+
+    try {
+      return await axios.get("/cms/api/estimate", {
+        params: {
+          keyword: form.keyword.value,
+          category: form.category.value
+        }
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const showGrid = (form) => {
+    const gridData = getData(form)
+            .then(res => {
+              console.log(res.data);
+              loadGridEstimateList('search', res.data)
+            })
+            .catch(error => {
+              console.log(error);
+            })
+    return false;
+  }
+
+  $(document).ready(function () {
+    pageOnLoad();
+  })
+</script>

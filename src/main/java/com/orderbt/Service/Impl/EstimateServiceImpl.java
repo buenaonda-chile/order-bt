@@ -5,9 +5,11 @@ import com.orderbt.Domain.Item;
 import com.orderbt.Domain.Order;
 import com.orderbt.Domain.Reservation;
 import com.orderbt.Dto.*;
+import com.orderbt.Mapper.EstimateMapper;
 import com.orderbt.Repository.EstimateRepository;
 import com.orderbt.Service.EstimateService;
 import com.orderbt.Service.FileService;
+import com.orderbt.Util.Util;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,8 @@ import java.util.*;
 public class EstimateServiceImpl implements EstimateService {
 
     private final EstimateRepository estimateRepository;
+
+    private final EstimateMapper estimateMapper;
 
     private final FileService fileService;
 
@@ -76,7 +80,7 @@ public class EstimateServiceImpl implements EstimateService {
         Estimate estimate = estimateRepository.findById(dto.getId());
 
         if(Objects.isNull(estimate.getReservation())) {
-            Reservation reservation = new Reservation(dto.getType(), dto.getTypeDtl(), LocalDate.parse(dto.getDate(), DateTimeFormatter.ISO_DATE), dto.getTime());
+            Reservation reservation = new Reservation(dto.getType(), dto.getTypeDtl(), LocalDate.parse(dto.getDate(), DateTimeFormatter.ISO_DATE), dto.getTime(), "N");
 
             estimateRepository.createReservation(reservation);
 
@@ -261,6 +265,14 @@ public class EstimateServiceImpl implements EstimateService {
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<EstimateDto> getEstimateGrid(SearchDto dto) {
+        if(dto.getKeyword() != null)
+            dto.setKeywordList(Util.makeForeach(dto.getKeyword(), ","));
+
+        return estimateMapper.getEstimateGrid(dto);
     }
 
     // 현재 시간을 기준으로 견적번호 생성

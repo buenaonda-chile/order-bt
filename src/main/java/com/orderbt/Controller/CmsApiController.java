@@ -1,7 +1,9 @@
 package com.orderbt.Controller;
 
+import com.orderbt.Dto.EstimateDto;
 import com.orderbt.Dto.ItemDto;
 import com.orderbt.Dto.SearchDto;
+import com.orderbt.Service.EstimateService;
 import com.orderbt.Service.Impl.ItemServiceImpl;
 import com.orderbt.Service.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,10 @@ import java.util.List;
 public class CmsApiController {
 
     private final ItemService itemService;
+    private final EstimateService estimateService;
+
+    @GetMapping("estimate")
+    public List<EstimateDto> getEstimateGrid(SearchDto dto) { return estimateService.getEstimateGrid(dto); }
 
     @GetMapping("/item")
     public List<ItemDto> getItem(SearchDto dto){
