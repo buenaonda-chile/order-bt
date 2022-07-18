@@ -1601,9 +1601,9 @@ input:read-only {
     margin-top:27rem;
   } */
 
-  .pcmN{
-    margin-top:4rem;
-  }
+  .pcmN {
+    margin-top: 2rem;
+}
 
 .page03 .custom .tableInfo {
     overflow: scroll;
@@ -2382,13 +2382,13 @@ input:read-only {
 .volumeCalc {
     width: 9rem;
     display: inline-block;
-    line-height: 100%;
     align-items: center;
     border: none;
     height: 3.5rem;
     margin: 1.5rem;
     box-sizing: border-box;
-    background: #fff;
+    background: #d0d0d0;
+    line-height: 3.2rem;
 }
 
 
