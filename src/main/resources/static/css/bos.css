@@ -759,6 +759,7 @@ z-index:999;}
   transition:all .3s linear 0s;
   -webkit-transform: translateZ(0);
   border-radius: 2.4rem;
+  width: 75%;
 }
 /* page02 */
 .page-switch.page01 {
@@ -1256,7 +1257,7 @@ z-index:999;}
   border: 1px solid #000;
   width: 100%;
   /* height: 100%; */
-  height: 31rem;
+  height: 32rem;
   margin-top: 6rem;
 }
 
@@ -2478,7 +2479,7 @@ z-index:999;}
    background-color: #f7f7f7;
 }
 
-.wj-calendar td {
+.wizmo .wj-calendar td {
   text-align: center;
   padding: 7px 6px 8px 6px;
   border: none;
