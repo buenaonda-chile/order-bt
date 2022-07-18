@@ -881,6 +881,9 @@
 }
 
 .content .select_items .chk_item:nth-of-type(2).case.on {
+    margin-top: 28rem;
+}
+.content .select_items .chk_item:nth-of-type(3).case.on {
     margin-top: 0rem;
 }
 .content .select_items .chk_item:nth-of-type(6).case.on {
@@ -2204,16 +2207,16 @@ input:read-only {
 .btn-customS {
     padding: 7px 27px;
 }
-.page02_06_01 .exp_wrap .tabCont1.on
-{
+.page02_06_01 .exp_wrap .tabCont0.on {
     width: 100%;
     padding: 3rem;
     float: right;
     position: absolute;
-    top:calc( 100px + 6rem );
+    top: 100px ;
     left: 0;
     height: 28rem;
 }
+
 .page02_06_01 .exp_wrap .tabCont2.on
 {
     width: 100%;
