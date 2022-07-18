@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(schema = "web", name = "reservation")
@@ -35,7 +36,7 @@ public class Reservation {
     private String consultYn;
 
     @Column(name = "consult_dt")
-    private String consultDt;
+    private Date consultDt;
 
     @OneToOne(mappedBy = "reservation")
     @JsonBackReference
