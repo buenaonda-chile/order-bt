@@ -240,6 +240,7 @@ $(document).ready(function () {
             });
         }
 
+
         if (pageIndex == 11) {
             $('.content_tit_wrap').removeClass('on');
             $(".require_wrap").removeClass("on");
@@ -1100,6 +1101,24 @@ $(document).ready(function () {
     });
 
 
+
+    function loading(ms){
+        let tag = `<div id="loading">
+                    <p>본 견적서는 가견적서입니다. <br> 상담  후 확정 견적서가 발급됩니다.</p>
+                </div>`;
+        $("body").prepend(tag);
+            setTimeout(function(){
+            $("#loading").remove();
+            },ms);
+      }
+
+    $(".arrow_btn.next").click(function(){
+        if(pageIndex==2){  
+            loading(1000);
+            }
+        });
+
+
 }); // end
 
 function saveData(form){
@@ -1367,3 +1386,34 @@ function sendMessage(){
         // $(".page02_07").onbeforeunload = function () { $('#loading').show();.fadeOut(500); }  //현재 페이지에서 다른 페이지로 넘어갈 때 표시해주는 기능
         // $(".page03").load(function () {          //페이지가 로드 되면 로딩 화면을 없애주는 것
         // $('#loading').hide();});
+
+
+    //     function loading(ms){
+    //         let tag = `<div id="loading">
+    //                     <p>본 견적서는 가견적서입니다. <br> 상담 후 확정 견적서가 발급됩니다.</p>
+    //                 </div>`;
+    //         $("body").prepend(tag);
+    //         setTimeout(function(){
+    //           $("#loading").remove();
+    //         },ms);
+    //       }
+
+    //     //   $(document).ready(function(){
+    //     //     $(".arrow_btn.next.on").click(function(){
+    //     //       if(!page02_07){
+    //     //         loading(3000);
+    //     //       }
+    //     //     });
+    //     // });
+
+    //     // $(".page02_07").click(function(){
+    //     //     $(".arrow_btn.next.on")
+    //     // });
+    //     $(document).ready(function(){
+    //         let pageIndex;
+    //             if(pageIndex==3){
+    //                 $(".arrow_btn.next.on").click(function(){
+    //                     loading(3000);
+    //                 });
+    //             }
+    // });
