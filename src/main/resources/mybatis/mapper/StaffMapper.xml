@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.orderbt.Mapper.EstimateMapper">
+<mapper namespace="com.orderbt.Mapper.StaffMapper">
     <select id="getEstimateGrid" parameterType="SearchDto" resultType="EstimateDto">
         select *
         from web.estimate a
@@ -56,6 +56,8 @@
         order by a.cret_dt desc
     </select>
 
+
+
     <update id="saveEstimate" parameterType="estimateDto">
         update web.reservation
         set consult_yn = #{consultYn}
@@ -67,6 +69,12 @@
         </if>
         where id = (select reservation_id from web.estimate where id = #{id})
     </update>
+
+    <insert id="joinStaff" parameterType="StaffDto">
+        INSERT INTO web.staff
+        (id, password, name , phone_num, email, password_key, active_yn, memo, cret_dt)
+        VALUES (#{id}, #{password}, #{name}, #{phoneNum}, #{email}, #{passwordKey}, 'Y', #{memo}, NOW())
+    </insert>
 
     <select id="getEstimateBoard" resultType="hashMap">
         select

@@ -275,6 +275,19 @@ public class EstimateServiceImpl implements EstimateService {
         return estimateMapper.getEstimateGrid(dto);
     }
 
+    @Override
+    public void saveEstimate(List<EstimateDto> dtos) {
+        for(EstimateDto dto : dtos){
+            System.out.println(dto.getConsultYn());
+            estimateMapper.saveEstimate(dto);
+        }
+    }
+
+    @Override
+    public HashMap<String, Object> getEstimateBoard() {
+        return estimateMapper.getEstimateBoard();
+    }
+
     // 현재 시간을 기준으로 견적번호 생성
     private String genSaveFileName() {
         String number = "";

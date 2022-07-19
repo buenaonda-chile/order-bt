@@ -17,7 +17,7 @@
           <h1><i class="fa-solid fa-book"></i>견적관리</h1>
           <section class="topMenu1">
             <p>전제 견적 수</p>
-            <p>50 개</p>
+            <p th:text="${totalCnt} +'개'">50 개</p>
           </section>
 
           <section class="topMenu2">
@@ -32,17 +32,17 @@
 
           <section class="topMenu3">
             <p>완료 상담</p>
-            <p>48 개</p>
+            <p th:text="${consultYCnt} +'개'">48 개</p>
           </section>
 
           <section class="topMenu3">
             <p>미완료 상담</p>
-            <p>3 개</p>
+            <p th:text="${consultNCnt} +'개'">3 개</p>
           </section>
 
           <section class="topMenu3">
             <p>최다 상담유형</p>
-            <p>전화상담</p>
+            <p th:text="${maxType}">전화상담</p>
           </section>
 
         </div>
@@ -65,12 +65,12 @@
           <div class="contents">
             <div class="Msearch2">
               <select id="viewNum" onchange="showGrid(searchForm)">
-                <option value="30">30</option>
+                <option value="30" selected>30</option>
                 <option value="50">50</option>
                 <option value="100">100</option>
               </select>
               <ul class="actionBt1">
-                <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>
+                <li onclick="saveEstimate()"><i class="fa-solid fa-file-arrow-down"></i>저장</li>
                 <li><i class="fa-solid fa-arrows-rotate"></i>칼럼위치초기화</li>
                 <li><i class="fa-solid fa-list-check"></i>칼럼위치저장</li>
                 <li onclick="exportExcel()"><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
@@ -121,9 +121,9 @@
       const onoffYnMap = "N,Y".split(",");	//온/오프라인 콤보박스
 
       estimateColumns = [
-        {binding: 'id', header: '아이템번호', isReadOnly: true, width: 150, align: "center", dataType:Number},
+        {binding: 'id', header: '아이템번호', isReadOnly: true, width: 150, align: "center", dataType:Number, format : 'g0'},
         {binding: 'category', header: '품목명', isReadOnly: true, width: 150, align: "center"},
-        {binding: 'name', header: '견적금액', isReadOnly: true, width: 200, align: "center"},
+        {binding: 'price', header: '견적금액', isReadOnly: true, width: 200, align: "center"},
         {
           binding: 'estimate', header: '견적서', isReadOnly: true, width: 150, align: "center",
           cellTemplate: wijmo.grid.cellmaker.CellMaker.makeButton({
@@ -216,6 +216,31 @@
               console.log(error);
             })
     return false;
+  }
+
+  function saveEstimate() {
+    const editItem = estimateView.itemsEdited;
+    let rows = [];
+    for (var i = 0; i < editItem.length; i++) {
+      rows.push(editItem[i]);
+    }
+
+    if (confirm("변경한 내용을 저장 하시겠습니까??")) {
+      $.ajax({
+        url: "/cms/api/estimate",
+        async: false, // 비동기모드 : true, 동기식모드 : false
+        type: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify(rows),
+        success: function () {
+          alert("저장되었습니다.");
+          showGrid(document.searchForm);
+        },
+        error: function (request, status, error) {
+          alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+        }
+      });
+    }
   }
 
   $(document).ready(function () {

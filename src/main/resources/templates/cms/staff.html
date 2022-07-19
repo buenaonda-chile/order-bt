@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>cms 관리자 관리</title>
+    <link rel="stylesheet" th:href="@{/css/staff.css}">
+    <th:block th:replace="cms/cms_fragment/config :: configFragment"></th:block>
+  </head>
+  <body>
+    <div class="graybg">
+
+    </div>
+    <div id="staffManagement" class="modal modal1">
+      <h1><p class="popup_title">관리자추가</p><span onclick="closePop('staffManagement')">X</span></h1>
+      <p id="Essential"><span>*</span>필수 항목</p>
+      <p id="EssentialLine"></p>
+      <ul>
+      <form id="staffForm" name="staffForm" onsubmit="return false;">
+        <li>
+          <label for="ids">아이디<span>*</span></label>
+          <input type="text" id="ids" name="id">
+        </li>
+        <li>
+          <label for="userpassword">비밀번호<span>*</span></label>
+          <input type="password" id="userpassword" name="password">
+        </li>
+        <li>
+          <label for="passwordCheck">비밀번호확인<span>*</span></label>
+          <input type="password" id="passwordCheck" name="passwordCheck">
+        </li>
+        <li>
+            <label for="name">이름<span>*</span></label>
+            <input type="text" id="name" name="name">
+        </li>
+        <li>
+            <label for="phoneNumber">전화번호<span>*</span></label>
+            <input type="number" id="phoneNumber" name="telPhone">
+        </li>
+        <li>
+            <label for="email">이메일</label>
+            <input type="text" id="email" name="email">
+        </li>
+        <li>
+          <label for="note">메모</label>
+          <textarea id=note rows="8" cols="80" name="memo"></textarea>
+        </li>
+      </form>
+      </ul>
+      <section class="bottomBt">
+          <p id="addBtn" onclick="staff('add')">추가</p>
+          <p id="updateBtn" onclick="staff('modify')">수정</p>
+          <p id="deleteBtn" onclick="staff('delete')">삭제</p>
+      </section>
+    </div>
+
+    <th:block th:replace="cms/cms_fragment/mainnav :: mainnavFragment"></th:block>
+
+    <div class="wrap">
+        <div class="top">
+            <h1><i class="fa-solid fa-people-roof"></i>관리자 관리</h1>
+            <section class="topMenu1">
+              <p>전체 사용자</p>
+              <p>595 명</p>
+            </section>
+    
+            <section class="topMenu2">
+              <p>관리자</p>
+              <p>7 명</p>
+            </section>
+    
+            <section class="topMenu3">
+                <p onclick="showPop('staffManagement')">관리자 추가<i class="fa-solid fa-circle-plus"></i></p>
+            </section>
+        </div>
+        <div class="content">
+
+        </div>
+        <form name="searchForm" onsubmit="return showGrid(this)">
+            <fieldset class="Msearch1">
+                <select name="category">
+                  <option value="all">전체</option>
+                  <option value="name">이름</option>
+                  <option value="id">아이디</option>
+                </select>
+                <input name="keyword" type="text" placeholder=".로 다중검색">
+                <input type="submit" value="조회">
+            </fieldset>
+        </form>
+  
+          <div class="contents">
+            <div class="Msearch2">
+            <select id="viewNum" onchange="showGrid(searchForm)">
+                <option value="30" selected>30</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+              <ul class="actionBt1">
+                <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>
+                <li><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
+                <li><i class="fa-solid fa-list-check"></i>칼럼위치저장</li>
+                <li><i class="fa-solid fa-arrows-rotate"></i>칼럼초기화</li>
+              </ul>
+            </div>
+  
+            <div class="grid">
+                <div id="staffGrid"></div>
+                <div id="staffGridPager" class="pager"></div>
+            </div>
+          </div>
+          <div class="Criteria">
+            <ul class="actionBt2">
+                <li><i class="fa-solid fa-file-arrow-down"></i>저장</li>
+                <li><i class="fa-solid fa-download"></i>엑셀 다운로드</li>
+                <li><i class="fa-solid fa-list-check"></i>칼럼위치저장</li>
+                <li><i class="fa-solid fa-arrows-rotate"></i>칼럼초기화</li>
+            </ul>
+          </div>
+    </div>
+  </body>
+</html>
+<script>
+    let staffGrid;
+    let staffView;
+    let staffColumns;
+    let staffGridPager;
+
+    function pageOnLoad() {
+        loadGridStaffList('init');
+    }
+
+    //그리드 초기 셋팅
+    function loadGridStaffList(type, result){
+        if(type == "init"){
+            staffView = new wijmo.collections.CollectionView(result, {
+                pageSize: 100
+            });
+
+            staffGridPager = new wijmo.input.CollectionViewNavigator('#staffGridPager', {
+                byPage: true,
+                headerFormat: '{currentPage:n0} / {pageCount:n0}',
+                cv: staffView
+            });
+
+            staffColumns = [
+                { binding: 'name', header: '이름', isReadOnly: true, width: 100, align:"center" },
+                { binding: 'id', header: 'ID', isReadOnly: true, width: 100, align:"center"  },
+                { binding: 'activeYn', header: '활성화', isReadOnly: true, width: 60, align:"center"  },
+                { binding: 'phoneNum', header: '전화번호', isReadOnly: true, width: 120, align:"center"  },
+                { binding: 'email', header: '이메일', isReadOnly: true, width: 200, align:"center"  },
+                { binding: 'memo', header: '메모', isReadOnly: true, width: 400, align:"center" },
+                { binding: 'lastestDt', header: '최근접속일', isReadOnly: true, width: 100 , align:"center" },
+                { binding: 'cretDt', header: '계정생성일', isReadOnly: true, width: 100 , align:"center" },
+                { binding: 'edit', header: '정보수정', width: 100, align:"center",
+                    cellTemplate: wijmo.grid.cellmaker.CellMaker.makeButton({
+                        text: '<b>수정</b>',
+                        click: (e, ctx) => {
+                            showPop('modify_staff');
+                        }
+                    })
+                }
+            ];
+
+            staffGrid = new wijmo.grid.FlexGrid('#staffGrid', {
+                autoGenerateColumns: false,
+                alternatingRowStep: 0,
+                columns: staffColumns,
+                itemsSource: staffView
+            });
+
+            staffGrid.itemFormatter = function (panel, r, c, cell) {
+                if (panel.cellType == wijmo.grid.CellType.RowHeader) {
+                    cell.textContent = (r + 1).toString();
+                }
+            };
+
+            _setUserGridLayout('staffLayout', staffGrid, staffColumns);
+
+        }else{
+            staffView = new wijmo.collections.CollectionView(result, {
+                pageSize: Number($('#staffGridPageCount').val())
+            });
+            staffGridPager.cv = staffView;
+            staffGrid.itemsSource = staffView;
+        }
+
+        refreshPaging(staffGrid.collectionView.totalItemCount, 1, staffGrid, 'staffGrid');  // 페이징 초기 셋팅
+
+    }
+
+    //팝업 오픈
+    function showPop(pop, ctx = null) {
+        const _target = document.getElementById(pop);
+
+        /* 모달안에 인풋초기화 */
+        _target.querySelectorAll("input, select, textarea").forEach((el, i) => {
+            el.value = "";
+        })
+
+        _target.classList.add('is_on');
+
+        /* 모달안에 값 있을 경우 */
+        if (ctx != null) {
+            switch (pop) {
+                case "itemManagement":
+                    $('#addBtn').hide();
+                    $('#updateBtn').show();
+                    $('#deleteBtn').show();
+                    $('#saveRowBtn').show();
+                    $('#deleteRowBtn').removeAttr("onclick");
+                    $('#deleteRowBtn').attr("onclick", "deleteRows('modify')")
+                    document.getElementById("itemId").value = ctx.item.id;
+                    _target.querySelector(".popup_title").textContent = "아이템수정"
+                    _target.querySelector("input[name='name']").value = ctx.item.name;
+                    _target.querySelector("input[name='price']").value = ctx.item.price;
+                    _target.querySelector("select[name='active']").value = ctx.item.active;
+                    _target.querySelector("select[name='category']").value = ctx.item.category;
+                    _target.querySelector("textarea[name='remark']").value = ctx.item.remark;
+                    getItemInfo(ctx.item.id);
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            switch (pop) {
+                case "itemManagement":
+                    $('#addBtn').show();
+                    $('#updateBtn').hide();
+                    $('#deleteBtn').hide();
+                    $('#saveRowBtn').hide();
+                    $('#deleteRowBtn').removeAttr("onclick");
+                    $('#deleteRowBtn').attr("onclick", "deleteRows('new')")
+                    _target.querySelector(".popup_title").textContent = "아이템추가"
+                    _target.querySelector("select[name='active']").value = 'Y';
+                    _target.querySelector("select[name='category']").value = '배터리셀모델';
+                    loadGridItemList('itemInfo', '');
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    function closePop(pop) {
+        const _target = document.getElementById(pop);
+
+        _target.classList.remove("is_on");
+    }
+
+    function staff(type) {
+        const f = document.getElementById("staffForm");
+
+        if(f.id.value == ""){
+            alert("ID를 입력해주세요.");
+            f.id.focus();
+            return false;
+
+        }else if(f.password.value == ""){
+            alert("비밀번호를 입력해주세요.");
+            f.password.focus();
+            return false;
+
+        } else if(f.password.value =! f.passwordCheck.value){
+            alert("비밀번호가 일치하지 않습니다");
+            f.password.focus();
+            return false;
+        }else if(f.name.value == ""){
+            alert("이름을 입력해주세요.");
+            f.name.focus();
+            return false;
+        }else if(f.telPhone.value == ""){
+            alert("전화번호를 입력해주세요.");
+            f.telPhone.focus();
+            return false;
+        }
+
+        //벨리데이션 체크
+        var idRule1  = /^(?=.*[A-Za-z])[A-Za-z\d]{6,}$/;
+        var idRule2  = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+        var pwdRule1  = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{10,}$/;
+        var pwdRule2  = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+        var pwdRule3  = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        var emailRule = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        var telRule   = /^[0-9]{11}$/;
+
+        if(!idRule1.test(f.id.value) && !idRule2.test(f.id.value)){
+            alert("ID를 확인하시기 바랍니다.\nID는 영문자(대,소문자) 6자 이상 혹은 \n영문자(대,소문자), 숫자를 포함하여 6자 이상이어야 합니다.");
+            f.id.focus();
+            return false;
+        // }else if(!pwdRule1.test(f.password.value) && !pwdRule2.test(f.password.value) && !pwdRule3.test(f.password.value)){
+        //     alert("비밀번호를 확인하시기 바랍니다.\n비밀번호는 영문자(대,소문자), 숫자를 포함하여 최소 10자 이상,\n 혹은 영문자(대,소문자), 숫자, 특수문자를 포함하여 최소 8자 이상이어야 합니다.");
+        //     f.password.focus();
+        //     return false;
+        }else if(f.email.value != null && f.email.value != "" && !emailRule.test(f.email.value)){ //이메일
+            alert("이메일을 확인하시기 바랍니다.");
+            f.email.focus();
+            return false;
+        }else if(!telRule.test(f.telPhone.value)){  // 전화번호
+            alert("전화번호를 올바르게 입력하시기 바랍니다. \n전화번호는 '-'없이 숫자 11자리이어야 합니다.' \n예)01012341234");
+            f.telPhone.focus();
+            return false;
+        }
+
+        const formData = new FormData();
+
+        formData.append("id", f.id.value);
+        formData.append("password", f.password.value);
+        formData.append("name", f.name.value);
+        formData.append("phoneNum", f.telPhone.value);
+        formData.append("email", f.email.value);
+        formData.append("memo", f.memo.value);
+
+        switch (type) {
+            case "add" :
+                if (!confirm("관리자를 추가하시겠습니까?")) return false;
+                let rows = [];
+
+                axios.post("/cms/api/staff", formData, {headers: {'Content-Type': 'multipart/form-data'}})
+                    .then((res) => {
+                        if (res.status == 200) {
+                            alert("관지라추가을 완료했습니다.");
+                            $('.modal').removeClass('is_on');
+                            showGrid(document.searchForm);
+                        } else {
+                            alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                        }
+                    })
+                break;
+            case "modify" :
+                if (!confirm("관리자 수정하시겠습니까?")) return false;
+                axios.put("/cms/api/staff", formData, {headers: {'Content-Type': 'multipart/form-data'}})
+                    .then((res) => {
+                        console.log(res);
+                        if (res.status == 200) {
+                            alert("관리자수정을 완료했습니다.");
+                            $('.modal').removeClass('is_on');
+                            showGrid(document.searchForm);
+                        } else {
+                            alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                        }
+                    })
+                break;
+            case "delete" :
+                if (!confirm("관리자를 삭제하시겠습니까?")) return false;
+                axios.delete("/cms/api/staff", {data: formData}, {headers: {'Content-Type': 'multipart/form-data'}})
+                    .then((res) => {
+                        console.log(res);
+                        if (res.status == 200) {
+                            alert("관리자삭제를 완료했습니다.");
+                            $('.modal').removeClass('is_on');
+                            showGrid(document.searchForm);
+                        } else {
+                            alert("오류가 발생했습니다. 다시 시도해 주세요.");
+                        }
+                    })
+                break;
+        }
+    }
+
+    $(document).ready(function () {
+        pageOnLoad();
+    })
+</script>

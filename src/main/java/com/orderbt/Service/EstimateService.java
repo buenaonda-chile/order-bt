@@ -6,6 +6,7 @@ import com.orderbt.Domain.Reservation;
 import com.orderbt.Dto.*;
 
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
 
 public interface EstimateService {
@@ -26,4 +27,8 @@ public interface EstimateService {
     void sendEmail(MessageDto dto);
 
     List<EstimateDto> getEstimateGrid(SearchDto dto);
+
+    void saveEstimate(List<EstimateDto> dtos);
+
+    HashMap<String,Object> getEstimateBoard();
 }

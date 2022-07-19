@@ -1,11 +1,14 @@
 package com.orderbt.Controller;
 
+import com.orderbt.Domain.Estimate;
 import com.orderbt.Dto.EstimateDto;
 import com.orderbt.Dto.ItemDto;
 import com.orderbt.Dto.SearchDto;
+import com.orderbt.Dto.StaffDto;
 import com.orderbt.Service.EstimateService;
 import com.orderbt.Service.Impl.ItemServiceImpl;
 import com.orderbt.Service.ItemService;
+import com.orderbt.Service.StaffService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +22,27 @@ public class CmsApiController {
     private final ItemService itemService;
     private final EstimateService estimateService;
 
-    @GetMapping("estimate")
+    private final StaffService staffService;
+
+    @GetMapping("/staff")
+    public List<StaffDto> getStaffGrid(SearchDto dto) { return staffService.getStaffGrid(dto); }
+
+    @PostMapping("/staff")
+    public void joinStaff(StaffDto dto){ staffService.joinStaff(dto);}
+
+    @PutMapping("/staff")
+    public void updateStaff(StaffDto dto){staffService.updateStaff(dto);}
+
+    @DeleteMapping("/staff")
+    public void deleteStaff(@RequestParam String id) {staffService.deleteStaff(id);}
+
+    @GetMapping("/estimate")
     public List<EstimateDto> getEstimateGrid(SearchDto dto) { return estimateService.getEstimateGrid(dto); }
+
+    @PutMapping("/estimate")
+    public void saveEstimate(@RequestBody List<EstimateDto> dtos){
+        estimateService.saveEstimate(dtos);
+    }
 
     @GetMapping("/item")
     public List<ItemDto> getItem(SearchDto dto){

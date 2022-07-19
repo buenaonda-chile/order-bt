@@ -1,6 +1,7 @@
 package com.orderbt.Controller;
 
 import com.orderbt.Dto.EstimateDto;
+import com.orderbt.Service.EstimateService;
 import com.orderbt.Service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,18 @@ public class CmsRouterController {
 
     private final ItemService itemService;
 
+    private final EstimateService estimateService;
+
+    @GetMapping("")
+    public String disLogin(){
+        return "cms/login";
+    }
+
+    @GetMapping("/staff")
+    public String disStaff(Model model){
+        return "cms/staff";
+    }
+
     @GetMapping("/item")
     public String disItem(Model model){
 
@@ -32,6 +45,13 @@ public class CmsRouterController {
 
     @GetMapping("/estimate")
     public String disEstimate(Model model){
+
+        HashMap<String, Object> dashBoard = estimateService.getEstimateBoard();
+
+        model.addAttribute("totalCnt", dashBoard.get("totalcnt"));
+        model.addAttribute("consultYCnt", dashBoard.get("consultycnt"));
+        model.addAttribute("consultNCnt", dashBoard.get("consultncnt"));
+        model.addAttribute("maxType", dashBoard.get("maxtype"));
 
         return "cms/Estimate";
     }
