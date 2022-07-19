@@ -16,19 +16,19 @@
             AND
             <choose>
                 <when test="category == 'name'">
-                    <foreach collection="inq" item="item"
+                    <foreach collection="keywordList" item="item"
                              index="index" open="(" close=")" separator="or">
                         a.name LIKE '%' || #{item} || '%'
                     </foreach>
                 </when>
                 <when test="category == 'category'">
-                    <foreach collection="inq" item="item"
+                    <foreach collection="keywordList" item="item"
                              index="index" open="(" close=")" separator="or">
                         a.category LIKE '%' || #{item} || '%'
                     </foreach>
                 </when>
                 <when test="category == 'remark'">
-                    <foreach collection="inq" item="item"
+                    <foreach collection="keywordList" item="item"
                              index="index" open="(" close=")" separator="or">
                         a.remark LIKE '%' || #{item} || '%'
                     </foreach>

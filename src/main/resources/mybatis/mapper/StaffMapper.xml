@@ -2,73 +2,36 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.orderbt.Mapper.StaffMapper">
-    <select id="getEstimateGrid" parameterType="SearchDto" resultType="EstimateDto">
+    <select id="getStaffGrid" parameterType="SearchDto" resultType="StaffDto">
         select *
-        from web.estimate a
-        left join web.order b on a.order_id = b.id
-        left join web.reservation c on a.reservation_id = c.id
+        from web.staff a
         where 1=1
         <if test="keywordList != null">
             AND
             <choose>
                 <when test="category == 'name'">
-                    <foreach collection="inq" item="item"
+                    <foreach collection="keywordList" item="item"
                              index="index" open="(" close=")" separator="or">
-                        b.battery_cell LIKE '%' || #{item} || '%'
-                        or b.cell_model LIKE '%' || #{item} || '%'
-                        or b.voltage LIKE '%' || #{item} || '%'
-                        or b.ampere LIKE '%' || #{item} || '%'
-                        or b.pcm LIKE '%' || #{item} || '%'
+                        a.name LIKE '%' || #{item} || '%'
                     </foreach>
                 </when>
                 <when test="category == 'id'">
-                    <foreach collection="inq" item="item"
+                    <foreach collection="keywordList" item="item"
                              index="index" open="(" close=")" separator="or">
                         a.id LIKE '%' || #{item} || '%'
-                    </foreach>
-                </when>
-                <when test="category == 'company'">
-                    <foreach collection="inq" item="item"
-                             index="index" open="(" close=")" separator="or">
-                        a.company LIKE '%' || #{item} || '%'
-                        or a.name LIKE '%' || #{item} || '%'
-                        or a.email LIKE '%' || #{item} || '%'
-                        or a.tel LIKE '%' || #{item} || '%'
                     </foreach>
                 </when>
                 <otherwise>
                     <foreach collection="keywordList" item="item"
                              index="index" open="(" close=")" separator="or">
-                        a.company LIKE '%' || #{item} || '%'
-                        or a.name LIKE '%' || #{item} || '%'
-                        or a.email LIKE '%' || #{item} || '%'
-                        or a.tel LIKE '%' || #{item} || '%'
+                        a.name LIKE '%' || #{item} || '%'
                         or a.id LIKE '%' || #{item} || '%'
-                        or b.battery_cell LIKE '%' || #{item} || '%'
-                        or b.cell_model LIKE '%' || #{item} || '%'
-                        or b.voltage LIKE '%' || #{item} || '%'
-                        or b.ampere LIKE '%' || #{item} || '%'
-                        or b.pcm LIKE '%' || #{item} || '%'
                     </foreach>
                 </otherwise>
             </choose>
         </if>
-        order by a.cret_dt desc
+    order by cret_dt desc
     </select>
-
-
-
-    <update id="saveEstimate" parameterType="estimateDto">
-        update web.reservation
-        set consult_yn = #{consultYn}
-        <if test='consultYn == "Y"'>
-            ,consult_dt = NOW()
-        </if>
-        <if test='consultYn == "N"'>
-            ,consult_dt = null
-        </if>
-        where id = (select reservation_id from web.estimate where id = #{id})
-    </update>
 
     <insert id="joinStaff" parameterType="StaffDto">
         INSERT INTO web.staff
@@ -76,11 +39,48 @@
         VALUES (#{id}, #{password}, #{name}, #{phoneNum}, #{email}, #{passwordKey}, 'Y', #{memo}, NOW())
     </insert>
 
-    <select id="getEstimateBoard" resultType="hashMap">
-        select
-                (select count(id) from web.estimate) as totalCnt,
-                (select count(id) from web.reservation where consult_yn = 'Y') as consultYCnt,
-                (select count(id) from web.reservation where consult_yn = 'N') as consultNCnt,
-                (select type FROM web.reservation GROUP BY type HAVING COUNT(type) > 1 order by count(type) desc limit 1) as maxType
+    <select id="getStaffInfo" parameterType="StaffDto" resultType="StaffDto">
+        select *
+        from web.staff
+        where id = #{id}
     </select>
+
+    <update id="updateStaff" parameterType="StaffDto">
+        update web.staff
+        set name = #{name},
+            password = #{password},
+            phone_num = #{phoneNum},
+            memo = #{memo},
+            updt_dt = NOW()
+        where id = #{id}
+    </update>
+
+    <update id="updateStaffActive" parameterType="StaffDto">
+        update web.staff
+        set active_yn = #{activeYn}
+        where id = #{id}
+    </update>
+
+    <select id="dupCheckId" resultType="Integer" parameterType="String">
+        select count(id)
+        from web.staff
+        where id = #{id}
+    </select>
+
+    <select id="getPassword" parameterType="StaffDto" resultType="String">
+        select password_key
+        from web.staff
+        where id = #{id}
+    </select>
+
+    <delete id="deleteStaff" parameterType="String">
+        delete from web.staff
+        where id = #{id}
+    </delete>
+
+    <select id="getStaffBoard" resultType="hashMap">
+        select
+            (select count(id) from web.staff) as totalCnt
+    </select>
+
 </mapper>

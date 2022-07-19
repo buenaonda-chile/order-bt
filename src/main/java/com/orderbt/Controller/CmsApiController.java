@@ -1,17 +1,20 @@
 package com.orderbt.Controller;
 
-import com.orderbt.Domain.Estimate;
 import com.orderbt.Dto.EstimateDto;
 import com.orderbt.Dto.ItemDto;
 import com.orderbt.Dto.SearchDto;
 import com.orderbt.Dto.StaffDto;
 import com.orderbt.Service.EstimateService;
-import com.orderbt.Service.Impl.ItemServiceImpl;
 import com.orderbt.Service.ItemService;
+import com.orderbt.Service.LoginService;
 import com.orderbt.Service.StaffService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -19,10 +22,42 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CmsApiController {
 
+    private final LoginService loginService ;
     private final ItemService itemService;
     private final EstimateService estimateService;
-
     private final StaffService staffService;
+
+    @PostMapping(value = "/login")
+    @ResponseBody
+    public String login(@ModelAttribute StaffDto dto, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+
+        String returnVal = "";
+        String autoLogin = request.getParameter("autoLogin");
+        request.setAttribute("autoLogin", autoLogin);
+        String pwdCheck = loginService.getPasswordCheck(dto, request, response);
+
+        switch(pwdCheck){
+            case "login_fail" :  // 아이디 , 패스워드 오류
+                returnVal = "아이디 또는 비밀번호를 확인해주세요.";
+                break;
+            case "login_auth_fail" :  // 관리자가 아닌경우 / 비활성화 상태인 경우
+                returnVal = "해당 계정은 관리자 화면에 접속이 불가합니다.\n로그인 필요 시, 관리자에게 문의바랍니다.";
+                break;
+            case "login" :  // 로그인 성공
+
+                if(autoLogin.equals("on")) {
+                    Cookie cookie = new Cookie("id", dto.getId());
+                    cookie.setMaxAge(60*60*24*7);
+                    cookie.setPath("/");
+                    response.addCookie(cookie);
+                }
+
+                returnVal = "/cms/staff";
+                break;
+        }
+
+        return returnVal;
+    }
 
     @GetMapping("/staff")
     public List<StaffDto> getStaffGrid(SearchDto dto) { return staffService.getStaffGrid(dto); }
@@ -34,7 +69,13 @@ public class CmsApiController {
     public void updateStaff(StaffDto dto){staffService.updateStaff(dto);}
 
     @DeleteMapping("/staff")
-    public void deleteStaff(@RequestParam String id) {staffService.deleteStaff(id);}
+    public void deleteStaff(StaffDto dto) {staffService.deleteStaff(dto.getId());}
+
+    @GetMapping("/staff/dupCheckId")
+    public Integer dupCheckId(StaffDto dto){ return staffService.dupCheckId(dto.getId());}
+
+    @PutMapping("/staffActive")
+    public void updateStaffActive(@RequestBody List<StaffDto> dtos){staffService.updateStaffActive(dtos);}
 
     @GetMapping("/estimate")
     public List<EstimateDto> getEstimateGrid(SearchDto dto) { return estimateService.getEstimateGrid(dto); }

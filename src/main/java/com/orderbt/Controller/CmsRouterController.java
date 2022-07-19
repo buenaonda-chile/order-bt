@@ -3,6 +3,7 @@ package com.orderbt.Controller;
 import com.orderbt.Dto.EstimateDto;
 import com.orderbt.Service.EstimateService;
 import com.orderbt.Service.ItemService;
+import com.orderbt.Service.StaffService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,8 @@ public class CmsRouterController {
 
     private final EstimateService estimateService;
 
+    private final StaffService staffService;
+
     @GetMapping("")
     public String disLogin(){
         return "cms/login";
@@ -28,6 +31,10 @@ public class CmsRouterController {
 
     @GetMapping("/staff")
     public String disStaff(Model model){
+        HashMap<String, Integer> dashBoard = staffService.getStaffBoard();
+
+        model.addAttribute("totalCnt", dashBoard.get("totalcnt"));
+
         return "cms/staff";
     }
 

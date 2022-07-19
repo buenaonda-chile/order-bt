@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.orderbt.Mapper.LoginMapper">
+    <select id="getPassword" parameterType="StaffDto" resultType="StaffDto">
+        select
+            id,
+            password,
+            password_key
+        from web.staff
+        where id = #{id}
+    </select>
+
+<!--    <update id="updateLoginTime" parameterType = "StaffDto">-->
+<!--        update web.staff set-->
+<!--            latest_dt = #{latestDt}::timestamp-->
+<!--        where id = #{id}-->
+<!--    </update>-->
+</mapper>

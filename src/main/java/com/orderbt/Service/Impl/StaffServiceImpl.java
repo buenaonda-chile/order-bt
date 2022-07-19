@@ -1,5 +1,6 @@
 package com.orderbt.Service.Impl;
 
+import com.orderbt.Dto.ItemDto;
 import com.orderbt.Dto.SearchDto;
 import com.orderbt.Dto.StaffDto;
 import com.orderbt.Mapper.StaffMapper;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -19,13 +21,9 @@ public class StaffServiceImpl implements StaffService {
     private final StaffMapper staffMapper;
 
     @Override
-    @Transactional
-    public void updateAdminFlag(StaffDto dto) {
-        staffMapper.updateAdminFlag(dto);
-    }
-
-    @Override
+    @Transactional(readOnly = true)
     public List<StaffDto> getStaffGrid(SearchDto dto) {
+
         if(dto.getKeyword() != null)
             dto.setKeywordList(Util.makeForeach(dto.getKeyword(), ","));
 
@@ -33,7 +31,7 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
-    public String dupCheckId(String id) {
+    public Integer dupCheckId(String id) {
         return staffMapper.dupCheckId(id);
     }
 
@@ -60,10 +58,22 @@ public class StaffServiceImpl implements StaffService {
     public void updateStaff(StaffDto dto) {
         String password = dto.getPassword();
         if(password != ""){
-            dto.setPassword(staffMapper.getPassword(dto));
+            dto.setPasswordKey(staffMapper.getPassword(dto));
             String shaPwd = Encrypt.setSHA512(password, dto.getPasswordKey());
             dto.setPassword(shaPwd);
         }
         staffMapper.updateStaff(dto);
+    }
+
+    @Override
+    public void updateStaffActive(List<StaffDto> dtos) {
+        for(StaffDto dto : dtos){
+            staffMapper.updateStaffActive(dto);
+        }
+    }
+
+    @Override
+    public HashMap<String, Integer> getStaffBoard() {
+        return staffMapper.getStaffBoard();
     }
 }

@@ -12,7 +12,7 @@
             AND
             <choose>
                 <when test="category == 'name'">
-                    <foreach collection="inq" item="item"
+                    <foreach collection="keywordList" item="item"
                              index="index" open="(" close=")" separator="or">
                         b.battery_cell LIKE '%' || #{item} || '%'
                         or b.cell_model LIKE '%' || #{item} || '%'
@@ -22,13 +22,13 @@
                     </foreach>
                 </when>
                 <when test="category == 'id'">
-                    <foreach collection="inq" item="item"
+                    <foreach collection="keywordList" item="item"
                              index="index" open="(" close=")" separator="or">
                         a.id LIKE '%' || #{item} || '%'
                     </foreach>
                 </when>
                 <when test="category == 'company'">
-                    <foreach collection="inq" item="item"
+                    <foreach collection="keywordList" item="item"
                              index="index" open="(" close=")" separator="or">
                         a.company LIKE '%' || #{item} || '%'
                         or a.name LIKE '%' || #{item} || '%'

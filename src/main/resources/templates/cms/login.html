@@ -40,16 +40,14 @@
             }
 
             var response = $.ajax({
-                            url : "/login/login",
+                            url : "/cms/api/login",
                             async : true, // 비동기모드(화면전환 X) : true, 동기식모드 : false
                             type : 'POST',
                             cache : false,
                             dataType : 'text',
                             data : params,
                             success : function(data) {
-                                if(data == "/cms/main"){
-                                    var jwt = response.getResponseHeader('X-AUTH-TOKEN');
-                                    localStorage.setItem('jwt', jwt);
+                                if(data == "/cms/staff"){
                                     location.href = data;
                                 }else {
                                     alert(data);

@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 @Getter @Setter
 public class StaffDto {
     private String id;
-
     private String password;
     private String passwordKey; //비밀번호 솔트
     private String name;
@@ -16,7 +15,7 @@ public class StaffDto {
     private String email;
     private String activeYn;
     private String memo;
-    private LocalDateTime latestDt;
-    private LocalDateTime cretDt;
-    private LocalDateTime updtDt;
+    private String latestDt;
+    private String cretDt;
+    private String updtDt;
 }

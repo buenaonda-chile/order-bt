@@ -31,13 +31,9 @@ import java.util.*;
 @Service
 @RequiredArgsConstructor
 public class EstimateServiceImpl implements EstimateService {
-
     private final EstimateRepository estimateRepository;
-
     private final EstimateMapper estimateMapper;
-
     private final FileService fileService;
-
     private final Environment env;
 
     @Override
