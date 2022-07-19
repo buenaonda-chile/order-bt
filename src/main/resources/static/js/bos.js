@@ -1102,23 +1102,39 @@ $(document).ready(function () {
 
 
 
-    function loading(ms){
-        let tag = `<div id="loading">
-                    <p>본 견적서는 가견적서입니다. <br> 상담  후 확정 견적서가 발급됩니다.</p>
-                </div>`;
-        $("body").prepend(tag);
-            setTimeout(function(){
-            $("#loading").remove();
-            },ms);
-      }
+    // function loading(ms){
+    //     let tag = `<div id="loading">
+    //                 <p>본 견적서는 가견적서입니다. <br> 상담  후 확정 견적서가 발급됩니다.</p>
+    //             </div>`;
+    //     $("form").prepend(tag);
+    //         setTimeout(function(){
+    //         $("#loading").remove();
+    //         },ms);
+    //   }
 
-    $(".arrow_btn.next").click(function(){
-        if(pageIndex==2){  
-            loading(1000);
-            }
-        });
+    // $(".arrow_btn.next").click(function(){
+    //     if(pageIndex==2){  
+    //         loading(3000);
+    //         }
+    //     });
 
 
+        function loading(ms){
+            // let tag = `<div id="loading">
+            //             <p>본 견적서는 가견적서입니다. <br> 상담  후 확정 견적서가 발급됩니다.</p>
+            //         </div>`;
+            $("#loading").addClass("on");
+                setTimeout(function(){
+                $("#loading").removeClass("on");
+                },ms);
+          }
+    
+        $(".arrow_btn.next").click(function(){
+            if(pageIndex==9){  
+                loading(1300);
+                }
+            });
+    
 }); // end
 
 function saveData(form){
