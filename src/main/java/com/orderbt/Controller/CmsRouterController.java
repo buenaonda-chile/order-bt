@@ -10,7 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.util.WebUtils;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 
 @Controller
@@ -25,8 +30,17 @@ public class CmsRouterController {
     private final StaffService staffService;
 
     @GetMapping("")
-    public String disLogin(){
-        return "cms/login";
+    public String disLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Cookie loginCookie = WebUtils.getCookie(request, "id");
+
+        if (loginCookie != null) { // 쿠키가 존재하는 경우(이전에 로그인때 생성된 쿠키가 존재한다는 것)
+            // loginCookie의 값을 꺼내오고 -> 즉, 저장해논 세션Id를 꺼내오고
+            String sessionId = loginCookie.getValue();
+            response.sendRedirect("/cms/item");
+            return "/cms/login";
+        }else {
+            return "/cms/login";
+        }
     }
 
     @GetMapping("/staff")

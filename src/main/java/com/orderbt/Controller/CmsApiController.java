@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,7 @@ public class CmsApiController {
 
     @PostMapping(value = "/login")
     @ResponseBody
-    public String login(@ModelAttribute StaffDto dto, HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+    public String login(@ModelAttribute StaffDto dto, HttpServletRequest request, HttpServletResponse response, Model model, HttpSession session) throws Exception {
 
         String returnVal = "";
         String autoLogin = request.getParameter("autoLogin");
@@ -44,7 +45,7 @@ public class CmsApiController {
                 returnVal = "해당 계정은 관리자 화면에 접속이 불가합니다.\n로그인 필요 시, 관리자에게 문의바랍니다.";
                 break;
             case "login" :  // 로그인 성공
-
+                session.setAttribute("login", dto);
                 if(autoLogin.equals("on")) {
                     Cookie cookie = new Cookie("id", dto.getId());
                     cookie.setMaxAge(60*60*24*7);

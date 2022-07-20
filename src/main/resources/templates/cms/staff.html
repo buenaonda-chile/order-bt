@@ -22,7 +22,7 @@
         </li>
         <li>
           <label for="userpassword">비밀번호<span>*</span></label>
-          <input type="password" id="userpassword" name="password">
+          <input type="password" id="userpassword" name="userpassword">
         </li>
         <li>
           <label for="passwordCheck">비밀번호확인<span>*</span></label>
@@ -246,26 +246,26 @@
         if(f.id.value == ""){
             alert("ID를 입력해주세요.");
             f.id.focus();
-            return false;
+            return;
         }else if(f.name.value == ""){
             alert("이름을 입력해주세요.");
             f.name.focus();
-            return false;
+            return;
         }else if(f.phoneNum.value == ""){
             alert("전화번호를 입력해주세요.");
             f.phoneNum.focus();
-            return false;
+            return;
         }
 
         if(type == 'add'){
-            if(f.password.value == ""){
+            if($('#userpassword').val() == ""){
                 alert("비밀번호를 입력해주세요.");
-                f.password.focus();
-                return false;
-             } else if(f.password.value =! f.passwordCheck.value) {
+                f.userpassword.focus();
+                return;
+             } else if($('#userpassword').val() != $('#passwordCheck').val()) {
                 alert("비밀번호가 일치하지 않습니다");
-                f.password.focus();
-                return false;
+                f.userpassword.focus();
+                return;
             }
         }
 
@@ -282,10 +282,10 @@
             alert("ID를 확인하시기 바랍니다.\nID는 영문자(대,소문자) 6자 이상 혹은 \n영문자(대,소문자), 숫자를 포함하여 6자 이상이어야 합니다.");
             f.id.focus();
             return;
-        // } else if(f.password.value != '' && !pwdRule1.test(f.password.value) && !pwdRule2.test(f.password.value) && !pwdRule3.test(f.password.value)){
-        //         alert("비밀번호를 확인하시기 바랍니다.\n비밀번호는 영문자(대,소문자), 숫자를 포함하여 최소 10자 이상,\n 혹은 영문자(대,소문자), 숫자, 특수문자를 포함하여 최소 8자 이상이어야 합니다.");
-        //         f.password.focus();
-        //         return;
+        } else if($('#userpassword').val() != '' && !pwdRule1.test($('#userpassword').val()) && !pwdRule2.test($('#userpassword').val()) && !pwdRule3.test($('#userpassword').val())){
+                alert("비밀번호를 확인하시기 바랍니다.\n비밀번호는 영문자(대,소문자), 숫자를 포함하여 최소 10자 이상,\n 혹은 영문자(대,소문자), 숫자, 특수문자를 포함하여 최소 8자 이상이어야 합니다.");
+                f.password.focus();
+                return;
         }else if(f.email.value != null && f.email.value != "" && !emailRule.test(f.email.value)){ //이메일
             alert("이메일을 확인하시기 바랍니다.");
             f.email.focus();
@@ -299,7 +299,7 @@
         const formData = new FormData();
 
         formData.append("id", f.id.value);
-        formData.append("password", f.password.value);
+        formData.append("password", $('#userpassword').val());
         formData.append("name", f.name.value);
         formData.append("phoneNum", f.phoneNum.value);
         formData.append("email", f.email.value);

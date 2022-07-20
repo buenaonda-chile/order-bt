@@ -39,9 +39,8 @@ public class StaffServiceImpl implements StaffService {
     @Transactional
     public void joinStaff(StaffDto dto) {
         // salt + SHA512 암호화 적용
-        String password = dto.getPassword();
         String password_key = Encrypt.getSaltKey();
-        dto.setPassword(Encrypt.setSHA512(password, password_key));
+        dto.setPassword(Encrypt.setSHA512(dto.getPassword(), password_key));
         dto.setPasswordKey(password_key);
 
         staffMapper.joinStaff(dto);
