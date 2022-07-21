@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class EstimateDto {
     private Long id;
+    private String model;
     private String company;
     private String name;
     private String tel;

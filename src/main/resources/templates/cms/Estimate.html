@@ -121,14 +121,24 @@
       const onoffYnMap = "N,Y".split(",");	//온/오프라인 콤보박스
 
       estimateColumns = [
-        {binding: 'id', header: '아이템번호', isReadOnly: true, width: 150, align: "center", dataType:Number, format : 'g0'},
-        {binding: 'category', header: '품목명', isReadOnly: true, width: 150, align: "center"},
+        {binding: 'id', header: '견적번호', isReadOnly: true, width: 150, align: "center", dataType:Number, format : 'g0'},
+        {binding: 'model', header: '품목명', isReadOnly: true, width: 250, align: "center"},
         {binding: 'price', header: '견적금액', isReadOnly: true, width: 200, align: "center"},
         {
-          binding: 'estimate', header: '견적서', isReadOnly: true, width: 150, align: "center",
+          binding: 'estimate', header: '본견적서', isReadOnly: true, width: 150, align: "center",
           cellTemplate: wijmo.grid.cellmaker.CellMaker.makeButton({
             text: '보기',
             click: (e, ctx) => showPop('itemManagement', ctx),
+          })
+        },
+        {
+          binding: 'estimate', header: '가견적서', isReadOnly: true, width: 150, align: "center",
+          cellTemplate: wijmo.grid.cellmaker.CellMaker.makeButton({
+            text: '보기',
+            click: (e, ctx) => {
+              var pdfWindow = window.open();
+              pdfWindow.location = "/et/" + ctx.item.id + "/" + ctx.item.name;
+            }
           })
         },
         {binding: 'date', header: '상담예약일', isReadOnly: true, width: 150, align: "center"},

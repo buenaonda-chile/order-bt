@@ -1,9 +1,6 @@
 package com.orderbt.Controller;
 
-import com.orderbt.Dto.EstimateDto;
-import com.orderbt.Dto.ItemDto;
-import com.orderbt.Dto.SearchDto;
-import com.orderbt.Dto.StaffDto;
+import com.orderbt.Dto.*;
 import com.orderbt.Service.EstimateService;
 import com.orderbt.Service.ItemService;
 import com.orderbt.Service.LoginService;
@@ -84,6 +81,36 @@ public class CmsApiController {
     @PutMapping("/estimate")
     public void saveEstimate(@RequestBody List<EstimateDto> dtos){
         estimateService.saveEstimate(dtos);
+    }
+
+    @GetMapping("/estimate/ctns")
+    public CtnsEstimateDto getCtnsEstimate(@RequestParam Integer estimateId){
+        return estimateService.getCtnsEstimate(estimateId);
+    }
+
+    @PostMapping("/estimate/ctns")
+    public void saveCtnsEstimate(CtnsEstimateDto dto){
+        estimateService.saveCtnsEstimate(dto);
+    }
+
+    @GetMapping("/order/ctns")
+    public List<CtnsOrderDto> getCtnsOrder(@RequestParam Integer estimateId){
+        return estimateService.getCtnsOrder(estimateId);
+    }
+
+    @PostMapping("/order/ctns")
+    public void saveCtnsOrder(List<CtnsOrderDto> dtos){
+        estimateService.saveCtnsOrder(dtos);
+    }
+
+    @PutMapping("/order/ctns")
+    public void updateCtnsOrder(List<CtnsOrderDto> dtos){
+        estimateService.updateCtnsOrder(dtos);
+    }
+
+    @DeleteMapping("/order/ctns")
+    public void deleteCtnsOrder(List<CtnsOrderDto> dtos){
+        estimateService.deleteCtnsOrder(dtos);
     }
 
     @GetMapping("/item")

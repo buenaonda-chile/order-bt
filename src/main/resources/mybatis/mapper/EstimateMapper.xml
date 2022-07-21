@@ -3,7 +3,7 @@
 
 <mapper namespace="com.orderbt.Mapper.EstimateMapper">
     <select id="getEstimateGrid" parameterType="SearchDto" resultType="EstimateDto">
-        select *
+        select *, (b.battery_cell || ' ' || b.cell_model || ' ' || b.voltage || ' ' || b.ampere) as model
         from web.estimate a
         left join web.order b on a.order_id = b.id
         left join web.reservation c on a.reservation_id = c.id
@@ -75,4 +75,50 @@
                 (select count(id) from web.reservation where consult_yn = 'N') as consultNCnt,
                 (select type FROM web.reservation GROUP BY type HAVING COUNT(type) > 1 order by count(type) desc limit 1) as maxType
     </select>
+
+    <select id="getCtnsOrder" parameterType="Integer" resultType="CtnsOrderDto">
+        select *
+        from web.ctns_order
+        where estimate_id = #{estimateId}
+    </select>
+
+    <select id="getCtnsEstimate" parameterType="Integer" resultType="CtnsEstimateDto">
+        select *
+        from web.ctns_estimate
+        where estimate_id = #{estimateId}
+    </select>
+
+    <insert id="saveCtnsEstimate" parameterType="CtnsEstimateDto">
+        INSERT INTO web.ctns_estimate
+            (estimate_id, delivery_dt , effective_dt, address, remark)
+        VALUES (#{estimateId}, #{deliveryDt}, #{effectiveDt}, #{address}, #{remark})
+            ON CONFLICT(estimateId) DO
+        UPDATE
+            SET delivery_dt = #{deliveryDt},
+            effective_dt = #{effectiveDt},
+            address		= #{address},
+            remark		= #{remark}
+    </insert>
+
+    <insert id="saveCtnsOrder" parameterType="CtnsOrderDto">
+        insert into web.ctns_order
+            (id, estimate_id, item, spec, qty, price, supply_price, tax, remark)
+        values (NEXTVAL('web.ctns_order_id_seq'), #{estimateId}, #{item}, #{spec}, #{qty}, #{price}, #{supplyPrice}, #{tax}, #{remark} )
+    </insert>
+
+    <update id="updateCtnsOrder" parameterType="CtnsOrderDto">
+        update web.ctns_order
+        set item = #{item},
+            spec = #{spec},
+            qty = #{qty},
+            price = #{price},
+            supply_price = #{supplyPrice},
+            tax = #{tax},
+            remark = #{remark}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCtnsOrder" parameterType="CtnsOrderDto">
+        delete from web.ctns_order where id = #{id}
+    </delete>
 </mapper>

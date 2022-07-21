@@ -31,4 +31,16 @@ public interface EstimateService {
     void saveEstimate(List<EstimateDto> dtos);
 
     HashMap<String,Object> getEstimateBoard();
+
+    CtnsEstimateDto getCtnsEstimate(Integer estimateId);
+
+    void saveCtnsEstimate(CtnsEstimateDto dto);
+
+    List<CtnsOrderDto> getCtnsOrder(Integer estimateId);
+
+    void saveCtnsOrder(List<CtnsOrderDto> dtos);
+
+    void updateCtnsOrder(List<CtnsOrderDto> dtos);
+
+    void deleteCtnsOrder(List<CtnsOrderDto> dtos);
 }

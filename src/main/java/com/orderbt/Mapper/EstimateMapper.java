@@ -1,8 +1,7 @@
 package com.orderbt.Mapper;
 
 import com.orderbt.Domain.Estimate;
-import com.orderbt.Dto.EstimateDto;
-import com.orderbt.Dto.SearchDto;
+import com.orderbt.Dto.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.HashMap;
@@ -15,4 +14,16 @@ public interface EstimateMapper {
     void saveEstimate(EstimateDto dto);
 
     HashMap<String,Object> getEstimateBoard();
+
+    CtnsEstimateDto getCtnsEstimate(Integer estimateID);
+
+    void saveCtnsEstimate(CtnsEstimateDto dto);
+
+    List<CtnsOrderDto> getCtnsOrder(Integer estimateId);
+
+    void saveCtnsOrder(CtnsOrderDto dto);
+
+    void updateCtnsOrder(CtnsOrderDto dto);
+
+    void deleteCtnsOrder(CtnsOrderDto dto);
 }

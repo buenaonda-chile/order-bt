@@ -284,6 +284,42 @@ public class EstimateServiceImpl implements EstimateService {
         return estimateMapper.getEstimateBoard();
     }
 
+    @Override
+    public CtnsEstimateDto getCtnsEstimate(Integer estimateId) {
+        return estimateMapper.getCtnsEstimate(estimateId);
+    }
+
+    @Override
+    public void saveCtnsEstimate(CtnsEstimateDto dto) {
+        estimateMapper.saveCtnsEstimate(dto);
+    }
+
+    @Override
+    public List<CtnsOrderDto> getCtnsOrder(Integer estimateId) {
+        return estimateMapper.getCtnsOrder(estimateId);
+    }
+
+    @Override
+    public void saveCtnsOrder(List<CtnsOrderDto> dtos) {
+        for(CtnsOrderDto dto : dtos){
+            estimateMapper.saveCtnsOrder(dto);
+        }
+    }
+
+    @Override
+    public void updateCtnsOrder(List<CtnsOrderDto> dtos) {
+        for(CtnsOrderDto dto : dtos){
+            estimateMapper.updateCtnsOrder(dto);
+        }
+    }
+
+    @Override
+    public void deleteCtnsOrder(List<CtnsOrderDto> dtos) {
+        for(CtnsOrderDto dto : dtos){
+            estimateMapper.deleteCtnsOrder(dto);
+        }
+    }
+
     // 현재 시간을 기준으로 견적번호 생성
     private String genSaveFileName() {
         String number = "";
