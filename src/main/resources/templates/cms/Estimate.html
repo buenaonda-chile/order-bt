@@ -13,6 +13,55 @@
     <th:block th:replace="cms/cms_fragment/mainnav :: mainnavFragment"></th:block>
 
       <div class="wrap">
+        <div class="innermodal" id="estimateManagement">
+          <h1>본견적서 작성<span>X</span></h1>
+          <ul class="Ordernumber">
+            <li>주문번호</li>
+            <li>2022072201452101</li>
+          </ul>
+          <section class="content1">
+            <ul class="actionButton">
+              <li><a href="">PDF 다운로드</a></li>
+              <li>저장</li>
+              <li>행 추가</li>
+              <li>행 삭제</li>
+            </ul>
+            <div class="wjmo">
+              <p>그리드 영역입니다.</p>
+              <p>그리드 영역입니다.</p>
+              <p>그리드 영역입니다.</p>
+              <p>그리드 영역입니다.</p>
+              <p>그리드 영역입니다.</p>
+              <p>그리드 영역입니다.</p>
+              <p>그리드 영역입니다.</p>
+            </div>
+          </section>
+          <section class="content2">
+            <div class="con1">
+              <label for="Deliverydate">납기일자</label>
+              <input type="date" id="Deliverydate">
+            </div>
+            <div class="con2">
+              <label for="Deliveryplace">납품장소</label>
+              <textarea name="" id="Deliveryplace" cols="30" rows="10"></textarea>
+            </div>
+            <div class="con3">
+              <label for="Effectivedate">유효일자</label>
+              <input type="date" id="Effectivedate">
+            </div>
+            <div class="con4">
+              <p>결제조건</p>
+              <p>100% 현금 사전입금</p>
+            </div>
+            <div class="con5">
+              <label for="note">비고</label>
+              <textarea name="" id="note" cols="30" rows="10"></textarea>
+            </div>
+          </section>
+          <p class="Completingcreation">작성완료</p>
+
+        </div> <!--modal-->
+
         <div class="top">
           <h1><i class="fa-solid fa-book"></i>견적관리</h1>
           <section class="topMenu1">
@@ -128,7 +177,7 @@
           binding: 'estimate', header: '본견적서', isReadOnly: true, width: 150, align: "center",
           cellTemplate: wijmo.grid.cellmaker.CellMaker.makeButton({
             text: '보기',
-            click: (e, ctx) => showPop('itemManagement', ctx),
+            click: (e, ctx) => showPop('estimateManagement', ctx),
           })
         },
         {
@@ -251,6 +300,65 @@
         }
       });
     }
+  }
+
+  //팝업 오픈
+  function showPop(pop, ctx = null) {
+    const _target = document.getElementById(pop);
+
+    /* 모달안에 인풋초기화 */
+    _target.querySelectorAll("input, select, textarea").forEach((el, i) => {
+      el.value = "";
+    })
+
+    _target.classList.add('is_on');
+
+    /* 모달안에 값 있을 경우 */
+    if (ctx != null) {
+      switch (pop) {
+        case "estimateManagement":
+          $('#addBtn').hide();
+          $('#updateBtn').show();
+          $('#deleteBtn').show();
+          $('#saveRowBtn').show();
+          $('#deleteRowBtn').removeAttr("onclick");
+          $('#deleteRowBtn').attr("onclick", "deleteRows('modify')")
+          document.getElementById("itemId").value = ctx.item.id;
+          _target.querySelector(".popup_title").textContent = "아이템수정"
+          _target.querySelector("input[name='name']").value = ctx.item.name;
+          _target.querySelector("input[name='price']").value = ctx.item.price;
+          _target.querySelector("select[name='active']").value = ctx.item.active;
+          _target.querySelector("select[name='category']").value = ctx.item.category;
+          _target.querySelector("textarea[name='remark']").value = ctx.item.remark;
+          getItemInfo(ctx.item.id);
+          break;
+        default:
+          break;
+      }
+    } else {
+      switch (pop) {
+        case "itemManagement":
+          $('#addBtn').show();
+          $('#updateBtn').hide();
+          $('#deleteBtn').hide();
+          $('#saveRowBtn').hide();
+          $('#deleteRowBtn').removeAttr("onclick");
+          $('#deleteRowBtn').attr("onclick", "deleteRows('new')")
+          _target.querySelector(".popup_title").textContent = "아이템추가"
+          _target.querySelector("select[name='active']").value = 'Y';
+          _target.querySelector("select[name='category']").value = '배터리셀모델';
+          loadGridItemList('itemInfo', '');
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  function closePop(pop) {
+    const _target = document.getElementById(pop);
+
+    _target.classList.remove("is_on");
   }
 
   $(document).ready(function () {
