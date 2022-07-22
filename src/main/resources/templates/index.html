@@ -647,7 +647,7 @@
                         </div>
 
                         <div class="exp_wrap">
-                            <p class="exp_tit">전압 기준 표</p>   // 리튬이온 선택시
+                            <p class="exp_tit">전압 기준 표</p>   <!--리튬이온 선택시-->
                             <table class="tbl tbl_style01">
                                 <tr>
                                     <th>자주 쓰는 시스템 전압(V)</th>
@@ -798,7 +798,7 @@
                                 </tr>
                             </table>
 
-                            <table class="tbl tbl_style02">    // 리튬인산철 선택시
+                            <table class="tbl tbl_style02">    <!--리튬인산철 선택시-->
                                 <tr>
                                     <th rowspan="2">자주 쓰는 시스템 전압(V)</th>
                                     <th rowspan="2">직렬수 (S)</th>
@@ -969,30 +969,151 @@
                     <div class="page-switch page02_04_01">
                         <div class="select_items">
                             <p class="items_tit selectp">용량을 선택해 주세요.<span class="select_arrow"></span></p>
-                                <select class="chk_item volume" name="volume">
-                                    <option value="0">용량을 선택해 주세요.</option>
-                                    <option value="1P">1P </option>
-                                    <option value="2P">2P</option>
-                                    <option value="3P">3P</option>
-                                    <option value="4P">4P</option>
-                                    <option value="5P">5P</option>
-                                    <option value="6P">6P</option>
-                                    <option value="7P">7P</option>
-                                    <option value="8P">8P</option>
-                                    <option value="9P">9P</option>
-                                    <option value="10P">10P</option>
-                                    <option value="11P">11P</option>
-                                    <option value="12P">12P</option>
-                                    <option value="13P">13P</option>
-                                    <option value="14P">14P</option>
-                                    <option value="15P">15P</option>
-                                    <option value="16P">16P</option>
-                                    <option value="17P">17P</option>
-                                    <option value="18P">18P</option>
-                                    <option value="19P">19P</option>
-                                    <option value="20P">20P</option>
+                                <select class="chk_item volume volume1" name="volume"> 
+                                    <option value="0">용량을 선택해 주세요.</option>   <!--리튬 인산철 FBTECH 32700 선택시 -->
+                                    <option value="1P">1P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6Ah</option>
+                                    <option value="2P">2P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12Ah</option>
+                                    <option value="3P">3P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18Ah</option>
+                                    <option value="4P">4P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24Ah</option>
+                                    <option value="5P">5P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30Ah</option>
+                                    <option value="6P">6P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;36Ah</option>
+                                    <option value="7P">7P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;42Ah</option>
+                                    <option value="8P">8P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;48Ah</option>
+                                    <option value="9P">9P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;54Ah</option>
+                                    <option value="10P">10P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60Ah</option>
+                                    <option value="11P">11P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;66Ah</option>
+                                    <option value="12P">12P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;72Ah</option>
+                                    <option value="13P">13P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;78Ah</option>
+                                    <option value="14P">14P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;84Ah</option>
+                                    <option value="15P">15P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;90Ah</option>
+                                    <option value="16P">16P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;96Ah</option>
+                                    <option value="17P">17P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;102Ah</option>
+                                    <option value="18P">18P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;108Ah</option>
+                                    <option value="19P">19P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;114Ah</option>
+                                    <option value="20P">20P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;120Ah</option>
                                     <option value="상담필요">상담필요</option>
                                 </select>
+                                <select class="chk_item volume volume2" name="volume"> 
+                                    <option value="0">용량을 선택해 주세요.</option>  <!--리튬 인산철 CALB 100A 선택시 -->
+                                    <option value="1P">1P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;100Ah</option>
+                                    <option value="2P">2P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;200Ah</option>
+                                    <option value="3P">3P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;300Ah</option>
+                                    <option value="4P">4P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400Ah</option>
+                                    <option value="5P">5P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;500Ah</option>
+                                    <option value="6P">6P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;600Ah</option>
+                                    <option value="7P">7P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;700Ah</option>
+                                    <option value="8P">8P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;800Ah</option>
+                                    <option value="9P">9P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;900Ah</option>
+                                    <option value="10P">10P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1000Ah</option>
+                                    <option value="11P">11P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1100Ah</option>
+                                    <option value="12P">12P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1200Ah</option>
+                                    <option value="13P">13P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1300Ah</option>
+                                    <option value="14P">14P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1400Ah</option>
+                                    <option value="15P">15P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1500Ah</option>
+                                    <option value="16P">16P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1600Ah</option>
+                                    <option value="17P">17P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1700Ah</option>
+                                    <option value="18P">18P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1800Ah</option>
+                                    <option value="19P">19P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1900Ah</option>
+                                    <option value="20P">20P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2000Ah</option>
+                                    <option value="상담필요">상담필요</option>
+                                </select>
+                                <select class="chk_item volume volume3" name="volume"> 
+                                    <option value="0">용량을 선택해 주세요.</option>  <!--리튬 인산철 CATL 302A / EVE 304Ah 선택시 -->
+                                    <option value="1P">1P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;300Ah</option>
+                                    <option value="2P">2P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;600Ah</option>
+                                    <option value="3P">3P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;900Ah</option>
+                                    <option value="4P">4P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1200Ah</option>
+                                    <option value="5P">5P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1500Ah</option>
+                                    <option value="6P">6P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1800Ah</option>
+                                    <option value="7P">7P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2100Ah</option>
+                                    <option value="8P">8P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2400Ah</option>
+                                    <option value="9P">9P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2700Ah</option>
+                                    <option value="10P">10P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3000Ah</option>
+                                    <option value="11P">11P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3300Ah</option>
+                                    <option value="12P">12P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3600Ah</option>
+                                    <option value="13P">13P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3900Ah</option>
+                                    <option value="14P">14P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4200Ah</option>
+                                    <option value="15P">15P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4500Ah</option>
+                                    <option value="16P">16P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4800Ah</option>
+                                    <option value="17P">17P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5100Ah</option>
+                                    <option value="18P">18P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5400Ah</option>
+                                    <option value="19P">19P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5700Ah</option>
+                                    <option value="20P">20P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6000Ah</option>
+                                    <option value="상담필요">상담필요</option>
+                                </select>
+                                <select class="chk_item volume volume1" name="volume"> 
+                                    <option value="0">용량을 선택해 주세요.</option>   <!--리튬 이온 samsung40T 선택시 -->
+                                    <option value="1P">1P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.9Ah</option>
+                                    <option value="2P">2P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9.8Ah</option>
+                                    <option value="3P">3P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14.7Ah</option>
+                                    <option value="4P">4P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;19.6Ah</option>
+                                    <option value="5P">5P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24.5Ah</option>
+                                    <option value="6P">6P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;29.4Ah</option>
+                                    <option value="7P">7P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;34.3Ah</option>
+                                    <option value="8P">8P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;39.2Ah</option>
+                                    <option value="9P">9P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;44.1Ah</option>
+                                    <option value="10P">10P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;49Ah</option>
+                                    <option value="11P">11P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;53.9Ah</option>
+                                    <option value="12P">12P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;58.8Ah</option>
+                                    <option value="13P">13P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;63.7Ah</option>
+                                    <option value="14P">14P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;68.6Ah</option>
+                                    <option value="15P">15P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;73.5Ah</option>
+                                    <option value="16P">16P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;78.4Ah</option>
+                                    <option value="17P">17P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;83.3Ah</option>
+                                    <option value="18P">18P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;88.2Ah</option>
+                                    <option value="19P">19P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;93.1Ah</option>
+                                    <option value="20P">20P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;98Ah</option>
+                                    <option value="상담필요">상담필요</option>
+                                </select>
+                                <select class="chk_item volume volume1" name="volume"> 
+                                    <option value="0">용량을 선택해 주세요.</option>   <!--리튬 이온 samsung SDI 50E 선택시 -->
+                                    <option value="1P">1P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.9Ah</option>
+                                    <option value="2P">2P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9.8Ah</option>
+                                    <option value="3P">3P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14.7Ah</option>
+                                    <option value="4P">4P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;19.6Ah</option>
+                                    <option value="5P">5P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24.5Ah</option>
+                                    <option value="6P">6P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;29.4Ah</option>
+                                    <option value="7P">7P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;34.3Ah</option>
+                                    <option value="8P">8P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;39.2Ah</option>
+                                    <option value="9P">9P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;44.1Ah</option>
+                                    <option value="10P">10P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;49Ah</option>
+                                    <option value="11P">11P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;53.9Ah</option>
+                                    <option value="12P">12P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;58.8Ah</option>
+                                    <option value="13P">13P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;63.7Ah</option>
+                                    <option value="14P">14P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;68.6Ah</option>
+                                    <option value="15P">15P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;73.5Ah</option>
+                                    <option value="16P">16P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;78.4Ah</option>
+                                    <option value="17P">17P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;83.3Ah</option>
+                                    <option value="18P">18P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;88.2Ah</option>
+                                    <option value="19P">19P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;93.1Ah</option>
+                                    <option value="20P">20P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;98Ah</option>
+                                    <option value="상담필요">상담필요</option>
+                                </select>
+                                <select class="chk_item volume volume1" name="volume"> 
+                                    <option value="0">용량을 선택해 주세요.</option>   <!--리튬 이온 LG M50LT 선택시 -->
+                                    <option value="1P">1P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.9Ah</option>
+                                    <option value="2P">2P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.8Ah</option>
+                                    <option value="3P">3P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11.7Ah</option>
+                                    <option value="4P">4P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15.6Ah</option>
+                                    <option value="5P">5P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;19.5Ah</option>
+                                    <option value="6P">6P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;23.4Ah</option>
+                                    <option value="7P">7P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;27.3Ah</option>
+                                    <option value="8P">8P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;31.2Ah</option>
+                                    <option value="9P">9P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;35.1Ah</option>
+                                    <option value="10P">10P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;39Ah</option>
+                                    <option value="11P">11P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;42.9Ah</option>
+                                    <option value="12P">12P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;46.8Ah</option>
+                                    <option value="13P">13P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50.7Ah</option>
+                                    <option value="14P">14P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;54.6Ah</option>
+                                    <option value="15P">15P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;58.5Ah</option>
+                                    <option value="16P">16P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;62.4Ah</option>
+                                    <option value="17P">17P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;66.3Ah</option>
+                                    <option value="18P">18P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;70.2Ah</option>
+                                    <option value="19P">19P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;74.1Ah</option>
+                                    <option value="20P">20P &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;78Ah</option>
+                                    <option value="상담필요">상담필요</option>
+                                </select>
+                                
                             <p class="volumeNotice">선택하신 용량으로는 정격출력 기준<br> 약 <span class="volumeCalc"></span>시간 운전 가능합니다.</p>
                         </div>
 
